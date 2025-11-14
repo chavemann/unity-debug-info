@@ -21,6 +21,8 @@ internal class HeadingRow : Row
 	
 	public override void Activate(DebugInfoTable table)
 	{
+		base.Activate(table);
+		
 		labelCell.transform.SetParent(table.Root);
 	}
 	

@@ -16,14 +16,7 @@ internal static class RowPool<T> where T : Row, new()
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static void Release(T row) => Pool.Release(row);
 	
-	private static T CreateFunc()
-	{
-		T row = new()
-		{
-			id = Row.nextId++,
-		};
-		return row;
-	}
+	private static T CreateFunc() => new();
 	
 }
 
