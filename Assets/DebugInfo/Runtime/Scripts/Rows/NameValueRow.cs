@@ -16,7 +16,7 @@ internal class NameValueRow : Row
 		AssetReferences.Create(DebugInfo.Assets.cellPrefab, out labelCell, "Label", DebugInfo.PoolContainer);
 		AssetReferences.Create(DebugInfo.Assets.cellPrefab, out valueCell, "Value", DebugInfo.PoolContainer);
 		
-		labelCell.AlignRight();
+		labelCell.textField.alignment = TextAnchor.UpperRight;
 	}
 	
 	public void Set(string label, string value, Color? color, Color? backgroundColor)
@@ -43,7 +43,7 @@ internal class NameValueRow : Row
 		RowPool<NameValueRow>.Release(this);
 	}
 	
-	public override void UpdateLayout(float y, float[] columnWidths)
+	public override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
 	{
 		labelCell.UpdateLayout(
 			new Vector2(0, y),

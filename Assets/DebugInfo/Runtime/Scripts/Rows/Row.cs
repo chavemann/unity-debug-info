@@ -31,7 +31,7 @@ internal abstract class Row
 	
 	public abstract void Deactivate();
 	
-	public virtual void UpdateLayout(float y, float[] columnWidths) { }
+	public virtual void UpdateLayout(float y, float totalWidth, float[] columnWidths) { }
 	
 	public override string ToString() => $"{GetType().Name}[{id}]";
 	

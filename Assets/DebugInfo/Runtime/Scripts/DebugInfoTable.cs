@@ -11,6 +11,8 @@ namespace C.Debugging
 public class DebugInfoTable : MonoBehaviour
 {
 	
+	private const int ColumnCount = 2;
+	
 	[SerializeField]
 	private new RectTransform transform;
 	[SerializeField]
@@ -25,7 +27,7 @@ public class DebugInfoTable : MonoBehaviour
 	private Row[] rows = Array.Empty<Row>();
 	private int rowCount;
 	private int previousRowCount;
-	private readonly float[] columnWidths = new float[2];
+	private readonly float[] columnWidths = new float[ColumnCount + 1];
 	
 	private void Awake()
 	{
@@ -36,12 +38,21 @@ public class DebugInfoTable : MonoBehaviour
 	
 	#region -- Logging Methods --------------------------------
 	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Spacer(float? space = null)
 	{
 		NextRow<SpacerRow>().Set(space);
 		return this;
 	}
 	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public DebugInfoTable Heading(string label, Color? color = null, Color? backgroundColor = null)
+	{
+		NextRow<HeadingRow>().Set(label, color, backgroundColor);
+		return this;
+	}
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Log(string label, string value, Color? color = null, Color? backgroundColor = null)
 	{
 		NextRow<NameValueRow>().Set(label, value, color, backgroundColor);
@@ -52,22 +63,43 @@ public class DebugInfoTable : MonoBehaviour
 	
 	internal void UpdateImpl()
 	{
+		// Calculate the column widths.
+		
 		columnWidths[0] = 0;
 		columnWidths[1] = 0;
+		float totaWidth = 0;
 		
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
 			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
 			columnWidths[1] = Mathf.Max(columnWidths[1], row.ColumnWidth(1));
+			totaWidth = Mathf.Max(totaWidth, Mathf.Ceil(row.Size.x));
 		}
+		
+		float totalColumnsWidth = 0;
+		for (int i = 0; i < ColumnCount; i++)
+		{
+			totalColumnsWidth += columnWidths[i];
+		}
+		totaWidth = Mathf.Max(totaWidth, totalColumnsWidth);
+		
+		// Add any extra space to the last column.
+		if (totaWidth > totalColumnsWidth)
+		{
+			columnWidths[ColumnCount - 1] += totaWidth - totalColumnsWidth;
+		}
+		
+		totaWidth += config.cellSpacing.x * (ColumnCount - 1);
+		
+		// Position the rows.
 		
 		float y = 0;
 		
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
-			row.UpdateLayout(y, columnWidths);
+			row.UpdateLayout(y, totaWidth, columnWidths);
 			y -= row.Size.y + config.cellSpacing.y;
 		}
 		

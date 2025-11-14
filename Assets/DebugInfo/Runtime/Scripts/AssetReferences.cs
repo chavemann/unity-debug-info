@@ -12,6 +12,7 @@ public class AssetReferences : ScriptableObject
 	public EventSystem eventSystemPrefab;
 	public DebugInfoTable tablePrefab;
 	public Cell cellPrefab;
+	public Cell headingPrefab;
 	public GameObject notificationListPrefab;
 	public GameObject notificationPrefab;
 	

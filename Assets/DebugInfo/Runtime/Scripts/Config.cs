@@ -36,6 +36,12 @@ public class Config
 	public Vector2 textPadding = new(4, 2);
 	
 	/// <summary>
+	/// The padding inside a heading cell around the text.
+	/// </summary>
+	[Tooltip("The padding inside a heading cell around the text.")]
+	public Vector2 headingTextPadding = new(4, 2);
+	
+	/// <summary>
 	/// The spacing between columns and rows.
 	/// </summary>
 	[Tooltip("The spacing between columns and rows.")]

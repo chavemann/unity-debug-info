@@ -103,6 +103,10 @@ public class DebugInfo : MonoBehaviour
 	public static DebugInfoTable Spacer(float? space = null) => DefaultTable.Spacer(space);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null)
+		=> DefaultTable.Heading(label, color, bgColor);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Log(label, value, color, bgColor);
 	

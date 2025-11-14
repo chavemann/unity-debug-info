@@ -12,7 +12,7 @@ public class Cell : MonoBehaviour
 	[SerializeField]
 	private RawImage background;
 	[SerializeField]
-	private Text textField;
+	public Text textField;
 	[SerializeField]
 	private RectTransform textFieldTransform;
 	
@@ -20,16 +20,17 @@ public class Cell : MonoBehaviour
 	public Vector2 Size { get; private set; }
 	
 	private string currentText;
+	protected Vector2 padding;
 	
 	private void Awake()
 	{
-		textFieldTransform.localPosition = new Vector3(
-			DebugInfo.Config.textPadding.x, -DebugInfo.Config.textPadding.y, 0);
+		InitialiseProperties();
+		textFieldTransform.localPosition = new Vector3(padding.x, -padding.y, 0);
 	}
 	
-	public void AlignRight()
+	protected virtual void InitialiseProperties()
 	{
-		textField.alignment = TextAnchor.UpperRight;
+		padding = DebugInfo.Config.textPadding;
 	}
 	
 	public void Set(string text, Color? color, Color? backgroundColor)
@@ -44,17 +45,14 @@ public class Cell : MonoBehaviour
 		textField.text = text;
 		
 		TextSize = new Vector2(textField.preferredWidth, textField.preferredHeight);
-		Size = new Vector2(
-			TextSize.x + DebugInfo.Config.textPadding.x * 2,
-			TextSize.y + DebugInfo.Config.textPadding.y * 2
-		);
+		Size = TextSize + padding * 2;
 	}
 	
 	public void UpdateLayout(Vector2 position, Vector2 size)
 	{
 		transform.localPosition = position;
 		
-		textFieldTransform.sizeDelta = size - DebugInfo.Config.textPadding * 2;
+		textFieldTransform.sizeDelta = size - padding * 2;
 		transform.sizeDelta = size;
 	}
 	

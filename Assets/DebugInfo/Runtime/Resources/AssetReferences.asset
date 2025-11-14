@@ -16,5 +16,6 @@ MonoBehaviour:
   eventSystemPrefab: {fileID: 3318729548794709492, guid: eb65c3d21fcd9ef4a99a1b203b68dfd2, type: 3}
   tablePrefab: {fileID: 5857254600488678115, guid: 153f657dda561574a8123a2a4d4b2c8f, type: 3}
   cellPrefab: {fileID: -7532025853669604586, guid: 54320018a742b0f4c991e816d37f1477, type: 3}
+  headingPrefab: {fileID: 175470258049542194, guid: 0ac90072d8c3ab74d971e3d64729212a, type: 3}
   notificationListPrefab: {fileID: 1913991297744551372, guid: bf405044f0a704f408e10435d045a5f6, type: 3}
   notificationPrefab: {fileID: 7368046489859358456, guid: c15a30f25eb12394e883c190c1ad574d, type: 3}
