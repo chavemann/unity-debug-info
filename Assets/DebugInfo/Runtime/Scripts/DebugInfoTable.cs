@@ -27,6 +27,8 @@ public class DebugInfoTable : MonoBehaviour
 	private void Awake()
 	{
 		config = DebugInfo.Config;
+		
+		root.anchoredPosition = new Vector2(config.margin.x, -config.margin.y);
 	}
 	
 	#region -- Logging Methods --------------------------------

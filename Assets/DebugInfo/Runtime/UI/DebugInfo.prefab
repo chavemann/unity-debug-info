@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: C.DebugInfo.Runtime::C.Debugging.DebugInfo
   transform: {fileID: 3461109697738163415}
   config:
-    margin: {x: 0, y: 0}
+    margin: {x: 4, y: 4}
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0, g: 0, b: 0, a: 0.25}
     textPadding: {x: 4, y: 2}

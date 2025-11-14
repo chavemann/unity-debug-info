@@ -3,7 +3,6 @@ using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace C.Debugging
 {
@@ -94,8 +93,8 @@ public class DebugInfo : MonoBehaviour
 	// ReSharper disable UnusedMethodReturnValue.Global
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? backgroundColor = null)
-		=> DefaultTable.Log(label, value, color, backgroundColor);
+	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
+		=> DefaultTable.Log(label, value, color, bgColor);
 	
 	// ReSharper restore UnusedMethodReturnValue.Global
 	#endregion -----------------------------------------

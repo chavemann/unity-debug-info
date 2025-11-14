@@ -15,7 +15,7 @@ public class Config
 	/// The spacing between the table and the screen.
 	/// </summary>
 	[Tooltip("The spacing between the table and the screen.")]
-	public Vector2 margin;
+	public Vector2 margin = new(4, 4);
 	
 	/// <summary>
 	/// The default text colour for all labels.
@@ -27,7 +27,7 @@ public class Config
 	/// The default cell background colour for all labels.
 	/// </summary>
 	[Tooltip("The default cell background colour for all labels.")]
-	public Color backgroundColor = new Color(0, 0, 0, 0.25f);
+	public Color backgroundColor = new(0, 0, 0, 0.25f);
 	
 	/// <summary>
 	/// The padding inside a cell around the text.
