@@ -16,12 +16,16 @@ public class DebugInfo : MonoBehaviour
 	public static DebugInfoTable DefaultTable { get; private set; }
 	public static AssetReferences Assets { get; private set; }
 	public static Config Config => Instance.config;
+	public static Transform PoolContainer => Instance.poolContainer;
 	// ReSharper restore MemberCanBePrivate.Global
 	
 	public static UpdateMode updateMode = UpdateMode.Update;
 	
 	[SerializeField]
 	private new Transform transform;
+	[SerializeField]
+	private Transform poolContainer;
+	
 	private EventSystem eventSystem;
 	
 	[SerializeField]
@@ -41,6 +45,8 @@ public class DebugInfo : MonoBehaviour
 	{
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
+		
+		poolContainer.gameObject.SetActive(false);
 		
 		eventSystem = FindFirstObjectByType<EventSystem>(FindObjectsInactive.Include);
 		if (!eventSystem)
@@ -91,12 +97,17 @@ public class DebugInfo : MonoBehaviour
 	
 	#region -- Static Logging Convenience Methods --------------------------------
 	// ReSharper disable UnusedMethodReturnValue.Global
+	// ReSharper disable UnusedMember.Global
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static DebugInfoTable Spacer(float? space = null) => DefaultTable.Spacer(space);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Log(label, value, color, bgColor);
 	
 	// ReSharper restore UnusedMethodReturnValue.Global
+	// ReSharper restore UnusedMember.Global
 	#endregion -----------------------------------------
 	
 }

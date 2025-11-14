@@ -1,62 +1,39 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace C.Debugging.Rows
 {
 
-internal class Row
+internal abstract class Row
 {
 	
-	private readonly DebugInfoTable table;
+	public static int nextId;
 	
-	public readonly Cell labelCell;
-	public readonly Cell valueCell;
-	
-	public float Height { get; private set; }
-	
-	public Row(DebugInfoTable table, int index)
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+	private static void RuntimeInit()
 	{
-		this.table = table;
-		
-		AssetReferences.Create(DebugInfo.Assets.cellPrefab, out labelCell, $"Label.{index}", table.Root);
-		AssetReferences.Create(DebugInfo.Assets.cellPrefab, out valueCell, $"Value.{index}", table.Root);
-		
-		labelCell.AlignRight();
-		
-		Deactivate();
+		nextId = 0;
 	}
 	
-	internal void Set(string label, string value, Color? color, Color? backgroundColor)
-	{
-		labelCell.Set(label, color, backgroundColor);
-		valueCell.Set(value, color, backgroundColor);
-		
-		Height = Mathf.Max(labelCell.Size.y, valueCell.Size.y);
-	}
+	public int id;
 	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public void Activate()
-	{
-		labelCell.gameObject.SetActive(true);
-		valueCell.gameObject.SetActive(true);
-	}
+	public Vector2 Size { get; protected set; }
 	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public void Deactivate()
-	{
-		labelCell.gameObject.SetActive(false);
-		valueCell.gameObject.SetActive(false);
-	}
+	public virtual float ColumnWidth(int index) => 0;
 	
-	public void UpdateLayout(float y, float labelColumnWidth, float valueColumnWidth)
-	{
-		labelCell.UpdateLayout(
-			new Vector2(0, y),
-			new Vector2(labelColumnWidth, Height));
-		valueCell.UpdateLayout(
-			new Vector2(labelColumnWidth + DebugInfo.Config.cellSpacing.x, y),
-			new Vector2(valueColumnWidth, Height));
-	}
+	// public void SetSpacer(float? space = null)
+	// {
+	// 	ChangeTypeSpacer();
+	// 	
+	// 	Size = new Vector2(0, space ?? DebugInfo.Config.defaultSpacerSize);
+	// }
+	
+	public virtual void Activate(DebugInfoTable table) { }
+	
+	public abstract void Deactivate();
+	
+	public virtual void UpdateLayout(float y, float[] columnWidths) { }
+	
+	public override string ToString() => $"{GetType().Name}[{id}]";
 	
 }
 

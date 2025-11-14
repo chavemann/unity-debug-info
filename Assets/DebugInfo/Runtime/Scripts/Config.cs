@@ -41,6 +41,12 @@ public class Config
 	[Tooltip("The spacing between columns and rows.")]
 	public Vector2 cellSpacing = new(1, 1);
 	
+	/// <summary>
+	/// The default height for spacers when a size isn't explicitly set.
+	/// </summary>
+	[Tooltip("The default height for spacers when a size isn't explicitly set.")]
+	public float defaultSpacerSize = 4;
+	
 }
 
 }

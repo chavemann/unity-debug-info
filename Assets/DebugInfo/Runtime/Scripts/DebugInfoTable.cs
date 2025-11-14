@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using C.Debugging.Rows;
 using UnityEngine;
 
+// ReSharper disable UnusedMember.Global
+
 namespace C.Debugging
 {
 
@@ -23,6 +25,7 @@ public class DebugInfoTable : MonoBehaviour
 	private Row[] rows = Array.Empty<Row>();
 	private int rowCount;
 	private int previousRowCount;
+	private readonly float[] columnWidths = new float[2];
 	
 	private void Awake()
 	{
@@ -33,9 +36,15 @@ public class DebugInfoTable : MonoBehaviour
 	
 	#region -- Logging Methods --------------------------------
 	
+	public DebugInfoTable Spacer(float? space = null)
+	{
+		NextRow<SpacerRow>().Set(space);
+		return this;
+	}
+	
 	public DebugInfoTable Log(string label, string value, Color? color = null, Color? backgroundColor = null)
 	{
-		NextRow().Set(label, value, color, backgroundColor);
+		NextRow<NameValueRow>().Set(label, value, color, backgroundColor);
 		return this;
 	}
 	
@@ -43,14 +52,14 @@ public class DebugInfoTable : MonoBehaviour
 	
 	internal void UpdateImpl()
 	{
-		float labelColumnWidth = 0;
-		float valueColumnWidth = 0;
+		columnWidths[0] = 0;
+		columnWidths[1] = 0;
 		
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
-			labelColumnWidth = Mathf.Max(labelColumnWidth, row.labelCell.Size.x);
-			valueColumnWidth = Mathf.Max(valueColumnWidth, row.valueCell.Size.x);
+			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
+			columnWidths[1] = Mathf.Max(columnWidths[1], row.ColumnWidth(1));
 		}
 		
 		float y = 0;
@@ -58,8 +67,8 @@ public class DebugInfoTable : MonoBehaviour
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
-			row.UpdateLayout(y, labelColumnWidth, valueColumnWidth);
-			y -= row.Height + config.cellSpacing.y;
+			row.UpdateLayout(y, columnWidths);
+			y -= row.Size.y + config.cellSpacing.y;
 		}
 		
 		// Disable unused rows at the end of the array.
@@ -67,15 +76,11 @@ public class DebugInfoTable : MonoBehaviour
 		{
 			for (int i = rowCount; i < previousRowCount; i++)
 			{
+				if (rows[i] == null)
+					continue;
+				
 				rows[i].Deactivate();
-			}
-		}
-		// Enable new rows at the end of the array.
-		else if (rowCount > previousRowCount)
-		{
-			for (int i = previousRowCount; i < rowCount; i++)
-			{
-				rows[i].Activate();
+				rows[i] = null;
 			}
 		}
 		
@@ -84,26 +89,29 @@ public class DebugInfoTable : MonoBehaviour
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private Row NextRow()
+	private T NextRow<T>() where T : Row, new()
 	{
 		if (rowCount + 1 > rows.Length)
 		{
 			ExpandCapacity();
 		}
 		
-		return rows[rowCount++];
+		Row row = rows[rowCount];
+		
+		if (row is not T)
+		{
+			row?.Deactivate();
+			row = RowPool<T>.Get();
+			row.Activate(this);
+			rows[rowCount] = row;
+		}
+		
+		rowCount++;
+		return (T) row;
 	}
 	
-	private void ExpandCapacity()
-	{
-		int previousCapacity = rows.Length;
-		Array.Resize(ref rows, rows.Length > 0 ? rows.Length * 2 : 8);
-		
-		for (int i = previousCapacity; i < rows.Length; i++)
-		{
-			rows[i] = new Row(this, i);
-		}
-	}
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private void ExpandCapacity() => Array.Resize(ref rows, rows.Length > 0 ? rows.Length * 2 : 8);
 	
 }
 
