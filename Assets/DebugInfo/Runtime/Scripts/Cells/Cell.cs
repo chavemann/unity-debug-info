@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace C.Debugging
+namespace C.Debugging.Cells
 {
 
 public class Cell : MonoBehaviour

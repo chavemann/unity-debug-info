@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using C.Debugging.Cells;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace C.Debugging

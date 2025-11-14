@@ -1,4 +1,4 @@
-﻿namespace C.Debugging
+﻿namespace C.Debugging.Cells
 {
 
 public class HeadingCell : Cell

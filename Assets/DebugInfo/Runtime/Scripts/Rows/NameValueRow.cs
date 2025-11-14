@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using C.Debugging.Cells;
+using UnityEngine;
 
 namespace C.Debugging.Rows
 {
