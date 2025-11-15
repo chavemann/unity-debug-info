@@ -181,10 +181,10 @@ public class ExampleUsage : MonoBehaviour
 	private static void ShowWelcomeNotification(float duration = 0)
 	{
 		DebugInfo.Notify(
-			$"This is a {Str.I(Str.Azure("Notification"))}.\n" +
-			"Press 1 to display this message again, and the\n" +
-			"other number keys to test other notifications.",
-			"HelloMsg", color: Color.aquamarine, duration: duration);
+			$"This is a {Str.I(Str.Aquamarine("Notification"))}.\n" +
+			$"Press {Str.B(Str.Cyan("[1]"))} to display this message again, and the\n" +
+			 "other number keys to test other notifications.",
+			 "HelloMsg", borderColor: Color.aquamarine, duration: duration);
 	}
 	
 	private void OnCollisionEnter()
