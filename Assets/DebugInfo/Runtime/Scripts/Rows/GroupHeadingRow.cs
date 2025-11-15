@@ -49,10 +49,18 @@ public class GroupHeadingRow : Row
 	{
 		if (!rows.Add(row))
 			return;
-		if (!Collapsed && Visible)
-			return;
 		
-		row.SetVisible(false);
+		if (Collapsed || !Visible)
+		{
+			row.SetVisible(false);
+		}
+		
+		row.Indent(indentLevel + 1);
+	}
+	
+	public void Remove(Row row)
+	{
+		rows.Remove(row);
 	}
 	
 	public override void OnAdded(DebugInfoTable table)
@@ -64,6 +72,8 @@ public class GroupHeadingRow : Row
 	
 	public override void OnRemoved()
 	{
+		base.OnRemoved();
+		
 		if (Collapsed)
 		{
 			foreach (Row row in rows)
@@ -93,7 +103,7 @@ public class GroupHeadingRow : Row
 	{
 		foreach (Row row in rows)
 		{
-			row.SetVisible(visible && this.Visible && !Collapsed);
+			row.SetVisible(visible && Visible && !Collapsed);
 		}
 	}
 	
@@ -103,6 +113,10 @@ public class GroupHeadingRow : Row
 			new Vector2(0, y),
 			new Vector2(totalWidth, Size.y));
 	}
+	
+	protected override bool ShowIndentMargin => true;
+	
+	protected override Cell IndentMarginContainer => labelCell;
 	
 }
 

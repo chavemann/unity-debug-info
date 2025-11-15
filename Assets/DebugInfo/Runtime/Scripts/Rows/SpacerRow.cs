@@ -11,7 +11,12 @@ internal class SpacerRow : Row
 		Size = new Vector2(0, space ?? DebugInfo.Config.defaultSpacerSize);
 	}
 	
-	public override void OnRemoved() => RowPool<SpacerRow>.Release(this);
+	public override void OnRemoved()
+	{
+		base.OnRemoved();
+		
+		RowPool<SpacerRow>.Release(this);
+	}
 	
 }
 

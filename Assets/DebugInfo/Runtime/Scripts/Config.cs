@@ -11,6 +11,8 @@ namespace C.Debugging
 public class Config
 {
 	
+	public UpdateMode updateMode = UpdateMode.Update;
+	
 	/// <summary>
 	/// The spacing between the table and the screen.
 	/// </summary>
@@ -52,6 +54,18 @@ public class Config
 	/// </summary>
 	[Tooltip("The default height for spacers when a size isn't explicitly set.")]
 	public float defaultSpacerSize = 4;
+	
+	/// <summary>
+	/// The size of the indent inside of groups.
+	/// </summary>
+	[Tooltip("The size of the indent inside of groups.")]
+	public float groupIndent = 4;
+	
+	/// <summary>
+	/// If true shows a border/margin on the left side of rows inside of groups.
+	/// </summary>
+	[Tooltip("If true shows a border/margin on the left side of rows inside of groups.")]
+	public bool showGroupIndentMargin = true;
 	
 }
 

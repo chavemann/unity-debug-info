@@ -30,6 +30,8 @@ internal class HeadingRow : Row
 	
 	public override void OnRemoved()
 	{
+		base.OnRemoved();
+		
 		labelCell.transform.SetParent(DebugInfo.PoolContainer);
 		RowPool<HeadingRow>.Release(this);
 	}
@@ -46,6 +48,10 @@ internal class HeadingRow : Row
 			new Vector2(0, y),
 			new Vector2(totalWidth, Size.y));
 	}
+	
+	protected override bool ShowIndentMargin => true;
+	
+	protected override Cell IndentMarginContainer => labelCell;
 	
 }
 

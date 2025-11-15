@@ -13,13 +13,13 @@ public readonly struct GroupScope : IDisposable
 	public GroupScope(DebugInfoTable table, GroupHeadingRow group)
 	{
 		this.table = table;
-		previousGroup = table.currentGroup;
-		table.currentGroup = group;
+		previousGroup = table.CurrentGroup;
+		table.CurrentGroup = group;
 	}
 	
 	public void Dispose()
 	{
-		table.currentGroup = previousGroup;
+		table.CurrentGroup = previousGroup;
 	}
 	
 }

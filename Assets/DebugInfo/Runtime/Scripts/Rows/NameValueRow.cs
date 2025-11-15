@@ -10,7 +10,7 @@ internal class NameValueRow : Row
 	private readonly Cell labelCell;
 	private readonly Cell valueCell;
 	
-	public override float ColumnWidth(int index) => (index == 1 ? valueCell.Size : labelCell.Size).x;
+	public override float ColumnWidth(int index) => index == 1 ? valueCell.Size.x : labelCell.Size.x;
 	
 	public NameValueRow()
 	{
@@ -41,6 +41,8 @@ internal class NameValueRow : Row
 	
 	public override void OnRemoved()
 	{
+		base.OnRemoved();
+		
 		labelCell.transform.SetParent(DebugInfo.PoolContainer);
 		valueCell.transform.SetParent(DebugInfo.PoolContainer);
 		RowPool<NameValueRow>.Release(this);
@@ -63,6 +65,10 @@ internal class NameValueRow : Row
 			new Vector2(columnWidths[0] + DebugInfo.Config.cellSpacing.x, y),
 			new Vector2(columnWidths[1], Size.y));
 	}
+	
+	protected override bool ShowIndentMargin => true;
+	
+	protected override Cell IndentMarginContainer => labelCell;
 	
 }
 

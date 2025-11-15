@@ -54,6 +54,10 @@ public class GroupHeadingCell : HeadingCell, IPointerClickHandler
 		);
 	}
 	
+	protected override Vector2 GetTextSize(Vector2 size) => new(
+		size.x - (foldIconTransform.sizeDelta.x + IconSpacing),
+		size.y);
+	
 	public void OnPointerClick(PointerEventData eventData)
 	{
 		groupHeadingRow.Collapsed = !groupHeadingRow.Collapsed;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -19,14 +20,16 @@ public class DebugInfo : MonoBehaviour
 {
 	
 	// ReSharper disable MemberCanBePrivate.Global
+	// ReSharper disable FieldCanBeMadeReadOnly.Global
+	// ReSharper disable ConvertToConstant.Global
 	public static DebugInfo Instance { get; private set; }
 	public static DebugInfoTable DefaultTable { get; private set; }
 	public static AssetReferences Assets { get; private set; }
 	public static Config Config => Instance.config;
 	public static Transform PoolContainer => Instance.poolContainer;
 	// ReSharper restore MemberCanBePrivate.Global
-	
-	public static UpdateMode updateMode = UpdateMode.Update;
+	// ReSharper restore FieldCanBeMadeReadOnly.Global
+	// ReSharper restore ConvertToConstant.Global
 	
 	[SerializeField]
 	private new Transform transform;
@@ -68,18 +71,20 @@ public class DebugInfo : MonoBehaviour
 	[UsedImplicitly]
 	public static void UpdateAll()
 	{
-		if (updateMode != UpdateMode.Manual)
+		#if UNITY_EDITOR
+		if (Config.updateMode != UpdateMode.Manual)
 		{
 			Debug.LogWarning("Only call UpdateAll when updateMode is set to Manual.");
 			return;
 		}
+		#endif
 		
 		Instance.UpdateImpl();
 	}
 	
 	private void Update()
 	{
-		if (updateMode != UpdateMode.Update)
+		if (config.updateMode != UpdateMode.Update)
 			return;
 		
 		UpdateImpl();
@@ -87,7 +92,7 @@ public class DebugInfo : MonoBehaviour
 	
 	private void FixedUpdate()
 	{
-		if (updateMode != UpdateMode.FixedUpdate)
+		if (config.updateMode != UpdateMode.FixedUpdate)
 			return;
 		
 		UpdateImpl();
@@ -118,12 +123,17 @@ public class DebugInfo : MonoBehaviour
 		=> DefaultTable.Group(label, color, bgColor, collapsed);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static IDisposable TryGroup(bool condition) => condition ? null : new IgnoredGroup();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Log(label, value, color, bgColor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static DebugInfoTable Log(string label, string value, Color labelColor, Color? valueColor = null, Color? bgColor = null)
-		=> DefaultTable.Log(label, value, labelColor, valueColor, bgColor);
+	public static DebugInfoTable Log(string label, Color? labelColor, string value, Color? valueColor, Color? bgColor = null)
+	{
+		return DefaultTable.Log(label, labelColor, value, valueColor, bgColor);
+	}
 	
 	// ReSharper restore UnusedMethodReturnValue.Global
 	// ReSharper restore UnusedMember.Global

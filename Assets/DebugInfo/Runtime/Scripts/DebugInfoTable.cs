@@ -22,7 +22,7 @@ public class DebugInfoTable : MonoBehaviour
 	
 	public RectTransform Root => root;
 	
-	internal GroupHeadingRow currentGroup;
+	public GroupHeadingRow CurrentGroup { get; internal set; }
 	
 	private Config config;
 	
@@ -70,7 +70,7 @@ public class DebugInfoTable : MonoBehaviour
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public DebugInfoTable Log(string label, string value, Color labelColor, Color? valueColor = null, Color? bgColor = null)
+	public DebugInfoTable Log(string label, Color? labelColor, string value, Color? valueColor, Color? bgColor = null)
 	{
 		NextRow<NameValueRow>().Set(label, value, labelColor, valueColor, bgColor);
 		return this;
@@ -139,10 +139,10 @@ public class DebugInfoTable : MonoBehaviour
 		
 		previousRowCount = rowCount;
 		rowCount = 0;
-		currentGroup = null;
+		CurrentGroup = null;
 	}
 	
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	// [MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private T NextRow<T>() where T : Row, new()
 	{
 		if (rowCount + 1 > rows.Length)
@@ -160,10 +160,19 @@ public class DebugInfoTable : MonoBehaviour
 			rows[rowCount] = row;
 		}
 		
-		if (row.Group != currentGroup)
+		if (row.Group != CurrentGroup)
 		{
-			row.Group = currentGroup;
-			row.Group.Add(row);
+			row.Group?.Remove(row);
+			row.Group = CurrentGroup;
+			
+			if (row.Group != null)
+			{
+				row.Group.Add(row);				
+			}
+			else
+			{
+				row.ClearIndent();
+			}
 		}
 		
 		rowCount++;

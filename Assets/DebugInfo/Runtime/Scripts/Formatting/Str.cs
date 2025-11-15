@@ -62,6 +62,9 @@ public static class Str
 	public static string Size<T>(T v, int size) => $"<size={size}>{v}</size>";
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string F<T>(T v) => v.ToString();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string F(int v) => v.ToString();
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -94,15 +97,44 @@ public static class Str
 	
 	#endregion -----------------------------------------
 	
-	#region -- Coloring --------------------------------
+	#region -- Utility Colors --------------------------------
+	
+	public static readonly Color TransformRgb = new(1f, 0.68f, 0.72f);
+	// public static readonly string TransformHex = ColorUtility.ToHtmlStringRGBA(TransformRgb);
+	public static readonly string TransformHex = "#ffadb8ff";
+	
+	public static readonly Color CollisionRgb = new(1f, 0.83f, 0.7f);
+	public static readonly string CollisionHex = ColorUtility.ToHtmlStringRGBA(CollisionRgb);
+	
+	public static readonly Color StateRgb = new(0.73f, 0.86f, 0.74f);
+	public static readonly string StateHex = ColorUtility.ToHtmlStringRGBA(StateRgb);
+	
+	public static readonly Color OnRgb = new(0.584f, 1, 0.584f, 1);
+	public static readonly string OnHex = ColorUtility.ToHtmlStringRGBA(OnRgb);
+	
+	public static readonly Color OffRgb = new(1, 0.584f, 0.584f, 1);
+	public static readonly string OffHex = ColorUtility.ToHtmlStringRGBA(OffRgb);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string Clr(string v, string clr) => $"<color={clr}>{v}</color>";
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string OnClr(string v) => Clr(v, "#95ff95");
+	public static string OnClr(string v) => Clr(v, OnHex);
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string OffClr(string v) => Clr(v, "#ff9595");
+	public static string OffClr(string v) => Clr(v, OffHex);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string TransformClr(string v) => Clr(v, TransformHex);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string CollisionClr(string v) => Clr(v, CollisionHex);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static string StateClr(string v) => Clr(v, StateHex);
+	
+	#endregion -----------------------------------------
+	
+	#region -- Unity Colors --------------------------------
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string AliceBlue(string v) => Clr(v, "#f0f8ff");

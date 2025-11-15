@@ -1,6 +1,9 @@
-﻿namespace C.Debugging
+﻿using System;
+
+namespace C.Debugging
 {
 
+[Serializable]
 public enum UpdateMode
 {
 	

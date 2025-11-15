@@ -13,6 +13,7 @@ public class AssetReferences : ScriptableObject
 	public EventSystem eventSystemPrefab;
 	public DebugInfoTable tablePrefab;
 	public Cell cellPrefab;
+	public IndentMargin indentMarginPrefab;
 	public Cell headingPrefab;
 	public Cell groupHeadingPrefab;
 	public GameObject notificationListPrefab;
@@ -20,7 +21,7 @@ public class AssetReferences : ScriptableObject
 	
 	public static T Create<T>(GameObject prefab, string name = null, Transform parent = null)
 	{
-		GameObject newObj = Instantiate(prefab, parent);
+		GameObject newObj = Instantiate(prefab, parent, false);
 		newObj.name = name ?? prefab.name;
 		newObj.TryGetComponent(out T component);
 		return component;
