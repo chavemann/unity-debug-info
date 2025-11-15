@@ -115,23 +115,25 @@ public class DebugInfo : MonoBehaviour
 	
 	/// <inheritdoc cref="NotificationList.Notify"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void Notify(string message, string id = null, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Instance.notificationList.Notify(message, id, borderColor, bgColor, color);
+	public static void Notify(
+		string message, string id = null, Color? borderColor = null, Color? bgColor = null, Color? color = null, float duration = 0)
+		=> Instance.notificationList.Notify(message, id, borderColor, bgColor, color, duration);
 	
 	/// <inheritdoc cref="NotificationList.NotifyToggle"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void NotifyToggle(string text, bool on, string onText, string offText, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Instance.notificationList.NotifyToggle(text, on, onText, offText, borderColor, bgColor, color);
+	public static void NotifyToggle(
+		string text, bool on, string onText, string offText, Color? borderColor = null, Color? bgColor = null, Color? color = null, float duration = 0)
+		=> Instance.notificationList.NotifyToggle(text, on, onText, offText, borderColor, bgColor, color, duration);
 	
 	/// <inheritdoc cref="NotificationList.NotifyOn"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void NotifyOn(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Instance.notificationList.NotifyOn(text, on, borderColor, bgColor, color);
+	public static void NotifyOn(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null, float duration = 0)
+		=> Instance.notificationList.NotifyOn(text, on, borderColor, bgColor, color, duration);
 	
 	/// <inheritdoc cref="NotificationList.NotifyEnabled"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static void NotifyEnabled(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Instance.notificationList.NotifyEnabled(text, on, borderColor, bgColor, color);
+	public static void NotifyEnabled(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null, float duration = 0)
+		=> Instance.notificationList.NotifyEnabled(text, on, borderColor, bgColor, color, duration);
 	
 	// ReSharper restore UnusedMethodReturnValue.Global
 	// ReSharper restore UnusedMember.Global

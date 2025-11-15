@@ -28,10 +28,10 @@ public class Notification : MonoBehaviour
 	private State state = State.FadingIn;
 	private float fadeTime;
 	
-	internal void Set(string message, Color? borderColor, Color? bgColor, Color? textColor)
+	internal void Set(string message, Color? borderColor, Color? bgColor, Color? textColor, float duration)
 	{
 		textfield.text = message;
-		time = DebugInfo.Config.notificationTime;
+		time = duration > 0 ? duration : DebugInfo.Config.notificationTime;
 		
 		Color borderClr = borderColor ?? DebugInfo.Config.defaultNotificationBorderColor;
 		

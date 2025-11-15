@@ -59,7 +59,8 @@ public class NotificationList : MonoBehaviour
 	/// <param name="borderColor"></param>
 	/// <param name="bgColor"></param>
 	/// <param name="color"></param>
-	public void Notify(string message, string id = null, Color? borderColor = null, Color? bgColor = null, Color? color = null)
+	/// <param name="duration"></param>
+	public void Notify(string message, string id = null, Color? borderColor = null, Color? bgColor = null, Color? color = null, float duration = 0)
 	{
 		Notification notification = null;
 		bool hasNotification = false;
@@ -81,23 +82,28 @@ public class NotificationList : MonoBehaviour
 			}
 		}
 		
-		notification.Set(message, borderColor, bgColor, color);
+		notification.Set(message, borderColor, bgColor, color, duration);
 		
 		pendingLayout = true;
 		gameObject.SetActive(true);
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public void NotifyToggle(string text, bool on, string onText, string offText, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Notify(Str.ToggleMsg(text, on, onText, offText), text, borderColor, bgColor, color);
+	public void NotifyToggle(
+		string text, bool on, string onText, string offText, Color? borderColor = null, Color? bgColor = null, Color? color = null,
+		float duration = 0f)
+		=> Notify(Str.ToggleMsg(text, on, onText, offText), text, borderColor, bgColor, color, duration);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public void NotifyOn(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Notify(Str.OnMsg(text, on), text, borderColor, bgColor, color);
+	public void NotifyOn(
+		string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null,
+		float duration = 0f)
+		=> Notify(Str.OnMsg(text, on), text, borderColor, bgColor, color, duration);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public void NotifyEnabled(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null)
-		=> Notify(Str.EnabledMsg(text, on), text, borderColor, bgColor, color);
+	public void NotifyEnabled(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null,
+		float duration = 0f)
+		=> Notify(Str.EnabledMsg(text, on), text, borderColor, bgColor, color, duration);
 	
 	private void LateUpdate()
 	{
