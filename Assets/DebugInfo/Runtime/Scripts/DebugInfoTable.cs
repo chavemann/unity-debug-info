@@ -160,22 +160,19 @@ public class DebugInfoTable : MonoBehaviour
 			rows[rowCount] = row;
 		}
 		
-		if (row.Group != CurrentGroup)
+		row.Index = rowCount++;
+		row.Group = CurrentGroup;
+		
+		if (row.Group != null)
 		{
-			row.Group?.Remove(row);
-			row.Group = CurrentGroup;
-			
-			if (row.Group != null)
-			{
-				row.Group.Add(row);				
-			}
-			else
-			{
-				row.ClearIndent();
-			}
+			row.Group.AddChild(row);
+		}
+		else
+		{
+			row.ClearGroup();
 		}
 		
-		rowCount++;
+		row.PrepareLayout();
 		return (T) row;
 	}
 	

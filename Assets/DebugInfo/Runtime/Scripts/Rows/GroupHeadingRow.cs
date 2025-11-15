@@ -10,7 +10,7 @@ public class GroupHeadingRow : Row
 	
 	private readonly GroupHeadingCell labelCell;
 	
-	private readonly HashSet<Row> rows = new();
+	private int childCount;
 	
 	private bool? collapsed;
 	
@@ -24,7 +24,6 @@ public class GroupHeadingRow : Row
 			
 			collapsed = value;
 			labelCell.Collapsed = collapsed.Value;
-			SetChildrenVisible(true);
 		}
 	}
 	
@@ -45,69 +44,40 @@ public class GroupHeadingRow : Row
 		Size = labelCell.Size;
 	}
 	
-	public void Add(Row row)
+	public void AddChild(Row row)
 	{
-		if (!rows.Add(row))
-			return;
+		row.Group = this;
+		row.indentLevel = indentLevel + 1;
+		row.Visible = Visible && !Collapsed;
 		
-		if (Collapsed || !Visible)
-		{
-			row.SetVisible(false);
-		}
-		
-		row.Indent(indentLevel + 1);
+		childCount++;
 	}
 	
-	public void Remove(Row row)
-	{
-		rows.Remove(row);
-	}
-	
-	public override void OnAdded(DebugInfoTable table)
+	internal override void OnAdded(DebugInfoTable table)
 	{
 		base.OnAdded(table);
 		
 		labelCell.transform.SetParent(table.Root);
 	}
 	
-	public override void OnRemoved()
+	internal override void OnRemoved()
 	{
 		base.OnRemoved();
 		
-		if (Collapsed)
-		{
-			foreach (Row row in rows)
-			{
-				row.SetVisible(Visible);
-			}
-		}
-		
 		collapsed = false;
 		labelCell.Collapsed = Collapsed;
-		rows.Clear();
+		childCount = 0;
 		
 		labelCell.transform.SetParent(DebugInfo.PoolContainer);
 		RowPool<GroupHeadingRow>.Release(this);
 	}
 	
-	public override void SetVisible(bool visible)
+	protected override void UpdateVisible()
 	{
-		Visible = visible;
-		
-		labelCell.gameObject.SetActive(visible);
-		
-		SetChildrenVisible(visible);
+		labelCell.gameObject.SetActive(Visible);
 	}
 	
-	private void SetChildrenVisible(bool visible)
-	{
-		foreach (Row row in rows)
-		{
-			row.SetVisible(visible && Visible && !Collapsed);
-		}
-	}
-	
-	public override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
+	internal override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
 	{
 		labelCell.UpdateLayout(
 			new Vector2(0, y),

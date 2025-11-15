@@ -8,15 +8,19 @@ public abstract class Row
 {
 	
 	public DebugInfoTable Table { get; private set; }
+	public int Index { get; internal set; }
 	public GroupHeadingRow Group { get; internal set; }
+	public bool Visible { get; internal set; }
 	
 	public Vector2 Size { get; protected set; }
 	
-	public bool Visible { get; protected set; } = true;
-	
 	private IndentMargin indentMargin;
 	private bool hasIndentMargin;
-	protected int indentLevel;
+	
+	internal int indentLevel;
+	private int currentIndentLevel;
+	
+	private bool currentVisible;
 	
 	protected void CreateCell<T>(Cell prefab, string name, out T cell) where T : Cell
 	{
@@ -26,59 +30,63 @@ public abstract class Row
 	
 	public virtual float ColumnWidth(int index) => 0;
 	
-	public virtual void OnAdded(DebugInfoTable table)
+	internal virtual void OnAdded(DebugInfoTable table)
 	{
 		Table = table;
 		Group = null;
 	}
 	
-	public virtual void OnRemoved()
+	internal virtual void OnRemoved() { }
+	
+	internal void PrepareLayout()
 	{
-		if (hasIndentMargin && indentLevel > 0)
-		{
-			indentMargin.gameObject.SetActive(false);
-			indentLevel = 0;
-		}
+		PrepareIndent();
+		PrepareVisible();
 	}
 	
-	public virtual void SetVisible(bool visible) => Visible = visible;
+	protected virtual void UpdateVisible() {  }
 	
-	public virtual void UpdateLayout(float y, float totalWidth, float[] columnWidths) { }
+	internal virtual void UpdateLayout(float y, float totalWidth, float[] columnWidths) { }
 	
-	public void Indent(int level)
+	private void PrepareIndent()
 	{
-		if (!DebugInfo.Config.showGroupIndentMargin || !ShowIndentMargin)
+		if (!ShowIndentMargin)
+			return;
+		if (indentLevel == currentIndentLevel)
 			return;
 		
-		if (!hasIndentMargin)
+		if (DebugInfo.Config.showGroupIndentMargin)
 		{
-			AssetReferences.Create(DebugInfo.Assets.indentMarginPrefab, out indentMargin, "IndentMargin", IndentMarginContainer.transform);
-			hasIndentMargin = true;
+			if (!hasIndentMargin)
+			{
+				AssetReferences.Create(DebugInfo.Assets.indentMarginPrefab, out indentMargin, "IndentMargin", IndentMarginContainer.transform);
+				hasIndentMargin = true;
+			}
+			
+			if (indentLevel == 0)
+			{
+				indentMargin.gameObject.SetActive(true);
+			}
 		}
 		
-		if (indentLevel == 0)
-		{
-			indentMargin.gameObject.SetActive(true);
-		}
-		
-		indentLevel = level;
+		currentIndentLevel = indentLevel;
 		IndentMarginContainer.UpdateIndent(indentLevel * DebugInfo.Config.groupIndent, indentMargin);
 	}
 	
-	public void ClearIndent()
+	private void PrepareVisible()
 	{
-		if (indentLevel == 0)
-			return;
-		if (!DebugInfo.Config.showGroupIndentMargin || !ShowIndentMargin)
+		if (Visible == currentVisible)
 			return;
 		
-		if (hasIndentMargin)
-		{
-			indentMargin.gameObject.SetActive(false);
-		}
-		
+		currentVisible = Visible;
+		UpdateVisible();
+	}
+	
+	internal void ClearGroup()
+	{
+		Group = null;
 		indentLevel = 0;
-		IndentMarginContainer.UpdateIndent(0, indentMargin);
+		Visible = true;
 	}
 	
 	protected virtual bool ShowIndentMargin => false;
