@@ -23,7 +23,7 @@ public class Config
 	/// The default text alignment for all labels.
 	/// </summary>
 	[Tooltip("The default text alignment for all labels.")]
-	public TextAnchor labelAlign = TextAnchor.MiddleLeft;
+	public TextAnchor labelAlign = TextAnchor.UpperLeft;
 	
 	/// <summary>
 	/// The default text colour for all labels.
