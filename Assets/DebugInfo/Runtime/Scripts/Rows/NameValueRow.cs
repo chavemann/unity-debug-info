@@ -20,10 +20,10 @@ internal class NameValueRow : Row
 		labelCell.textField.alignment = TextAnchor.UpperRight;
 	}
 	
-	public void Set(string label, string value, Color? color, Color? backgroundColor)
+	public void Set(string label, string value, Color? labelColor, Color? valueColor, Color? backgroundColor)
 	{
-		labelCell.Set(label, color, backgroundColor);
-		valueCell.Set(value, color, backgroundColor);
+		labelCell.Set(label, labelColor, backgroundColor);
+		valueCell.Set(value, valueColor, backgroundColor);
 		
 		Size = new Vector2(
 			labelCell.Size.x + valueCell.Size.x,

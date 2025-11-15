@@ -65,7 +65,14 @@ public class DebugInfoTable : MonoBehaviour
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 	{
-		NextRow<NameValueRow>().Set(label, value, color, bgColor);
+		NextRow<NameValueRow>().Set(label, value, color, color, bgColor);
+		return this;
+	}
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public DebugInfoTable Log(string label, string value, Color labelColor, Color? valueColor = null, Color? bgColor = null)
+	{
+		NextRow<NameValueRow>().Set(label, value, labelColor, valueColor, bgColor);
 		return this;
 	}
 	

@@ -121,6 +121,10 @@ public class DebugInfo : MonoBehaviour
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Log(label, value, color, bgColor);
 	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static DebugInfoTable Log(string label, string value, Color labelColor, Color? valueColor = null, Color? bgColor = null)
+		=> DefaultTable.Log(label, value, labelColor, valueColor, bgColor);
+	
 	// ReSharper restore UnusedMethodReturnValue.Global
 	// ReSharper restore UnusedMember.Global
 	#endregion -----------------------------------------
