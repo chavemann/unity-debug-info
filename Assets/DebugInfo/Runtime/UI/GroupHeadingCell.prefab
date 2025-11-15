@@ -296,6 +296,7 @@ MonoBehaviour:
   background: {fileID: 3465390426416445926}
   textField: {fileID: 8212443192585406857}
   textFieldTransform: {fileID: 170032083009727888}
+  border: {fileID: 5426638639102251442}
   foldIconTransform: {fileID: 7194801965358979665}
   foldIcon: {fileID: 3027682130291435608}
   foldRightIcon: {fileID: 21300000, guid: e4f7c2e2e8cc4b44e835a56022d719f9, type: 3}

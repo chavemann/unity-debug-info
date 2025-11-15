@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
-// TODO: Heading and group bottom border color
+// TODO: Make bgColor and backgroundColor  names consistent
 // TODO: Frame history?
 // TODO: Smooth out width changes?
 // TODO: Editor window?
@@ -151,8 +151,8 @@ public class DebugInfo : MonoBehaviour
 		=> DefaultTable.Heading(label, color, bgColor, borderColor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static GroupScope Group(string label, Color? color = null, Color? bgColor = null, bool? collapsed = null)
-		=> DefaultTable.Group(label, color, bgColor, collapsed);
+	public static GroupScope Group(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null, bool? collapsed = null)
+		=> DefaultTable.Group(label, color, bgColor, borderColor, collapsed);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IDisposable TryGroup(bool condition) => condition ? null : new IgnoredGroup();

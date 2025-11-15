@@ -14,6 +14,11 @@ public class HeadingRow : BasicRow
 		labelCell = (HeadingCell) base.labelCell;
 	}
 	
+	protected HeadingRow(Cell cellPrefab, string name) : base(cellPrefab, name)
+	{
+		labelCell = (HeadingCell) base.labelCell;
+	}
+	
 	protected override void ReturnToPool() => RowPool<HeadingRow>.Release(this);
 	
 	public void Set(string label, Color? color, Color? backgroundColor, Color? borderColor)

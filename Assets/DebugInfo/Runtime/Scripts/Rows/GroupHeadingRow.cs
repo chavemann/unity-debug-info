@@ -4,7 +4,7 @@ using UnityEngine;
 namespace C.Debugging.Rows
 {
 
-public class GroupHeadingRow : BasicRow
+public class GroupHeadingRow : HeadingRow
 {
 	
 	protected new readonly GroupHeadingCell labelCell;
@@ -32,15 +32,14 @@ public class GroupHeadingRow : BasicRow
 		labelCell.groupHeadingRow = this;
 	}
 	
-	public void Set(string label, Color? color, Color? backgroundColor, bool? collapsed = null)
+	public void Set(string label, Color? color, Color? backgroundColor, Color? borderColor, bool? collapsed = null)
 	{
 		if (collapsed.HasValue && !this.collapsed.HasValue)
 		{
 			Collapsed = collapsed.Value;
 		}
 		
-		labelCell.Set(label, color, backgroundColor);
-		Size = labelCell.Size;
+		base.Set(label, color, backgroundColor, borderColor);
 	}
 	
 	protected override void ReturnToPool() => RowPool<GroupHeadingRow>.Release(this);

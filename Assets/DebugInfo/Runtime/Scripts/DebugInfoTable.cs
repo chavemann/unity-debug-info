@@ -62,10 +62,10 @@ public class DebugInfoTable : MonoBehaviour
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public GroupScope Group(string label, Color? color = null, Color? bgColor = null, bool? collapsed = null)
+	public GroupScope Group(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null, bool? collapsed = null)
 	{
 		GroupHeadingRow row = NextRow<GroupHeadingRow>();
-		row.Set(label, color, bgColor, collapsed);
+		row.Set(label, color, bgColor, borderColor, collapsed);
 		return new GroupScope(this, row);
 	}
 	

@@ -130,7 +130,7 @@ public class ExampleUsage : MonoBehaviour
 		
 		GroupHeadingRow sphereGroup;
 		
-		using (DebugInfo.Group("Sphere", Color.aquamarine))
+		using (DebugInfo.Group("Sphere", Color.aquamarine, borderColor: Color.aquamarine))
 		{
 			sphereGroup = DebugInfo.DefaultTable.CurrentGroup;
 			
@@ -153,7 +153,7 @@ public class ExampleUsage : MonoBehaviour
 				// If condition is false the inner logs are still shown but no group is created.
 				// If condition is true `DebugInfo.Group` is executed and the inner logs are
 				// added to the group like normal.
-				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc (Nested Group)", Color.aquamarine))
+				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc (Nested Group)", Color.magenta, borderColor: Color.magenta))
 				{
 					DebugInfo.Log("Direction", velocity.x < 0 ? "Left" : "Right", Str.StateRgb);
 					DebugInfo.Log("Collisions", Str.F(collisionCount), Str.CollisionRgb);
