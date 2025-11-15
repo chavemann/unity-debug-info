@@ -1,8 +1,7 @@
-﻿using System;
-using C.Debugging.Formatting;
+﻿using C.Debugging.Formatting;
 using C.Debugging.Rows;
 using UnityEngine;
-#if (ENABLE_INPUT_SYSTEM)
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
@@ -79,11 +78,11 @@ public class ExampleUsage : MonoBehaviour
 		bool toggleGroupMisc;
 		// ReSharper restore JoinDeclarationAndInitializer
 		
-		#if (ENABLE_LEGACY_INPUT_MANAGER)
+		#if ENABLE_LEGACY_INPUT_MANAGER
 		helloMessage = Input.GetKeyDown(KeyCode.Alpha1);
 		toggleMisc = Input.GetKeyDown(KeyCode.Alpha2);
 		toggleGroupMisc = Input.GetKeyDown(KeyCode.Alpha3);
-		#elif (ENABLE_INPUT_SYSTEM)
+		#elif ENABLE_INPUT_SYSTEM
 		helloMessage = Keyboard.current?.digit1Key.wasPressedThisFrame ?? false;
 		toggleMisc = Keyboard.current?.digit2Key.wasPressedThisFrame ?? false;
 		toggleGroupMisc = Keyboard.current?.digit3Key.wasPressedThisFrame ?? false;
