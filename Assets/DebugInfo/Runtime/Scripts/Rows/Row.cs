@@ -1,23 +1,39 @@
-﻿using UnityEngine;
+﻿using C.Debugging.Cells;
+using UnityEngine;
 
 namespace C.Debugging.Rows
 {
 
-internal abstract class Row
+public abstract class Row
 {
 	
-	protected DebugInfoTable table;
+	public DebugInfoTable Table { get; private set; }
+	public GroupHeadingRow Group { get; internal set; }
 	
 	public Vector2 Size { get; protected set; }
 	
-	public virtual float ColumnWidth(int index) => 0;
+	protected bool visible = true;
 	
-	public virtual void Activate(DebugInfoTable table)
+	protected void CreateCell<T>(Cell prefab, string name, out T cell) where T : Cell
 	{
-		this.table = table;
+		AssetReferences.Create(prefab, out cell, name, DebugInfo.PoolContainer);
+		cell.row = this;
 	}
 	
-	public abstract void Deactivate();
+	public virtual float ColumnWidth(int index) => 0;
+	
+	public virtual void OnAdded(DebugInfoTable table)
+	{
+		Table = table;
+		Group = null;
+	}
+	
+	public abstract void OnRemoved();
+	
+	public virtual void SetVisible(bool visible)
+	{
+		this.visible = visible;
+	}
 	
 	public virtual void UpdateLayout(float y, float totalWidth, float[] columnWidths) { }
 	

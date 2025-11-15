@@ -14,8 +14,8 @@ internal class NameValueRow : Row
 	
 	public NameValueRow()
 	{
-		AssetReferences.Create(DebugInfo.Assets.cellPrefab, out labelCell, "Label", DebugInfo.PoolContainer);
-		AssetReferences.Create(DebugInfo.Assets.cellPrefab, out valueCell, "Value", DebugInfo.PoolContainer);
+		CreateCell(DebugInfo.Assets.cellPrefab, "Label", out labelCell);
+		CreateCell(DebugInfo.Assets.cellPrefab, "Value", out valueCell);
 		
 		labelCell.textField.alignment = TextAnchor.UpperRight;
 	}
@@ -31,19 +31,27 @@ internal class NameValueRow : Row
 		);
 	}
 	
-	public override void Activate(DebugInfoTable table)
+	public override void OnAdded(DebugInfoTable table)
 	{
-		base.Activate(table);
+		base.OnAdded(table);
 		
 		labelCell.transform.SetParent(table.Root);
 		valueCell.transform.SetParent(table.Root);
 	}
 	
-	public override void Deactivate()
+	public override void OnRemoved()
 	{
 		labelCell.transform.SetParent(DebugInfo.PoolContainer);
 		valueCell.transform.SetParent(DebugInfo.PoolContainer);
 		RowPool<NameValueRow>.Release(this);
+	}
+	
+	public override void SetVisible(bool visible)
+	{
+		base.SetVisible(visible);
+		
+		labelCell.gameObject.SetActive(visible);
+		valueCell.gameObject.SetActive(visible);
 	}
 	
 	public override void UpdateLayout(float y, float totalWidth, float[] columnWidths)

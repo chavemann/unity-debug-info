@@ -14,6 +14,7 @@ public class AssetReferences : ScriptableObject
 	public DebugInfoTable tablePrefab;
 	public Cell cellPrefab;
 	public Cell headingPrefab;
+	public Cell groupHeadingPrefab;
 	public GameObject notificationListPrefab;
 	public GameObject notificationPrefab;
 	

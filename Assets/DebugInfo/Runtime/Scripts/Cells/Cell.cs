@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using C.Debugging.Rows;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace C.Debugging.Cells
@@ -14,15 +15,17 @@ public class Cell : MonoBehaviour
 	[SerializeField]
 	public Text textField;
 	[SerializeField]
-	private RectTransform textFieldTransform;
+	protected RectTransform textFieldTransform;
 	
-	public Vector2 TextSize { get; private set; }
-	public Vector2 Size { get; private set; }
+	internal Row row;
+	
+	protected Vector2 TextSize { get; private set; }
+	public Vector2 Size { get; protected set; }
 	
 	private string currentText;
 	protected Vector2 padding;
 	
-	private void Awake()
+	protected virtual void Awake()
 	{
 		InitialiseProperties();
 		textFieldTransform.localPosition = new Vector3(padding.x, -padding.y, 0);
@@ -33,7 +36,7 @@ public class Cell : MonoBehaviour
 		padding = DebugInfo.Config.textPadding;
 	}
 	
-	public void Set(string text, Color? color, Color? backgroundColor)
+	public virtual void Set(string text, Color? color, Color? backgroundColor)
 	{
 		textField.color = color ?? DebugInfo.Config.textColor;
 		background.color = backgroundColor ?? DebugInfo.Config.backgroundColor;
@@ -44,6 +47,11 @@ public class Cell : MonoBehaviour
 		currentText = text;
 		textField.text = text;
 		
+		CalculateSize();
+	}
+	
+	protected virtual void CalculateSize()
+	{
 		TextSize = new Vector2(textField.preferredWidth, textField.preferredHeight);
 		Size = TextSize + padding * 2;
 	}

@@ -7,6 +7,13 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
+// TODO: Collapsable groups
+// TODO:	Group indent
+// TODO: Frame history
+// TODO: Editor window
+// TODO: Notifications
+// TODO: Stack trace, click to go to?
+// TODO: Doc comments for all public methods and fields
 [DefaultExecutionOrder(10000)]
 public class DebugInfo : MonoBehaviour
 {
@@ -105,6 +112,10 @@ public class DebugInfo : MonoBehaviour
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Heading(label, color, bgColor);
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static GroupScope Group(string label, Color? color = null, Color? bgColor = null, bool? collapsed = null)
+		=> DefaultTable.Group(label, color, bgColor, collapsed);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)

@@ -22,6 +22,8 @@ public class DebugInfoTable : MonoBehaviour
 	
 	public RectTransform Root => root;
 	
+	internal GroupHeadingRow currentGroup;
+	
 	private Config config;
 	
 	private Row[] rows = Array.Empty<Row>();
@@ -46,16 +48,24 @@ public class DebugInfoTable : MonoBehaviour
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public DebugInfoTable Heading(string label, Color? color = null, Color? backgroundColor = null)
+	public DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null)
 	{
-		NextRow<HeadingRow>().Set(label, color, backgroundColor);
+		NextRow<HeadingRow>().Set(label, color, bgColor);
 		return this;
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public DebugInfoTable Log(string label, string value, Color? color = null, Color? backgroundColor = null)
+	public GroupScope Group(string label, Color? color = null, Color? bgColor = null, bool? collapsed = null)
 	{
-		NextRow<NameValueRow>().Set(label, value, color, backgroundColor);
+		GroupHeadingRow row = NextRow<GroupHeadingRow>();
+		row.Set(label, color, bgColor, collapsed);
+		return new GroupScope(this, row);
+	}
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
+	{
+		NextRow<NameValueRow>().Set(label, value, color, bgColor);
 		return this;
 	}
 	
@@ -72,6 +82,10 @@ public class DebugInfoTable : MonoBehaviour
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
+			// TODO: Support nested groups.
+			if (row.Group?.Collapsed ?? false)
+				continue;
+			
 			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
 			columnWidths[1] = Mathf.Max(columnWidths[1], row.ColumnWidth(1));
 			totaWidth = Mathf.Max(totaWidth, Mathf.Ceil(row.Size.x));
@@ -97,6 +111,9 @@ public class DebugInfoTable : MonoBehaviour
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
+			if (row.Group?.Collapsed ?? false)
+				continue;
+			
 			row.UpdateLayout(y, totaWidth, columnWidths);
 			y -= row.Size.y + config.cellSpacing.y;
 		}
@@ -109,13 +126,14 @@ public class DebugInfoTable : MonoBehaviour
 				if (rows[i] == null)
 					continue;
 				
-				rows[i].Deactivate();
+				rows[i].OnRemoved();
 				rows[i] = null;
 			}
 		}
 		
 		previousRowCount = rowCount;
 		rowCount = 0;
+		currentGroup = null;
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -130,10 +148,16 @@ public class DebugInfoTable : MonoBehaviour
 		
 		if (row is not T)
 		{
-			row?.Deactivate();
+			row?.OnRemoved();
 			row = RowPool<T>.Get();
-			row.Activate(this);
+			row.OnAdded(this);
 			rows[rowCount] = row;
+		}
+		
+		if (row.Group != currentGroup)
+		{
+			row.Group = currentGroup;
+			row.Group.Add(row);
 		}
 		
 		rowCount++;

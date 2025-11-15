@@ -1,4 +1,6 @@
-﻿namespace C.Debugging.Cells
+﻿using UnityEngine;
+
+namespace C.Debugging.Cells
 {
 
 public class HeadingCell : Cell

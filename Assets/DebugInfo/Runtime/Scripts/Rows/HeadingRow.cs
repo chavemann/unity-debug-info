@@ -7,11 +7,12 @@ namespace C.Debugging.Rows
 internal class HeadingRow : Row
 {
 	
-	private readonly Cell labelCell;
+	private readonly HeadingCell labelCell;
 	
 	public HeadingRow()
 	{
 		AssetReferences.Create(DebugInfo.Assets.headingPrefab, out labelCell, "Heading", DebugInfo.PoolContainer);
+		labelCell.row = this;
 	}
 	
 	public void Set(string label, Color? color, Color? backgroundColor)
@@ -20,17 +21,23 @@ internal class HeadingRow : Row
 		Size = labelCell.Size;
 	}
 	
-	public override void Activate(DebugInfoTable table)
+	public override void OnAdded(DebugInfoTable table)
 	{
-		base.Activate(table);
+		base.OnAdded(table);
 		
 		labelCell.transform.SetParent(table.Root);
 	}
 	
-	public override void Deactivate()
+	public override void OnRemoved()
 	{
 		labelCell.transform.SetParent(DebugInfo.PoolContainer);
 		RowPool<HeadingRow>.Release(this);
+	}
+	
+	public override void SetVisible(bool visible)
+	{
+		base.SetVisible(visible);
+		labelCell.gameObject.SetActive(visible);
 	}
 	
 	public override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
