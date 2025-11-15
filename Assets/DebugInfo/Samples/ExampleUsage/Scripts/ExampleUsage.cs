@@ -118,15 +118,6 @@ public class ExampleUsage : MonoBehaviour
 		}
 	}
 	
-	private static void ShowWelcomeNotification(float duration = 0)
-	{
-		DebugInfo.Notify(
-			$"This is a {Str.I(Str.Azure("Notification"))}.\n" +
-			 "Press 1 to display this message again, and the\n" +
-			 "other number keys to test other notifications.",
-			 "HelloMsg", color: Color.aquamarine, duration: duration);
-	}
-	
 	private void TestLogs()
 	{
 		// `Heading`s display a single column of text and are slightly larger and
@@ -185,6 +176,15 @@ public class ExampleUsage : MonoBehaviour
 		
 		DebugInfo.Spacer();
 		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Color.gray7);
+	}
+	
+	private static void ShowWelcomeNotification(float duration = 0)
+	{
+		DebugInfo.Notify(
+			$"This is a {Str.I(Str.Azure("Notification"))}.\n" +
+			"Press 1 to display this message again, and the\n" +
+			"other number keys to test other notifications.",
+			"HelloMsg", color: Color.aquamarine, duration: duration);
 	}
 	
 	private void OnCollisionEnter()
