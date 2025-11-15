@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using C.Debugging.Notifications;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,8 +9,7 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
-// TODO: Collapsable groups
-// TODO:	Group indent
+// TODO: Single cell row
 // TODO: Frame history
 // TODO: Editor window
 // TODO: Notifications
@@ -35,6 +35,8 @@ public class DebugInfo : MonoBehaviour
 	private new Transform transform;
 	[SerializeField]
 	private Transform poolContainer;
+	[SerializeField]
+	private NotificationList notificationList;
 	
 	private EventSystem eventSystem;
 	
@@ -106,6 +108,34 @@ public class DebugInfo : MonoBehaviour
 			table.UpdateImpl();
 		}
 	}
+	
+	#region -- Notifications --------------------------------
+	// ReSharper disable UnusedMethodReturnValue.Global
+	// ReSharper disable UnusedMember.Global
+	
+	/// <inheritdoc cref="NotificationList.Notify"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static void Notify(string message, string id = null, Color? borderColor = null, Color? bgColor = null, Color? color = null)
+		=> Instance.notificationList.Notify(message, id, borderColor, bgColor, color);
+	
+	/// <inheritdoc cref="NotificationList.NotifyToggle"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static void NotifyToggle(string text, bool on, string onText, string offText, Color? borderColor = null, Color? bgColor = null, Color? color = null)
+		=> Instance.notificationList.NotifyToggle(text, on, onText, offText, borderColor, bgColor, color);
+	
+	/// <inheritdoc cref="NotificationList.NotifyOn"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static void NotifyOn(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null)
+		=> Instance.notificationList.NotifyOn(text, on, borderColor, bgColor, color);
+	
+	/// <inheritdoc cref="NotificationList.NotifyEnabled"/>
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static void NotifyEnabled(string text, bool on, Color? borderColor = null, Color? bgColor = null, Color? color = null)
+		=> Instance.notificationList.NotifyEnabled(text, on, borderColor, bgColor, color);
+	
+	// ReSharper restore UnusedMethodReturnValue.Global
+	// ReSharper restore UnusedMember.Global
+	#endregion -----------------------------------------
 	
 	#region -- Static Logging Convenience Methods --------------------------------
 	// ReSharper disable UnusedMethodReturnValue.Global

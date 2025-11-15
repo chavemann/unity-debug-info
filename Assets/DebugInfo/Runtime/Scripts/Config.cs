@@ -73,6 +73,36 @@ public class Config
 	[Tooltip("If true shows a border/margin on the left side of rows inside of groups.")]
 	public bool showGroupIndentMargin = true;
 	
+	/// <summary>
+	/// The default notification background colour.
+	/// </summary>
+	[Tooltip("The default notification background colour.")]
+	public Color defaultNotificationColor = new(0, 0, 0, 0.5f);
+	
+	/// <summary>
+	/// If set shows a coloured border on the right hand side of all notifications.
+	/// </summary>
+	[Tooltip("If set shows a coloured border on the right hand side of all notifications.")]
+	public Color defaultNotificationBorderColor = new(0, 0, 0, 0.5f);
+	
+	/// <summary>
+	/// How many seconds a notification will stay on screen for.
+	/// </summary>
+	[Tooltip("How many seconds a notification will stay on screen for.")]
+	public float notificationTime = 1.5f;
+	
+	/// <summary>
+	/// How many seconds it takes a notification to fade in or out.
+	/// </summary>
+	[Tooltip("How many seconds it takes a notification to fade in or out.")]
+	public float notificationFadeTime = 0.1f;
+	
+	/// <summary>
+	/// How far to the right notifications will slide when popping in and out.
+	/// </summary>
+	[Tooltip("How far to the right notifications will slide when popping in and out.")]
+	public float notificationSlideDistance = 40;
+	
 }
 
 }

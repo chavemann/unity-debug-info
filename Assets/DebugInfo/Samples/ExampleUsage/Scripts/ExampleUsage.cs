@@ -2,6 +2,9 @@
 using C.Debugging.Formatting;
 using C.Debugging.Rows;
 using UnityEngine;
+#if (ENABLE_INPUT_SYSTEM)
+using UnityEngine.InputSystem;
+#endif
 
 namespace C.Debugging.Samples.ExampleUsage
 {
@@ -36,6 +39,61 @@ public class ExampleUsage : MonoBehaviour
 	}
 	
 	private void FixedUpdate()
+	{
+		TestLogs();
+		
+		// For demonstration purposes manually update DebugInfo, but `UpdateMode.FixedUpdate` could have
+		// been used instead to allow DebugInfo to handle it automatically.
+		if (DebugInfo.Config.updateMode == UpdateMode.Manual)
+		{
+			DebugInfo.UpdateAll();
+		}
+		
+		frame++;
+	}
+	
+	private void Update()
+	{
+		TestNotifications();
+	}
+	
+	private void TestNotifications()
+	{
+		// ReSharper disable JoinDeclarationAndInitializer
+		bool helloMessage;
+		bool toggleMisc;
+		bool toggleGroupMisc;
+		// ReSharper restore JoinDeclarationAndInitializer
+		
+		#if (ENABLE_LEGACY_INPUT_MANAGER)
+		helloMessage = Input.GetKeyDown(KeyCode.Alpha1);
+		toggleMisc = Input.GetKeyDown(KeyCode.Alpha2);
+		toggleGroupMisc = Input.GetKeyDown(KeyCode.Alpha3);
+		#elif (ENABLE_INPUT_SYSTEM)
+		helloMessage = Keyboard.current?.digit1Key.wasPressedThisFrame ?? false;
+		toggleMisc = Keyboard.current?.digit2Key.wasPressedThisFrame ?? false;
+		toggleGroupMisc = Keyboard.current?.digit3Key.wasPressedThisFrame ?? false;
+		#endif
+		
+		if (helloMessage)
+		{
+			DebugInfo.Notify(
+				$"This is a {Str.I(Str.Azure("Notification"))}.\nPress 1 to display this message again, and the other\nnumber keys to test other notifications.",
+				$"HelloMsg", color: Color.aquamarine);
+		}
+		if (toggleMisc)
+		{
+			showMisc = !showMisc;
+			DebugInfo.NotifyOn("Show Misc", showMisc, Color.brown, new Color(0.41f, 0f, 0.09f, 0.5f));
+		}
+		if (toggleGroupMisc)
+		{
+			groupMisc = !groupMisc;
+			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Color.darkGreen, new Color(0f, 0.39f, 0f, 0.5f));
+		}
+	}
+	
+	private void TestLogs()
 	{
 		DebugInfo.Heading("- This is a Heading -");
 		// The `Str` class has various methods and fields for easily and conveniently
@@ -84,15 +142,6 @@ public class ExampleUsage : MonoBehaviour
 		
 		DebugInfo.Spacer();
 		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Color.gray7);
-		
-		// For demonstration purposes manually update DebugInfo, but `UpdateMode.FixedUpdate` could have
-		// been used instead to allow DebugInfo to handle it automatically.
-		if (DebugInfo.Config.updateMode == UpdateMode.Manual)
-		{
-			DebugInfo.UpdateAll();
-		}
-		
-		frame++;
 	}
 	
 	private void OnCollisionEnter()

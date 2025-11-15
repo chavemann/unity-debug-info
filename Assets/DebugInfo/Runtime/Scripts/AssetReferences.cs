@@ -16,7 +16,6 @@ public class AssetReferences : ScriptableObject
 	public IndentMargin indentMarginPrefab;
 	public Cell headingPrefab;
 	public Cell groupHeadingPrefab;
-	public GameObject notificationListPrefab;
 	public GameObject notificationPrefab;
 	
 	public static T Create<T>(GameObject prefab, string name = null, Transform parent = null)
