@@ -82,8 +82,7 @@ public class DebugInfoTable : MonoBehaviour
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
-			// TODO: Support nested groups.
-			if (row.Group?.Collapsed ?? false)
+			if (!row.Visible)
 				continue;
 			
 			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
@@ -113,7 +112,7 @@ public class DebugInfoTable : MonoBehaviour
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
-			if (row.Group?.Collapsed ?? false)
+			if (!row.Visible)
 				continue;
 			
 			row.UpdateLayout(y, totaWidth, columnWidths);

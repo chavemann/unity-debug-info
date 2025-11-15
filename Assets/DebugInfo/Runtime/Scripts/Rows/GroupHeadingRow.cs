@@ -49,7 +49,7 @@ public class GroupHeadingRow : Row
 	{
 		if (!rows.Add(row))
 			return;
-		if (!Collapsed && visible)
+		if (!Collapsed && Visible)
 			return;
 		
 		row.SetVisible(false);
@@ -68,7 +68,7 @@ public class GroupHeadingRow : Row
 		{
 			foreach (Row row in rows)
 			{
-				row.SetVisible(visible);
+				row.SetVisible(Visible);
 			}
 		}
 		
@@ -93,7 +93,7 @@ public class GroupHeadingRow : Row
 	{
 		foreach (Row row in rows)
 		{
-			row.SetVisible(visible && this.visible && !Collapsed);
+			row.SetVisible(visible && this.Visible && !Collapsed);
 		}
 	}
 	
