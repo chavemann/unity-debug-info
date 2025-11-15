@@ -38,6 +38,11 @@ public class ExampleUsage : MonoBehaviour
 		DebugInfo.Config.updateMode = UpdateMode.Manual;
 	}
 	
+	private void Start()
+	{
+		ShowWelcomeNotification(6);
+	}
+	
 	private void FixedUpdate()
 	{
 		TestLogs();
@@ -77,9 +82,7 @@ public class ExampleUsage : MonoBehaviour
 		
 		if (helloMessage)
 		{
-			DebugInfo.Notify(
-				$"This is a {Str.I(Str.Azure("Notification"))}.\nPress 1 to display this message again, and the other\nnumber keys to test other notifications.",
-				$"HelloMsg", color: Color.aquamarine);
+			ShowWelcomeNotification();
 		}
 		if (toggleMisc)
 		{
@@ -91,6 +94,15 @@ public class ExampleUsage : MonoBehaviour
 			groupMisc = !groupMisc;
 			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Color.darkGreen, new Color(0f, 0.39f, 0f, 0.5f));
 		}
+	}
+	
+	private static void ShowWelcomeNotification(float duration = 0)
+	{
+		DebugInfo.Notify(
+			$"This is a {Str.I(Str.Azure("Notification"))}.\n" +
+			$"Press 1 to display this message again, and the\n" +
+			$"other number keys to test other notifications.",
+			$"HelloMsg", color: Color.aquamarine, duration: duration);
 	}
 	
 	private void TestLogs()
