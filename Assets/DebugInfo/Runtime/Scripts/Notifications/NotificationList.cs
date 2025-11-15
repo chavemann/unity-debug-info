@@ -77,12 +77,11 @@ public class NotificationList : MonoBehaviour
 			
 			if (id != null)
 			{
-				notification.id = id;
 				notificationIds.Add(id, notification);
 			}
 		}
 		
-		notification.Set(message, borderColor, bgColor, color, duration);
+		notification.Set(message, id, borderColor, bgColor, color, duration);
 		
 		pendingLayout = true;
 		gameObject.SetActive(true);
