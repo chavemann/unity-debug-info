@@ -11,7 +11,7 @@ internal abstract class BasicRow : Row
 	
 	protected BasicRow(Cell cellPrefab, string name)
 	{
-		AssetReferences.Create(cellPrefab, out labelCell, name, DebugInfo.PoolContainer);
+		CreateCell(cellPrefab, name, out labelCell);
 		labelCell.row = this;
 	}
 	
