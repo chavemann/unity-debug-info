@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using C.Debugging.Notifications;
-using C.Debugging.Rows;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
