@@ -1,16 +1,20 @@
 {
-  "name": "com.c.debug_info",
-  "version": "1.0.0",
-  "displayName": "DebugInfo",
-  "description": "A tool for displaying per-frame in the editor and in-game.",
-  "unity": "6000.2",
-  "dependencies": {},
-  "samples": [
-    {
-      "displayName": "Example Usage",
-      "description": "Showcases some of the different functionality of the DebugInfo package.",
-      "path": "Samples~/ExampleUsage",
-      "interactiveImport": true
-    }
-  ]
+	"name": "com.c.debug_info",
+	"version": "1.0.0",
+	"displayName": "DebugInfo",
+	"description": "A tool for displaying per-frame in the editor and in-game.",
+	"unity": "6000.2",
+	"author": {
+		"name": "C",
+		"email": "thecmann1@gmail.com"
+	},
+	"dependencies": {},
+	"samples": [
+		{
+			"displayName": "Example Usage",
+			"description": "Showcases some of the different functionality of the DebugInfo package.",
+			"path": "Samples~/ExampleUsage",
+			"interactiveImport": true
+		}
+	]
 }
