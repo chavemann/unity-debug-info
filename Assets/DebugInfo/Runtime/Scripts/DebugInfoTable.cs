@@ -89,8 +89,6 @@ public class DebugInfoTable : MonoBehaviour
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
-			if (!row.Visible)
-				continue;
 			
 			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
 			columnWidths[1] = Mathf.Max(columnWidths[1], row.ColumnWidth(1));
