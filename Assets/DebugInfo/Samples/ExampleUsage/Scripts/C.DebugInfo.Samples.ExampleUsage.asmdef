@@ -1,7 +1,9 @@
 {
     "name": "C.DebugInfo.Samples.ExampleUsage",
-    "rootNamespace": "C.DebugInfo.Samples.ExampleUsage",
-    "references": [],
+    "rootNamespace": "C.Debugging.Samples.ExampleUsage",
+    "references": [
+        "GUID:0bc864996ff88304a8b473578ecaccfa"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
