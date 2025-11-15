@@ -96,13 +96,15 @@ public class DebugInfoTable : MonoBehaviour
 		{
 			totalColumnsWidth += columnWidths[i];
 		}
-		totaWidth = Mathf.Max(totaWidth, totalColumnsWidth + config.cellSpacing.x * (ColumnCount - 1));
+		totaWidth = Mathf.Max(totaWidth, totalColumnsWidth);
 		
 		// Add any extra space to the last column.
 		if (totaWidth > totalColumnsWidth)
 		{
 			columnWidths[ColumnCount - 1] += totaWidth - totalColumnsWidth;
 		}
+		
+		totaWidth += config.cellSpacing.x * (ColumnCount - 1);
 		
 		// Position the rows.
 		
