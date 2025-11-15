@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using C.Debugging.Notifications;
+using C.Debugging.Rows;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,10 +10,9 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
-// TODO: Single cell row
+// TODO: Heading bottom border color
 // TODO: Frame history
 // TODO: Editor window
-// TODO: Notifications
 // TODO: Stack trace, click to go to?
 // TODO: Doc comments for all public methods and fields
 [DefaultExecutionOrder(10000)]
@@ -156,6 +156,10 @@ public class DebugInfo : MonoBehaviour
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IDisposable TryGroup(bool condition) => condition ? null : new IgnoredGroup();
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public static DebugInfoTable Log(string label, Color? color = null, Color? bgColor = null)
+		=> DefaultTable.Log(label, color, bgColor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)

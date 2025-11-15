@@ -129,13 +129,23 @@ public class ExampleUsage : MonoBehaviour
 	
 	private void TestLogs()
 	{
+		// `Heading`s display a single column of text and are slightly larger and
+		// visually distinct from regular rows.
 		DebugInfo.Heading("- This is a Heading -");
+		
 		// The `Str` class has various methods and fields for easily and conveniently
 		// formatting text.
 		// `Str.F` has several overloads to handle a few of the common Unity type,
 		// And the default float precision can be changed in the config.
+		
+		// `Log` two values to show two columns with a key and a value.
 		DebugInfo.Log("Time", $"{frame} ({Str.F(Time.fixedTime)})");
 		DebugInfo.Spacer();
+		
+		// Use `Log` with a single parameter to display a single column.
+		DebugInfo.Log(
+			"Click on the \"Sphere\" group\n" +
+			"below to fold/unfold");
 		
 		GroupHeadingRow sphereGroup;
 		

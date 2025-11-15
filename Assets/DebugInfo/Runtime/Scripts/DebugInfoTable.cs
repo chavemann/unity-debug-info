@@ -55,6 +55,13 @@ public class DebugInfoTable : MonoBehaviour
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	public DebugInfoTable Log(string label, Color? color = null, Color? bgColor = null)
+	{
+		NextRow<TextRow>().Set(label, color, bgColor);
+		return this;
+	}
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public GroupScope Group(string label, Color? color = null, Color? bgColor = null, bool? collapsed = null)
 	{
 		GroupHeadingRow row = NextRow<GroupHeadingRow>();
@@ -142,7 +149,7 @@ public class DebugInfoTable : MonoBehaviour
 		CurrentGroup = null;
 	}
 	
-	// [MethodImpl(MethodImplOptions.AggressiveInlining)]
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private T NextRow<T>() where T : Row, new()
 	{
 		if (rowCount + 1 > rows.Length)
