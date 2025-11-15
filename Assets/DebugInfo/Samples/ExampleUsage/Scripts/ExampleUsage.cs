@@ -74,18 +74,24 @@ public class ExampleUsage : MonoBehaviour
 	{
 		// ReSharper disable JoinDeclarationAndInitializer
 		bool helloMessage;
+		bool testMessage1;
+		bool uniqueMessage;
 		bool toggleMisc;
 		bool toggleGroupMisc;
 		// ReSharper restore JoinDeclarationAndInitializer
 		
 		#if ENABLE_LEGACY_INPUT_MANAGER
 		helloMessage = Input.GetKeyDown(KeyCode.Alpha1);
-		toggleMisc = Input.GetKeyDown(KeyCode.Alpha2);
-		toggleGroupMisc = Input.GetKeyDown(KeyCode.Alpha3);
+		testMessage1 = Input.GetKeyDown(KeyCode.Alpha2);
+		uniqueMessage = Input.GetKeyDown(KeyCode.Alpha3);
+		toggleMisc = Input.GetKeyDown(KeyCode.Alpha4);
+		toggleGroupMisc = Input.GetKeyDown(KeyCode.Alpha5);
 		#elif ENABLE_INPUT_SYSTEM
 		helloMessage = Keyboard.current?.digit1Key.wasPressedThisFrame ?? false;
-		toggleMisc = Keyboard.current?.digit2Key.wasPressedThisFrame ?? false;
-		toggleGroupMisc = Keyboard.current?.digit3Key.wasPressedThisFrame ?? false;
+		testMessage1 = Keyboard.current?.digit2Key.wasPressedThisFrame ?? false;
+		uniqueMessage = Keyboard.current?.digit3Key.wasPressedThisFrame ?? false;
+		toggleMisc = Keyboard.current?.digit4Key.wasPressedThisFrame ?? false;
+		toggleGroupMisc = Keyboard.current?.digit5Key.wasPressedThisFrame ?? false;
 		#endif
 		
 		if (helloMessage)
@@ -93,17 +99,31 @@ public class ExampleUsage : MonoBehaviour
 			ShowWelcomeNotification();
 		}
 		
+		if (testMessage1)
+		{
+			// Each call will create a new notification.
+			DebugInfo.Notify($"Test message 1: {Str.F(Time.time)}");
+		}
+		
+		if (uniqueMessage)
+		{
+			Color randomClr = NiceColour(saturationMin: 0, saturationMax: 0.5f);
+			// Pass an id to create a unique notification.
+			// Subsequent will instead update the existing notification and reset its timer.
+			DebugInfo.Notify($"This message is unique: {Str.Clr(Str.F(Time.time), Str.ToHex(randomClr))}", "UniqueMsg");
+		}
+		
 		if (toggleMisc)
 		{
 			showMisc = !showMisc;
-			// Shows an "On"/"Off" message based on the passed in bool value.
+			// Shows an "On"/"Off" message based on the passed in bool value. These are unique by default.
 			DebugInfo.NotifyOn("Show Misc", showMisc, Color.brown, new Color(0.41f, 0f, 0.09f, 0.5f));
 		}
 		
 		if (toggleGroupMisc)
 		{
 			groupMisc = !groupMisc;
-			// Shows an "Enabled"/"Disabled" message based on the passed in bool value.
+			// Shows an "Enabled"/"Disabled" message based on the passed in bool value. These are unique by default.
 			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Color.forestGreen, new Color(0f, 0.39f, 0f, 0.5f));
 		}
 	}
@@ -200,6 +220,15 @@ public class ExampleUsage : MonoBehaviour
 	private void OnCollisionExit()
 	{
 		collisionCount--;
+	}
+	
+	private static Color NiceColour(
+		float alphaMin = 1f, float alphaMax = 1f,
+		float hueMin = 0f, float hueMax = 1f,
+		float saturationMin = 0.65f, float saturationMax = 1f,
+		float valueMin = 0.65f, float valueMax = 1f)
+	{
+		return Random.ColorHSV(hueMin, hueMax, saturationMin, saturationMax, valueMin, valueMax, alphaMin, alphaMax);
 	}
 	
 }
