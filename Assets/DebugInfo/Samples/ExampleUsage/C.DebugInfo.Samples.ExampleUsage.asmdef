@@ -1,0 +1,14 @@
+{
+    "name": "C.DebugInfo.Samples.ExampleUsage",
+    "rootNamespace": "C.DebugInfo.Samples.ExampleUsage",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
