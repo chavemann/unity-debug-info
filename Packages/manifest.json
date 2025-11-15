@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.needle.console": "file:D:/UnityProjects/_Packages/needle-console/package",
+    "com.singularitygroup.hotreload": "file:D:/UnityProjects/_Packages/com.singularitygroup.hotreload@1d3d193d19-unity2022",
     "com.unity.ai.navigation": "2.0.9",
     "com.unity.collab-proxy": "2.10.0",
     "com.unity.ide.rider": "3.0.38",
