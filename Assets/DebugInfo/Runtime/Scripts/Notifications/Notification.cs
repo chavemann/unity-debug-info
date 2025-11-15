@@ -14,6 +14,8 @@ public class Notification : MonoBehaviour
 	[SerializeField]
 	private CanvasGroup canvasGroup;
 	[SerializeField]
+	private HorizontalLayoutGroup layout;
+	[SerializeField]
 	private Text textfield;
 	[SerializeField]
 	public RawImage background;
@@ -102,6 +104,7 @@ public class Notification : MonoBehaviour
 	
 	private void SetAlpha(float alpha)
 	{
+		layout.padding = new RectOffset(0, (int) (-DebugInfo.Config.notificationSlideDistance * (1 - alpha)), 0, 0);
 		canvasGroup.alpha = alpha;
 	}
 	

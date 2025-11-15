@@ -62,7 +62,7 @@ MonoBehaviour:
     groupIndent: 12
     showGroupIndentMargin: 1
     defaultNotificationColor: {r: 0, g: 0, b: 0, a: 0.5}
-    defaultNotificationBorderColor: {r: 0, g: 0, b: 0, a: 0.5}
+    defaultNotificationBorderColor: {r: 0, g: 0, b: 0, a: 0.7490196}
     notificationTime: 2.5
     notificationFadeTime: 0.25
     notificationSlideDistance: 40
