@@ -9,7 +9,7 @@ namespace C.Debugging.Cells
 public class GroupHeadingCell : HeadingCell, IPointerClickHandler
 {
 	
-	private const float IconSpacing = 4;
+	private const float IconSpacing = 8;
 	
 	[SerializeField]
 	private RectTransform foldIconTransform;
