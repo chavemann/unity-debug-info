@@ -38,6 +38,10 @@ public class ExampleUsage : MonoBehaviour
 	private void FixedUpdate()
 	{
 		DebugInfo.Heading("- This is a Heading -");
+		// The `Str` class has various methods and fields for easily and conveniently
+		// formatting text.
+		// `Str.F` has several overloads to handle a few of the common Unity type,
+		// And the default float precision can be changed in the config.
 		DebugInfo.Log("Time", $"{frame} ({Str.F(Time.fixedTime)})");
 		DebugInfo.Spacer();
 		
@@ -49,11 +53,22 @@ public class ExampleUsage : MonoBehaviour
 			
 			Vector3 velocity = sphereRigidbody.linearVelocity;
 			
+			// The label, value, or color of both can be changed as a whole by passing
+			// using the `Color` parameters.
 			DebugInfo.Log("Position", Str.F(sphere.localPosition), Str.TransformRgb);
-			DebugInfo.Log("Velocity", Str.TransformRgb, $"{Str.TransformClr(Str.F(velocity))} {Str.Clr($"({Str.F(velocity.magnitude)})", "#ddbaef")}", null);
+			// There are also various functions for wrapping individual sections of text
+			// in specific colors.
+			DebugInfo.Log(
+				$"{Str.TransformClr("Velocity")} {Str.I(Str.AliceBlue("(M)"))}", Str.TransformRgb,
+				$"{Str.TransformClr(Str.F(velocity))} {Str.Clr($"({Str.F(velocity.magnitude)})", "#ddbaef")}", null);
+			DebugInfo.Heading("Nested Heading");
 			
 			if (showMisc)
 			{
+				// Use `TryGroup` to conditional wrap logs in a group.
+				// If condition is false the inner logs are still shown but no group is created.
+				// If condition is true `DebugInfo.Group` is executed and the inner logs are
+				// added to the group like normal.
 				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc", Color.aquamarine))
 				{
 					DebugInfo.Log("Direction", velocity.x < 0 ? "Left" : "Right", Str.StateRgb);
@@ -66,6 +81,9 @@ public class ExampleUsage : MonoBehaviour
 		}
 		
 		DebugInfo.Log("Collapsed", null, Str.F(sphereGroup.Collapsed), !sphereGroup.Collapsed ? Str.OnRgb : Str.OffRgb);
+		
+		DebugInfo.Spacer();
+		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Color.gray7);
 		
 		// For demonstration purposes manually update DebugInfo, but `UpdateMode.FixedUpdate` could have
 		// been used instead to allow DebugInfo to handle it automatically.

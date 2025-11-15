@@ -99,7 +99,7 @@ public static class Str
 	
 	#region -- Utility Colors --------------------------------
 	
-	public static readonly Color TransformRgb = new(1f, 0.68f, 0.72f);
+	public static readonly Color TransformRgb = new(1f, 0.68f, 0.725f);
 	// public static readonly string TransformHex = ColorUtility.ToHtmlStringRGBA(TransformRgb);
 	public static readonly string TransformHex = "#ffadb8ff";
 	
