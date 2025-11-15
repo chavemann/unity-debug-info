@@ -4,10 +4,10 @@ using UnityEngine;
 namespace C.Debugging.Rows
 {
 
-public class GroupHeadingRow : Row
+public class GroupHeadingRow : BasicRow
 {
 	
-	private readonly GroupHeadingCell labelCell;
+	protected new readonly GroupHeadingCell labelCell;
 	
 	private int childCount;
 	
@@ -26,9 +26,9 @@ public class GroupHeadingRow : Row
 		}
 	}
 	
-	public GroupHeadingRow()
+	public GroupHeadingRow() : base(DebugInfo.Assets.groupHeadingPrefab, "GroupHeading")
 	{
-		CreateCell(DebugInfo.Assets.groupHeadingPrefab, "GroupHeading", out labelCell);
+		labelCell = (GroupHeadingCell) base.labelCell;
 		labelCell.groupHeadingRow = this;
 	}
 	
@@ -43,6 +43,8 @@ public class GroupHeadingRow : Row
 		Size = labelCell.Size;
 	}
 	
+	protected override void ReturnToPool() => RowPool<GroupHeadingRow>.Release(this);
+	
 	public void AddChild(Row row)
 	{
 		row.Group = this;
@@ -52,40 +54,14 @@ public class GroupHeadingRow : Row
 		childCount++;
 	}
 	
-	internal override void OnAdded(DebugInfoTable table)
-	{
-		base.OnAdded(table);
-		
-		labelCell.transform.SetParent(table.Root);
-	}
-	
 	internal override void OnRemoved()
 	{
-		base.OnRemoved();
-		
 		collapsed = false;
 		labelCell.Collapsed = Collapsed;
 		childCount = 0;
 		
-		labelCell.transform.SetParent(DebugInfo.PoolContainer);
-		RowPool<GroupHeadingRow>.Release(this);
+		base.OnRemoved();
 	}
-	
-	protected override void UpdateVisible()
-	{
-		labelCell.gameObject.SetActive(Visible);
-	}
-	
-	internal override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
-	{
-		labelCell.UpdateLayout(
-			new Vector2(0, y),
-			new Vector2(totalWidth, Size.y));
-	}
-	
-	protected override bool ShowIndentMargin => true;
-	
-	protected override Cell IndentMarginContainer => labelCell;
 	
 }
 

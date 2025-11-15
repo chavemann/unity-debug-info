@@ -4,7 +4,7 @@ using UnityEngine;
 namespace C.Debugging.Rows
 {
 
-internal class HeadingRow : BasicRow
+public class HeadingRow : BasicRow
 {
 	
 	protected new readonly HeadingCell labelCell;
