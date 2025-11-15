@@ -18,12 +18,17 @@ public class ExampleUsage : MonoBehaviour
 	private Rigidbody sphereRigidbody;
 	
 	[SerializeField]
+	private float sphereMoveForce = 10;
+	
+	[SerializeField]
 	private bool showMisc = true;
 	[SerializeField]
 	private bool groupMisc = true;
 	
 	private int frame;
 	private int collisionCount;
+	private float direction = 1;
+	private Vector3 previousPosition;
 	
 	/// <summary>
 	/// The behaviour of DebugInfo can be changed using the `Config` property.
@@ -41,10 +46,14 @@ public class ExampleUsage : MonoBehaviour
 	private void Start()
 	{
 		ShowWelcomeNotification(6);
+		
+		previousPosition = sphere.position;
 	}
 	
 	private void FixedUpdate()
 	{
+		MoveSphere();
+		
 		TestLogs();
 		
 		// For demonstration purposes manually update DebugInfo, but `UpdateMode.FixedUpdate` could have
@@ -55,6 +64,19 @@ public class ExampleUsage : MonoBehaviour
 		}
 		
 		frame++;
+	}
+	
+	private void MoveSphere()
+	{
+		sphereRigidbody.AddForce(sphereMoveForce * direction, 0, 0, ForceMode.Force);
+		
+		float delta = sphere.position.x - previousPosition.x;
+		if (delta != 0 && Mathf.Sign(delta) != Mathf.Sign(direction))
+		{
+			direction = -direction;
+		}
+		
+		previousPosition = sphere.position;
 	}
 	
 	private void Update()
@@ -100,9 +122,9 @@ public class ExampleUsage : MonoBehaviour
 	{
 		DebugInfo.Notify(
 			$"This is a {Str.I(Str.Azure("Notification"))}.\n" +
-			$"Press 1 to display this message again, and the\n" +
-			$"other number keys to test other notifications.",
-			$"HelloMsg", color: Color.aquamarine, duration: duration);
+			 "Press 1 to display this message again, and the\n" +
+			 "other number keys to test other notifications.",
+			 "HelloMsg", color: Color.aquamarine, duration: duration);
 	}
 	
 	private void TestLogs()
@@ -128,9 +150,8 @@ public class ExampleUsage : MonoBehaviour
 			DebugInfo.Log("Position", Str.F(sphere.localPosition), Str.TransformRgb);
 			// There are also various functions for wrapping individual sections of text
 			// in specific colors.
-			DebugInfo.Log(
-				$"{Str.TransformClr("Velocity")} {Str.I(Str.AliceBlue("(M)"))}", Str.TransformRgb,
-				$"{Str.TransformClr(Str.F(velocity))} {Str.Clr($"({Str.F(velocity.magnitude)})", "#ddbaef")}", null);
+			DebugInfo.Log("Velocity", Str.F(velocity), Str.TransformRgb);
+			DebugInfo.Log(Str.I(Str.Gold("Speed >>")), Str.Clr($"[{Str.F(velocity.magnitude)}]", "#ddbaef"));
 			DebugInfo.Heading("Nested Heading");
 			
 			if (showMisc)
