@@ -92,15 +92,19 @@ public class ExampleUsage : MonoBehaviour
 		{
 			ShowWelcomeNotification();
 		}
+		
 		if (toggleMisc)
 		{
 			showMisc = !showMisc;
+			// Shows an "On"/"Off" message based on the passed in bool value.
 			DebugInfo.NotifyOn("Show Misc", showMisc, Color.brown, new Color(0.41f, 0f, 0.09f, 0.5f));
 		}
+		
 		if (toggleGroupMisc)
 		{
 			groupMisc = !groupMisc;
-			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Color.darkGreen, new Color(0f, 0.39f, 0f, 0.5f));
+			// Shows an "Enabled"/"Disabled" message based on the passed in bool value.
+			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Color.forestGreen, new Color(0f, 0.39f, 0f, 0.5f));
 		}
 	}
 	
