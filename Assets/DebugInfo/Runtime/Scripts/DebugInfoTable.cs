@@ -48,9 +48,9 @@ public class DebugInfoTable : MonoBehaviour
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null)
+	public DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null)
 	{
-		NextRow<HeadingRow>().Set(label, color, bgColor);
+		NextRow<HeadingRow>().Set(label, color, bgColor, borderColor);
 		return this;
 	}
 	

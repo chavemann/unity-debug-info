@@ -9,9 +9,10 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
-// TODO: Heading bottom border color
-// TODO: Frame history
-// TODO: Editor window
+// TODO: Heading and group bottom border color
+// TODO: Frame history?
+// TODO: Smooth out width changes?
+// TODO: Editor window?
 // TODO: Stack trace, click to go to?
 // TODO: Doc comments for all public methods and fields
 [DefaultExecutionOrder(10000)]
@@ -146,8 +147,8 @@ public class DebugInfo : MonoBehaviour
 	public static DebugInfoTable Spacer(float? space = null) => DefaultTable.Spacer(space);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null)
-		=> DefaultTable.Heading(label, color, bgColor);
+	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null)
+		=> DefaultTable.Heading(label, color, bgColor, borderColor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static GroupScope Group(string label, Color? color = null, Color? bgColor = null, bool? collapsed = null)

@@ -210,6 +210,7 @@ MonoBehaviour:
   background: {fileID: 3465390426416445926}
   textField: {fileID: 8212443192585406857}
   textFieldTransform: {fileID: 170032083009727888}
+  border: {fileID: 1075515791449666007}
 --- !u!114 &8212443192585406857 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 869159497483755828, guid: 54320018a742b0f4c991e816d37f1477, type: 3}

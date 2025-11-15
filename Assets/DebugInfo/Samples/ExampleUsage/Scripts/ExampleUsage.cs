@@ -143,7 +143,9 @@ public class ExampleUsage : MonoBehaviour
 			// in specific colors.
 			DebugInfo.Log("Velocity", Str.F(velocity), Str.TransformRgb);
 			DebugInfo.Log(Str.I(Str.Gold("Speed >>")), Str.Clr($"[{Str.F(velocity.magnitude)}]", "#ddbaef"));
-			DebugInfo.Heading("Nested Heading");
+			
+			// Setting a per-heading border color is also possible.
+			DebugInfo.Heading("Nested Heading", new Color(0.66f, 0.7f, 0.92f), borderColor: new Color(0.66f, 0.7f, 0.92f, 0.5f));
 			
 			if (showMisc)
 			{
@@ -151,7 +153,7 @@ public class ExampleUsage : MonoBehaviour
 				// If condition is false the inner logs are still shown but no group is created.
 				// If condition is true `DebugInfo.Group` is executed and the inner logs are
 				// added to the group like normal.
-				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc", Color.aquamarine))
+				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc (Nested Group)", Color.aquamarine))
 				{
 					DebugInfo.Log("Direction", velocity.x < 0 ? "Left" : "Right", Str.StateRgb);
 					DebugInfo.Log("Collisions", Str.F(collisionCount), Str.CollisionRgb);

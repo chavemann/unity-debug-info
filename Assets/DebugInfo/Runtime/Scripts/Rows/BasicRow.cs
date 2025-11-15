@@ -7,7 +7,7 @@ namespace C.Debugging.Rows
 internal abstract class BasicRow : Row
 {
 	
-	private readonly Cell labelCell;
+	protected readonly Cell labelCell;
 	
 	protected BasicRow(Cell cellPrefab, string name)
 	{

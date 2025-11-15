@@ -50,6 +50,12 @@ public class Config
 	public Vector2 headingTextPadding = new(4, 2);
 	
 	/// <summary>
+	/// The default border color for headings.
+	/// </summary>
+	[Tooltip("The default border color for headings.")]
+	public Color headingBorderColor = new(0, 0, 0, 0.5f);
+	
+	/// <summary>
 	/// The spacing between columns and rows.
 	/// </summary>
 	[Tooltip("The spacing between columns and rows.")]
