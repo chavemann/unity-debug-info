@@ -20,6 +20,12 @@ public class Config
 	public Vector2 margin = new(4, 4);
 	
 	/// <summary>
+	/// The default text alignment for all labels.
+	/// </summary>
+	[Tooltip("The default text alignment for all labels.")]
+	public TextAnchor labelAlign = TextAnchor.MiddleLeft;
+	
+	/// <summary>
 	/// The default text colour for all labels.
 	/// </summary>
 	[Tooltip("The default text colour for all labels.")]

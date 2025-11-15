@@ -17,7 +17,7 @@ internal class NameValueRow : Row
 		CreateCell(DebugInfo.Assets.cellPrefab, "Label", out labelCell);
 		CreateCell(DebugInfo.Assets.cellPrefab, "Value", out valueCell);
 		
-		labelCell.textField.alignment = TextAnchor.UpperRight;
+		labelCell.textField.alignment = DebugInfo.Config.labelAlign;
 	}
 	
 	public void Set(string label, string value, Color? labelColor, Color? valueColor, Color? backgroundColor)
