@@ -80,10 +80,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 869159497483755828, guid: 54320018a742b0f4c991e816d37f1477, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2114837628994827874, guid: 54320018a742b0f4c991e816d37f1477, type: 3}
       propertyPath: m_Name
       value: HeadingCell

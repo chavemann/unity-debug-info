@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace C.Debugging.Cells
+﻿namespace C.Debugging.Cells
 {
 
 public class HeadingCell : Cell

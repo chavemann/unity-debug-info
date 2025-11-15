@@ -65,7 +65,7 @@ public class Config
 	/// The size of the indent inside of groups.
 	/// </summary>
 	[Tooltip("The size of the indent inside of groups.")]
-	public float groupIndent = 4;
+	public float groupIndent = 12;
 	
 	/// <summary>
 	/// If true shows a border/margin on the left side of rows inside of groups.

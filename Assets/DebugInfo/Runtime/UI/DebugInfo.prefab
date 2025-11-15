@@ -48,14 +48,16 @@ MonoBehaviour:
   transform: {fileID: 3461109697738163415}
   poolContainer: {fileID: 985104553357903650}
   config:
+    updateMode: 0
     margin: {x: 4, y: 4}
+    labelAlign: 3
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0, g: 0, b: 0, a: 0.6509804}
     textPadding: {x: 4, y: 1}
     headingTextPadding: {x: 6, y: 4}
     cellSpacing: {x: 1, y: 1}
     defaultSpacerSize: 4
-    groupIndent: 16
+    groupIndent: 12
     showGroupIndentMargin: 1
 --- !u!1 &6402863375234242936
 GameObject:

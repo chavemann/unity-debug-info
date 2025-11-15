@@ -18,7 +18,7 @@ public class Cell : MonoBehaviour
 	protected RectTransform textFieldTransform;
 	
 	internal Row row;
-	private float indentWidth;
+	protected float indentWidth;
 	
 	protected Transform Transform => transform;
 	protected Vector2 TextSize { get; private set; }
@@ -66,18 +66,25 @@ public class Cell : MonoBehaviour
 		transform.localPosition = position;
 		
 		Vector2 textSize = GetTextSize(size);
-		textSize.x -= indentWidth;
 		textFieldTransform.sizeDelta = textSize - padding * 2;
 		transform.sizeDelta = size;
 	}
 	
-	public void UpdateIndent(float indent, IndentMargin indentMargin)
+	public virtual void UpdateIndent(float indent, IndentMargin indentMargin)
 	{
 		indentWidth = indent;
 		
-		indentMargin.transform.anchoredPosition = new Vector3(
-			Mathf.Ceil(indentWidth - DebugInfo.Config.groupIndent * 0.5f), 0, 0);
+		if (DebugInfo.Config.showGroupIndentMargin && indentMargin)
+		{
+			indentMargin.transform.anchoredPosition = new Vector3(
+				Mathf.Ceil(indentWidth - DebugInfo.Config.groupIndent * 0.5f), 0, 0);
+		}
 		
+		PositionText();
+	}
+	
+	protected virtual void PositionText()
+	{
 		textFieldTransform.localPosition = new Vector3(padding.x + indentWidth, -padding.y, 0);
 	}
 	

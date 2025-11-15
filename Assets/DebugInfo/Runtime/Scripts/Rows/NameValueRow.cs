@@ -31,7 +31,7 @@ internal class NameValueRow : Row
 		);
 	}
 	
-	public override void OnAdded(DebugInfoTable table)
+	internal override void OnAdded(DebugInfoTable table)
 	{
 		base.OnAdded(table);
 		
@@ -39,7 +39,7 @@ internal class NameValueRow : Row
 		valueCell.transform.SetParent(table.Root);
 	}
 	
-	public override void OnRemoved()
+	internal override void OnRemoved()
 	{
 		base.OnRemoved();
 		
@@ -48,15 +48,13 @@ internal class NameValueRow : Row
 		RowPool<NameValueRow>.Release(this);
 	}
 	
-	public override void SetVisible(bool visible)
+	protected override void UpdateVisible()
 	{
-		Visible = visible;
-		
-		labelCell.gameObject.SetActive(visible);
-		valueCell.gameObject.SetActive(visible);
+		labelCell.gameObject.SetActive(Visible);
+		valueCell.gameObject.SetActive(Visible);
 	}
 	
-	public override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
+	internal override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
 	{
 		labelCell.UpdateLayout(
 			new Vector2(0, y),

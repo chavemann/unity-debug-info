@@ -21,14 +21,14 @@ internal class HeadingRow : Row
 		Size = labelCell.Size;
 	}
 	
-	public override void OnAdded(DebugInfoTable table)
+	internal override void OnAdded(DebugInfoTable table)
 	{
 		base.OnAdded(table);
 		
 		labelCell.transform.SetParent(table.Root);
 	}
 	
-	public override void OnRemoved()
+	internal override void OnRemoved()
 	{
 		base.OnRemoved();
 		
@@ -36,13 +36,9 @@ internal class HeadingRow : Row
 		RowPool<HeadingRow>.Release(this);
 	}
 	
-	public override void SetVisible(bool visible)
-	{
-		Visible = visible;
-		labelCell.gameObject.SetActive(visible);
-	}
+	protected override void UpdateVisible() => labelCell.gameObject.SetActive(Visible);
 	
-	public override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
+	internal override void UpdateLayout(float y, float totalWidth, float[] columnWidths)
 	{
 		labelCell.UpdateLayout(
 			new Vector2(0, y),

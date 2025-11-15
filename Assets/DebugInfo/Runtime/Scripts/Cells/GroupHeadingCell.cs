@@ -31,10 +31,8 @@ public class GroupHeadingCell : HeadingCell, IPointerClickHandler
 	{
 		base.Awake();
 		
-		textFieldTransform.localPosition = new Vector3(padding.x + foldIconTransform.sizeDelta.x + IconSpacing, -padding.y, 0);
-		Vector3 foldIconPosition = foldIconTransform.localPosition;
-		foldIconPosition.x = padding.x;
-		foldIconTransform.localPosition = foldIconPosition;
+		PositionText();
+		PositionFoldIcon();
 	}
 	
 	public override void Set(string text, Color? color, Color? backgroundColor)
@@ -49,9 +47,28 @@ public class GroupHeadingCell : HeadingCell, IPointerClickHandler
 		base.CalculateSize();
 		
 		Size = new Vector2(
-			foldIconTransform.sizeDelta.x + IconSpacing + TextSize.x + padding.x * 2,
+			indentWidth + foldIconTransform.sizeDelta.x + IconSpacing + TextSize.x + padding.x * 2,
 			Mathf.Max(foldIconTransform.sizeDelta.y, TextSize.y) + padding.y * 2
 		);
+	}
+	
+	public override void UpdateIndent(float indent, IndentMargin indentMargin)
+	{
+		base.UpdateIndent(indent, indentMargin);
+		
+		PositionFoldIcon();
+	}
+	
+	private void PositionFoldIcon()
+	{
+		Vector3 foldIconPosition = foldIconTransform.localPosition;
+		foldIconPosition.x = padding.x + indentWidth;
+		foldIconTransform.localPosition = foldIconPosition;
+	}
+	
+	protected override void PositionText()
+	{
+		textFieldTransform.localPosition = new Vector3(padding.x + indentWidth + foldIconTransform.sizeDelta.x + IconSpacing, -padding.y, 0);
 	}
 	
 	protected override Vector2 GetTextSize(Vector2 size) => new(

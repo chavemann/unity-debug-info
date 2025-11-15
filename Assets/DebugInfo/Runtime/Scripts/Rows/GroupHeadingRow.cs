@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using C.Debugging.Cells;
+﻿using C.Debugging.Cells;
 using UnityEngine;
 
 namespace C.Debugging.Rows
