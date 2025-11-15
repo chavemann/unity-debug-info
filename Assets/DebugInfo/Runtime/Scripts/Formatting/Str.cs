@@ -100,20 +100,19 @@ public static class Str
 	#region -- Utility Colors --------------------------------
 	
 	public static readonly Color TransformRgb = new(1f, 0.68f, 0.725f);
-	// public static readonly string TransformHex = ColorUtility.ToHtmlStringRGBA(TransformRgb);
-	public static readonly string TransformHex = "#ffadb8ff";
+	public static readonly string TransformHex = ToHex(TransformRgb);
 	
 	public static readonly Color CollisionRgb = new(1f, 0.83f, 0.7f);
-	public static readonly string CollisionHex = ColorUtility.ToHtmlStringRGBA(CollisionRgb);
+	public static readonly string CollisionHex = ToHex(CollisionRgb);
 	
 	public static readonly Color StateRgb = new(0.73f, 0.86f, 0.74f);
-	public static readonly string StateHex = ColorUtility.ToHtmlStringRGBA(StateRgb);
+	public static readonly string StateHex = ToHex(StateRgb);
 	
 	public static readonly Color OnRgb = new(0.584f, 1, 0.584f, 1);
-	public static readonly string OnHex = ColorUtility.ToHtmlStringRGBA(OnRgb);
+	public static readonly string OnHex = ToHex(OnRgb);
 	
 	public static readonly Color OffRgb = new(1, 0.584f, 0.584f, 1);
-	public static readonly string OffHex = ColorUtility.ToHtmlStringRGBA(OffRgb);
+	public static readonly string OffHex = ToHex(OffRgb);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string Clr(string v, string clr) => $"<color={clr}>{v}</color>";
@@ -452,6 +451,16 @@ public static class Str
 	public static string YellowNice(string v) => Clr(v, "#ffeb04");
 	
 	#endregion -----------------------------------------
+	
+	public static string ToHex(Color color)
+	{
+		Color32 color32 = new(
+			(byte) Mathf.Clamp(Mathf.RoundToInt(color.r * byte.MaxValue), 0, byte.MaxValue),
+			(byte) Mathf.Clamp(Mathf.RoundToInt(color.g * byte.MaxValue), 0, byte.MaxValue),
+			(byte) Mathf.Clamp(Mathf.RoundToInt(color.b * byte.MaxValue), 0, byte.MaxValue),
+			(byte) Mathf.Clamp(Mathf.RoundToInt(color.a * byte.MaxValue), 0, byte.MaxValue));
+		return $"#{color32.r:x2}{color32.g:x2}{color32.b:x2}{color32.a:x2}";
+	}
 	
 }
 
