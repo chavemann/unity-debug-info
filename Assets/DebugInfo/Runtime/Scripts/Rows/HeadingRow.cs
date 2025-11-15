@@ -36,7 +36,7 @@ internal class HeadingRow : Row
 	
 	public override void SetVisible(bool visible)
 	{
-		base.SetVisible(visible);
+		Visible = visible;
 		labelCell.gameObject.SetActive(visible);
 	}
 	

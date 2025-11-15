@@ -12,7 +12,7 @@ public abstract class Row
 	
 	public Vector2 Size { get; protected set; }
 	
-	public bool Visible { get; private set; } = true;
+	public bool Visible { get; protected set; } = true;
 	
 	protected void CreateCell<T>(Cell prefab, string name, out T cell) where T : Cell
 	{
@@ -30,10 +30,7 @@ public abstract class Row
 	
 	public abstract void OnRemoved();
 	
-	public virtual void SetVisible(bool visible)
-	{
-		this.Visible = visible;
-	}
+	public virtual void SetVisible(bool visible) => Visible = visible;
 	
 	public virtual void UpdateLayout(float y, float totalWidth, float[] columnWidths) { }
 	

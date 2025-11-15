@@ -48,7 +48,7 @@ internal class NameValueRow : Row
 	
 	public override void SetVisible(bool visible)
 	{
-		base.SetVisible(visible);
+		Visible = visible;
 		
 		labelCell.gameObject.SetActive(visible);
 		valueCell.gameObject.SetActive(visible);

@@ -82,7 +82,7 @@ public class GroupHeadingRow : Row
 	
 	public override void SetVisible(bool visible)
 	{
-		base.SetVisible(visible);
+		Visible = visible;
 		
 		labelCell.gameObject.SetActive(visible);
 		
