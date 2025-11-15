@@ -66,19 +66,6 @@ public class ExampleUsage : MonoBehaviour
 		frame++;
 	}
 	
-	private void MoveSphere()
-	{
-		sphereRigidbody.AddForce(sphereMoveForce * direction, 0, 0, ForceMode.Force);
-		
-		float delta = sphere.position.x - previousPosition.x;
-		if (delta != 0 && Mathf.Sign(delta) != Mathf.Sign(direction))
-		{
-			direction = -direction;
-		}
-		
-		previousPosition = sphere.position;
-	}
-	
 	private void Update()
 	{
 		TestNotifications();
@@ -185,6 +172,19 @@ public class ExampleUsage : MonoBehaviour
 			$"Press {Str.B(Str.Cyan("[1]"))} to display this message again, and the\n" +
 			 "other number keys to test other notifications.",
 			 "HelloMsg", borderColor: Color.aquamarine, duration: duration);
+	}
+	
+	private void MoveSphere()
+	{
+		sphereRigidbody.AddForce(sphereMoveForce * direction, 0, 0, ForceMode.Force);
+		
+		float delta = sphere.position.x - previousPosition.x;
+		if (delta != 0 && Mathf.Sign(delta) != Mathf.Sign(direction))
+		{
+			direction = -direction;
+		}
+		
+		previousPosition = sphere.position;
 	}
 	
 	private void OnCollisionEnter()
