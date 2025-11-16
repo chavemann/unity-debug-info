@@ -80,6 +80,13 @@ public class Config
 	public bool showGroupIndentMargin = true;
 	
 	/// <summary>
+	/// If true, clicking on a notification will immediatelly close it.
+	/// </summary>
+	[Tooltip("If true, clicking on a notification will immediatelly close it.")]
+	[Header("Notifications")]
+	public bool closeNotificationOnClick = true;
+	
+	/// <summary>
 	/// The default notification background colour.
 	/// </summary>
 	[Tooltip("The default notification background colour.")]

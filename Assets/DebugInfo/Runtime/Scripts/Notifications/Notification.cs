@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace C.Debugging.Notifications
 {
 
-public class Notification : MonoBehaviour
+public class Notification : MonoBehaviour, IPointerClickHandler
 {
 	
 	[SerializeField]
@@ -117,6 +118,14 @@ public class Notification : MonoBehaviour
 		Visible,
 		FadingOut,
 		
+	}
+	
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		if (!DebugInfo.Config.closeNotificationOnClick)
+			return;
+		
+		StartFadeOut();
 	}
 	
 }
