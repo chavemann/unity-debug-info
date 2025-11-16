@@ -11,6 +11,11 @@ namespace C.Debugging
 public class Config
 {
 	
+	/// <summary>
+	/// Controls when and how the debug info updates.
+	/// </summary>
+	[Tooltip("Controls when and how the debug info updates.")]
+	[Header("General")]
 	public UpdateMode updateMode = UpdateMode.Update;
 	
 	/// <summary>
@@ -29,6 +34,7 @@ public class Config
 	/// The default text alignment for all labels.
 	/// </summary>
 	[Tooltip("The default text alignment for all labels.")]
+	[Header("Row Layout")]
 	public TextAnchor labelAlign = TextAnchor.UpperLeft;
 	
 	/// <summary>
@@ -50,9 +56,17 @@ public class Config
 	public Vector2 textPadding = new(4, 2);
 	
 	/// <summary>
+	/// The default height for spacers when a size isn't explicitly set.
+	/// </summary>
+	[Tooltip("The default height for spacers when a size isn't explicitly set.")]
+	[Header("Misc Rows")]
+	public float defaultSpacerSize = 4;
+	
+	/// <summary>
 	/// The padding inside a heading cell around the text.
 	/// </summary>
 	[Tooltip("The padding inside a heading cell around the text.")]
+	[Header("Headings and Groups")]
 	public Vector2 headingTextPadding = new(4, 2);
 	
 	/// <summary>
@@ -60,12 +74,6 @@ public class Config
 	/// </summary>
 	[Tooltip("The default border color for headings.")]
 	public Color headingBorderColor = new(0, 0, 0, 0.5f);
-	
-	/// <summary>
-	/// The default height for spacers when a size isn't explicitly set.
-	/// </summary>
-	[Tooltip("The default height for spacers when a size isn't explicitly set.")]
-	public float defaultSpacerSize = 4;
 	
 	/// <summary>
 	/// The size of the indent inside of groups.
@@ -82,7 +90,7 @@ public class Config
 	/// <summary>
 	/// If true, clicking on a notification will immediatelly close it.
 	/// </summary>
-	[Tooltip("If true, clicking on a notification will immediatelly close it.")]
+	[Tooltip("If true, clicking on a notification will immediately close it.")]
 	[Header("Notifications")]
 	public bool closeNotificationOnClick = true;
 	
