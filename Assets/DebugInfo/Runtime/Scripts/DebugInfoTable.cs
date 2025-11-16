@@ -11,6 +11,7 @@ namespace C.Debugging
 public class DebugInfoTable : MonoBehaviour
 {
 	
+	private const int MaxWidthShrinkTime = 1;
 	private const int ColumnCount = 2;
 	
 	[SerializeField]
@@ -29,7 +30,10 @@ public class DebugInfoTable : MonoBehaviour
 	private Row[] rows = Array.Empty<Row>();
 	private int rowCount;
 	private int previousRowCount;
-	private readonly float[] columnWidths = new float[ColumnCount + 1];
+	private readonly float[] columnWidths = new float[ColumnCount];
+	
+	private readonly float[] maxColumnWidths = new float[ColumnCount];
+	private readonly float[] maxColumnWidthTimers = new float[ColumnCount];
 	
 	private void Awake()
 	{
@@ -91,7 +95,6 @@ public class DebugInfoTable : MonoBehaviour
 		
 		columnWidths[0] = 0;
 		columnWidths[1] = 0;
-		float totaWidth = 0;
 		
 		for (int i = 0; i < rowCount; i++)
 		{
@@ -99,20 +102,34 @@ public class DebugInfoTable : MonoBehaviour
 			
 			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
 			columnWidths[1] = Mathf.Max(columnWidths[1], row.ColumnWidth(1));
-			totaWidth = Mathf.Max(totaWidth, Mathf.Ceil(row.Size.x));
 		}
 		
-		float totalColumnsWidth = 0;
-		for (int i = 0; i < ColumnCount; i++)
+		float totaWidth = 0;
+		for (int i = 0; i < columnWidths.Length; i++)
 		{
-			totalColumnsWidth += columnWidths[i];
-		}
-		totaWidth = Mathf.Max(totaWidth, totalColumnsWidth);
-		
-		// Add any extra space to the last column.
-		if (totaWidth > totalColumnsWidth)
-		{
-			columnWidths[ColumnCount - 1] += totaWidth - totalColumnsWidth;
+			float columnWidth = columnWidths[i];
+			
+			if (columnWidth >= maxColumnWidths[i])
+			{
+				maxColumnWidths[i] = columnWidth;
+				maxColumnWidthTimers[i] = MaxWidthShrinkTime;
+			}
+			else if (maxColumnWidthTimers[i] > 0)
+			{
+				maxColumnWidthTimers[i] -= Time.fixedUnscaledDeltaTime;
+				
+				if (maxColumnWidthTimers[i] <= 0)
+				{
+					maxColumnWidths[i] = columnWidth;
+				}
+				else
+				{
+					columnWidth = maxColumnWidths[i];
+					columnWidths[i] = columnWidth;
+				}
+			}
+			
+			totaWidth += columnWidth;
 		}
 		
 		totaWidth += config.cellSpacing.x * (ColumnCount - 1);

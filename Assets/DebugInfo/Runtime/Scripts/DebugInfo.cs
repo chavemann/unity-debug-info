@@ -10,7 +10,6 @@ namespace C.Debugging
 {
 
 // TODO: Frame history?
-// TODO: Smooth out width changes?
 // TODO: Editor window?
 // TODO: Stack trace, click to go to?
 // TODO: Doc comments for all public methods and fields
