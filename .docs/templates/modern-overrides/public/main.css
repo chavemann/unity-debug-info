@@ -1,0 +1,11 @@
+[data-bs-theme=dark] {
+}
+
+[data-bs-theme=light] {
+}
+
+.member-section {
+	margin-left: 1em;
+	padding-left: 1em;
+	border-left: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+}

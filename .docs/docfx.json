@@ -1,0 +1,69 @@
+{
+	"metadata": [
+		{
+			"src": [
+				{
+					"src": "../",
+					"files": [
+						"C.DebugInfo.Runtime.csproj"
+					]
+				}
+			],
+			"dest": "api",
+			"filter": "filter.yml",
+			"includePrivateMembers": false,
+			"disableGitFeatures": false,
+			"disableDefaultFilter": false,
+			"noRestore": false,
+			"namespaceLayout": "flattened",
+			"memberLayout": "samePage",
+			"allowCompilationErrors": false
+		}
+	],
+	"build": {
+		"globalMetadata": {
+			"_appTitle": "DebugInfo Documentation",
+			"_appFooter": "DebugInfo Documentation",
+			"_enableSearch": true,
+			"_disableContribution": true,
+			"_disableTocCollapse": false,
+			"pdf": false
+		},
+		"content": [
+			{
+				"files": [
+					"api/**.yml",
+					"api/index.md"
+				]
+			},
+			{
+				"files": [
+					"toc.yml",
+					"*.md"
+				]
+			}
+		],
+		"resource": [
+			{
+				"files": [
+					"images/**"
+				]
+			}
+		],
+		"xref": [
+			"https://docs.unity3d.com/ScriptReference/xrefmap.yml"
+		],
+		"output": "_site",
+		"homePage": "api/index.md",
+		"globalMetadataFiles": [],
+		"fileMetadataFiles": [],
+		"template": [
+			"default",
+			"modern",
+			"templates/modern-overrides"
+		],
+		"postProcessors": [],
+		"keepFileLink": false,
+		"disableGitFeatures": false
+	}
+}
