@@ -3,6 +3,7 @@
 namespace C.Debugging
 {
 
+/// <exclude/>
 public readonly struct IgnoredGroup : IDisposable
 {
 	

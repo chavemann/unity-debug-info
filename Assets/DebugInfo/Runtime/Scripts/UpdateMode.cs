@@ -8,12 +8,12 @@ public enum UpdateMode
 {
 	
 	/// <summary>
-	/// Updates automatically happen every frame during Unity's Update.
+	/// Updates automatically happen every frame during Unity's <c>Update</c>.
 	/// </summary>
 	Update,
 	
 	/// <summary>
-	/// Updates automatically happen every frame during Unity's FixedUpdate.
+	/// Updates automatically happen every frame during Unity's <c>FixedUpdate</c>.
 	/// </summary>
 	FixedUpdate,
 	

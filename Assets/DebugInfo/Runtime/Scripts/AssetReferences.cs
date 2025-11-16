@@ -6,7 +6,7 @@ namespace C.Debugging
 {
 
 [CreateAssetMenu(fileName = "AssetReferences", menuName = "DebugInfo.AssetReferences")]
-public class AssetReferences : ScriptableObject
+internal class AssetReferences : ScriptableObject
 {
 	
 	public DebugInfo rootPrefab;

@@ -12,6 +12,10 @@ namespace C.Debugging
 
 // TODO: Frame history?
 // TODO: Editor window?
+
+/// <summary>
+/// The core DebugInfo class with various static methods for logging information.
+/// </summary>
 [DefaultExecutionOrder(10000)]
 public class DebugInfo : MonoBehaviour
 {
@@ -23,6 +27,7 @@ public class DebugInfo : MonoBehaviour
 	/// <summary>
 	/// The DebugInfo GameObject instance.
 	/// </summary>
+	/// <exclude/>
 	public static DebugInfo Instance { get; private set; }
 	
 	/// <summary>
@@ -30,6 +35,7 @@ public class DebugInfo : MonoBehaviour
 	/// DebugInfo provides static convenience methods for most methods so normally accessing this directly isn't needed.<br/>
 	/// Note: At the moment only a single table is supported.
 	/// </summary>
+	/// <exclude/>
 	public static DebugInfoTable DefaultTable { get; private set; }
 	
 	/// <summary>
@@ -87,7 +93,9 @@ public class DebugInfo : MonoBehaviour
 	
 	/// <summary>
 	/// Make sure to call this if <see cref="Debugging.Config.updateMode"/> is set to <see cref="UpdateMode.Manual"/>.<br/>
-	/// If the update mode is not set to <see cref="UpdateMode.Manual"/>, this will do nothing and issue a warning.
+	/// If the update mode is not set to <see cref="UpdateMode.Manual"/>, this will do nothing and issue a warning.<br/>
+	/// Failing to call this when the update mode is manual will prevent previous frame logs from being reset,
+	/// causing memory leaks and performance issues.
 	/// </summary>
 	[UsedImplicitly]
 	public static void UpdateAll()

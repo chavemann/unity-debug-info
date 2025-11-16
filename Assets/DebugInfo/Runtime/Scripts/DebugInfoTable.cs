@@ -8,6 +8,12 @@ using UnityEngine;
 namespace C.Debugging
 {
 
+/// <summary>
+/// A table to display logs.<br/>
+/// At the moment only a single table is supported and all logging can be done through the corresponding
+/// static <see cref="DebugInfo"/> methods.
+/// </summary>
+/// <exclude/>
 public class DebugInfoTable : MonoBehaviour
 {
 	
@@ -21,8 +27,11 @@ public class DebugInfoTable : MonoBehaviour
 	[SerializeField]
 	private RectTransform root;
 	
-	public RectTransform Root => root;
+	internal RectTransform Root => root;
 	
+	/// <summary>
+	/// The current group logs will be placed under, or null if not within a group scope.
+	/// </summary>
 	public GroupHeadingRow CurrentGroup { get; internal set; }
 	
 	private Config config;

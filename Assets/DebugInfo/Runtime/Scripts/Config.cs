@@ -5,6 +5,7 @@ namespace C.Debugging
 {
 
 /// <summary>
+/// Global configuration for DebugInfo.<br/>
 /// Note that these settings should be changed before logging anything to properly take effect.
 /// </summary>
 [Serializable]
@@ -27,7 +28,7 @@ public class Config
 	/// <summary>
 	/// The spacing between columns and rows.
 	/// </summary>
-	[Tooltip("The spacing between columns and rows.")]
+	[Tooltip("The horizontal and vertical spacing between columns and rows.")]
 	public Vector2 cellSpacing = new(1, 1);
 	
 	/// <summary>
