@@ -20,15 +20,31 @@ public class DebugInfo : MonoBehaviour
 	// ReSharper disable FieldCanBeMadeReadOnly.Global
 	// ReSharper disable ConvertToConstant.Global
 	
+	/// <summary>
+	/// The DebugInfo GameObject instance.
+	/// </summary>
 	public static DebugInfo Instance { get; private set; }
+	
+	/// <summary>
+	/// The default table instance where logs displayed.
+	/// DebugInfo provides static convenience methods for most methods so normally accessing this directly isn't needed.<br/>
+	/// Note: At the moment only a single table is supported.
+	/// </summary>
 	public static DebugInfoTable DefaultTable { get; private set; }
-	public static AssetReferences Assets { get; private set; }
+	
+	/// <summary>
+	/// Global configuration for DebugInfo.
+	/// Changes to this should be done before using DebugInfo to ensure that the values
+	/// are correctly applied to logs/notifications.
+	/// </summary>
 	public static Config Config => Instance.config;
-	public static Transform PoolContainer => Instance.poolContainer;
 	
 	// ReSharper restore MemberCanBePrivate.Global
 	// ReSharper restore FieldCanBeMadeReadOnly.Global
 	// ReSharper restore ConvertToConstant.Global
+	
+	internal static Transform PoolContainer => Instance.poolContainer;
+	internal static AssetReferences Assets { get; private set; }
 	
 	[SerializeField]
 	private new Transform transform;
@@ -69,6 +85,10 @@ public class DebugInfo : MonoBehaviour
 		tables.Add(DefaultTable);
 	}
 	
+	/// <summary>
+	/// Make sure to call this if <see cref="Debugging.Config.updateMode"/> is set to <see cref="UpdateMode.Manual"/>.<br/>
+	/// If the update mode is not set to <see cref="UpdateMode.Manual"/>, this will do nothing and issue a warning.
+	/// </summary>
 	[UsedImplicitly]
 	public static void UpdateAll()
 	{
