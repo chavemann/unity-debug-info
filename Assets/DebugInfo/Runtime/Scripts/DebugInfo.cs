@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using C.Debugging.Notifications;
+using C.Debugging.Rows;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -149,8 +150,11 @@ public class DebugInfo : MonoBehaviour
 		=> DefaultTable.Heading(label, color, bgColor, borderColor);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static GroupScope Group(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null, bool? collapsed = null)
-		=> DefaultTable.Group(label, color, bgColor, borderColor, collapsed);
+	public static GroupScope Group(
+		string label, Color? color = null, Color? bgColor = null, Color? borderColor = null,
+		bool? collapsed = null, Action<GroupHeadingRow, bool> onCollapsed = null
+	)
+		=> DefaultTable.Group(label, color, bgColor, borderColor, collapsed, onCollapsed);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IDisposable TryGroup(bool condition) => condition ? null : new IgnoredGroup();

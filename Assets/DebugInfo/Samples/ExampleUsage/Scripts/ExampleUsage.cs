@@ -150,7 +150,7 @@ public class ExampleUsage : MonoBehaviour
 		
 		GroupHeadingRow sphereGroup;
 		
-		using (DebugInfo.Group("Sphere", Color.aquamarine, borderColor: Color.aquamarine))
+		using (DebugInfo.Group("Sphere", Color.aquamarine, borderColor: Color.aquamarine, onCollapsed: OnSphereGroupCollapsed))
 		{
 			sphereGroup = DebugInfo.DefaultTable.CurrentGroup;
 			
@@ -188,6 +188,11 @@ public class ExampleUsage : MonoBehaviour
 		
 		DebugInfo.Spacer();
 		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Color.gray7);
+	}
+	
+	private static void OnSphereGroupCollapsed(GroupHeadingRow group, bool collapsed)
+	{
+		DebugInfo.Notify("Sphere group " + (collapsed ? Str.OffClr("Closed") : Str.OnClr("Opened")), "SphereGroupState");
 	}
 	
 	private static void ShowWelcomeNotification(float duration = 0)

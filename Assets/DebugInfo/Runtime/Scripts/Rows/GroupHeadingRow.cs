@@ -1,4 +1,5 @@
-﻿using C.Debugging.Cells;
+﻿using System;
+using C.Debugging.Cells;
 using UnityEngine;
 
 namespace C.Debugging.Rows
@@ -7,11 +8,12 @@ namespace C.Debugging.Rows
 public class GroupHeadingRow : HeadingRow
 {
 	
-	protected new readonly GroupHeadingCell labelCell;
+	private new readonly GroupHeadingCell labelCell;
 	
 	private int childCount;
 	
 	private bool? collapsed;
+	private Action<GroupHeadingRow, bool> onCollapsed;
 	
 	public bool Collapsed
 	{
@@ -23,6 +25,8 @@ public class GroupHeadingRow : HeadingRow
 			
 			collapsed = value;
 			labelCell.Collapsed = collapsed.Value;
+			
+			onCollapsed?.Invoke(this, Collapsed);
 		}
 	}
 	
@@ -32,12 +36,14 @@ public class GroupHeadingRow : HeadingRow
 		labelCell.groupHeadingRow = this;
 	}
 	
-	public void Set(string label, Color? color, Color? bgColor, Color? borderColor, bool? collapsed = null)
+	public void Set(string label, Color? color, Color? bgColor, Color? borderColor, bool? collapsed = null, Action<GroupHeadingRow, bool> onCollapsed = null)
 	{
 		if (collapsed.HasValue && !this.collapsed.HasValue)
 		{
 			Collapsed = collapsed.Value;
 		}
+		
+		this.onCollapsed = onCollapsed;
 		
 		base.Set(label, color, bgColor, borderColor);
 	}
