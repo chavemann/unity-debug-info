@@ -12,12 +12,13 @@
 
 .example-box {
 	display: flex;
-	flex-direction: row-reverse;
+	flex-direction: column-reverse;
 	align-items: start;
-	margin-bottom: 0.5em;
+	margin-bottom: 1em;
 }
 .example-box pre {
 	flex-grow: 1;
+	align-self: stretch;
 }
 .example-box img {
 	padding-left: 1em;
