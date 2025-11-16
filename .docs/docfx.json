@@ -27,9 +27,19 @@
 			"_enableSearch": true,
 			"_disableContribution": true,
 			"_disableTocCollapse": false,
-			"pdf": false
+			"pdfFileName": "DebugInfo.pdf",
+			"pdfTocPage": true
+		},
+		"fileMetadata": {
+			"pdf": {
+				"pdf/toc.yml": true
+			}
 		},
 		"content": [
+			{
+				"//": "For whatever reason including this breaks the left TOC, so be sure to disable it when generating the site normally.",
+				"fi les": ["pdf/toc.yml"]
+			},
 			{
 				"files": [
 					"api/**.yml",
@@ -54,7 +64,6 @@
 			"https://docs.unity3d.com/ScriptReference/xrefmap.yml"
 		],
 		"output": "_site",
-		"homePage": "api/index.md",
 		"globalMetadataFiles": [],
 		"fileMetadataFiles": [],
 		"template": [

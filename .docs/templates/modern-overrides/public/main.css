@@ -9,3 +9,16 @@
 	padding-left: 1em;
 	border-left: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
 }
+
+.example-box {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: start;
+	margin-bottom: 0.5em;
+}
+.example-box pre {
+	flex-grow: 1;
+}
+.example-box img {
+	padding-left: 1em;
+}

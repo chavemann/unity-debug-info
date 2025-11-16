@@ -1,5 +1,6 @@
+order: 2000
 items:
 - name: Overview
   href: /api/
 - name: DebugInfo API
-  href: api/C.Debugging.DebugInfo.yml
+  href: ../api/toc.yml
