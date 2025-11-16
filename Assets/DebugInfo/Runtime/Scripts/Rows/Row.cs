@@ -28,6 +28,8 @@ public abstract class Row
 		cell.row = this;
 	}
 	
+	public virtual float ColumnCount => 0;
+	
 	public virtual float ColumnWidth(int index) => 0;
 	
 	internal virtual void OnAdded(DebugInfoTable table)

@@ -157,12 +157,14 @@ public class DebugInfoTable : MonoBehaviour
 		columnWidths[0] = 0;
 		columnWidths[1] = 0;
 		
+		float maxRowWidth = 0;
 		for (int i = 0; i < rowCount; i++)
 		{
 			Row row = rows[i];
 			
 			columnWidths[0] = Mathf.Max(columnWidths[0], row.ColumnWidth(0));
 			columnWidths[1] = Mathf.Max(columnWidths[1], row.ColumnWidth(1));
+			maxRowWidth = Mathf.Max(maxRowWidth, row.Size.x);
 		}
 		
 		float totaWidth = 0;
@@ -191,6 +193,13 @@ public class DebugInfoTable : MonoBehaviour
 			}
 			
 			totaWidth += columnWidth;
+		}
+		
+		// Add any extra width onto the last column.
+		if (maxRowWidth > totaWidth)
+		{
+			columnWidths[^1] += maxRowWidth - totaWidth;
+			totaWidth = maxRowWidth;
 		}
 		
 		totaWidth += config.cellSpacing.x * (ColumnCount - 1);

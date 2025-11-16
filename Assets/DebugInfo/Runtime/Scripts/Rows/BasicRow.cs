@@ -15,6 +15,8 @@ public abstract class BasicRow : Row
 		labelCell.row = this;
 	}
 	
+	public override float ColumnCount => 1;
+	
 	public void Set(string label, Color? color, Color? bgColor)
 	{
 		labelCell.Set(label, color, bgColor);

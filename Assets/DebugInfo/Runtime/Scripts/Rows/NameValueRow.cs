@@ -10,6 +10,8 @@ internal class NameValueRow : Row
 	private readonly Cell labelCell;
 	private readonly Cell valueCell;
 	
+	public override float ColumnCount => 2;
+	
 	public override float ColumnWidth(int index) => index == 1 ? valueCell.Size.x : labelCell.Size.x;
 	
 	public NameValueRow()
