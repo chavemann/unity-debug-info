@@ -20,6 +20,12 @@ public class Config
 	public Vector2 margin = new(4, 4);
 	
 	/// <summary>
+	/// The spacing between columns and rows.
+	/// </summary>
+	[Tooltip("The spacing between columns and rows.")]
+	public Vector2 cellSpacing = new(1, 1);
+	
+	/// <summary>
 	/// The default text alignment for all labels.
 	/// </summary>
 	[Tooltip("The default text alignment for all labels.")]
@@ -54,12 +60,6 @@ public class Config
 	/// </summary>
 	[Tooltip("The default border color for headings.")]
 	public Color headingBorderColor = new(0, 0, 0, 0.5f);
-	
-	/// <summary>
-	/// The spacing between columns and rows.
-	/// </summary>
-	[Tooltip("The spacing between columns and rows.")]
-	public Vector2 cellSpacing = new(1, 1);
 	
 	/// <summary>
 	/// The default height for spacers when a size isn't explicitly set.

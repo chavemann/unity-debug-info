@@ -52,12 +52,13 @@ MonoBehaviour:
   config:
     updateMode: 0
     margin: {x: 4, y: 4}
+    cellSpacing: {x: 1, y: 1}
     labelAlign: 0
     textColor: {r: 1, g: 1, b: 1, a: 1}
     backgroundColor: {r: 0, g: 0, b: 0, a: 0.6509804}
     textPadding: {x: 4, y: 1}
     headingTextPadding: {x: 6, y: 4}
-    cellSpacing: {x: 1, y: 1}
+    headingBorderColor: {r: 0, g: 0, b: 0, a: 0.5}
     defaultSpacerSize: 4
     groupIndent: 12
     showGroupIndentMargin: 1
