@@ -35,9 +35,9 @@ public class GroupHeadingCell : HeadingCell, IPointerClickHandler
 		PositionFoldIcon();
 	}
 	
-	public override void Set(string text, Color? color, Color? backgroundColor)
+	public override void Set(string text, Color? color, Color? bgColor)
 	{
-		base.Set(text, color, backgroundColor);
+		base.Set(text, color, bgColor);
 		
 		foldIcon.color = color ?? DebugInfo.Config.textColor;
 	}

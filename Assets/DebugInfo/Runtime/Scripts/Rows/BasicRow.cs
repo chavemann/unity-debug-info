@@ -15,9 +15,9 @@ public abstract class BasicRow : Row
 		labelCell.row = this;
 	}
 	
-	public void Set(string label, Color? color, Color? backgroundColor)
+	public void Set(string label, Color? color, Color? bgColor)
 	{
-		labelCell.Set(label, color, backgroundColor);
+		labelCell.Set(label, color, bgColor);
 		Size = labelCell.Size;
 	}
 	

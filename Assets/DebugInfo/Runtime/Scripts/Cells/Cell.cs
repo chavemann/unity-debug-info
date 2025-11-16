@@ -38,10 +38,10 @@ public class Cell : MonoBehaviour
 		padding = DebugInfo.Config.textPadding;
 	}
 	
-	public virtual void Set(string text, Color? color, Color? backgroundColor)
+	public virtual void Set(string text, Color? color, Color? bgColor)
 	{
 		textField.color = color ?? DebugInfo.Config.textColor;
-		background.color = backgroundColor ?? DebugInfo.Config.backgroundColor;
+		background.color = bgColor ?? DebugInfo.Config.backgroundColor;
 		
 		if (text == currentText)
 			return;

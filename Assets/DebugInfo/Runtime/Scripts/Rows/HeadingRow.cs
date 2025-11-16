@@ -21,9 +21,9 @@ public class HeadingRow : BasicRow
 	
 	protected override void ReturnToPool() => RowPool<HeadingRow>.Release(this);
 	
-	public void Set(string label, Color? color, Color? backgroundColor, Color? borderColor)
+	public void Set(string label, Color? color, Color? bgColor, Color? borderColor)
 	{
-		labelCell.Set(label, color, backgroundColor, borderColor);
+		labelCell.Set(label, color, bgColor, borderColor);
 		Size = labelCell.Size;
 	}
 	

@@ -32,14 +32,14 @@ public class GroupHeadingRow : HeadingRow
 		labelCell.groupHeadingRow = this;
 	}
 	
-	public void Set(string label, Color? color, Color? backgroundColor, Color? borderColor, bool? collapsed = null)
+	public void Set(string label, Color? color, Color? bgColor, Color? borderColor, bool? collapsed = null)
 	{
 		if (collapsed.HasValue && !this.collapsed.HasValue)
 		{
 			Collapsed = collapsed.Value;
 		}
 		
-		base.Set(label, color, backgroundColor, borderColor);
+		base.Set(label, color, bgColor, borderColor);
 	}
 	
 	protected override void ReturnToPool() => RowPool<GroupHeadingRow>.Release(this);

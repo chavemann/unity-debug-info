@@ -20,10 +20,10 @@ internal class NameValueRow : Row
 		labelCell.textField.alignment = DebugInfo.Config.labelAlign;
 	}
 	
-	public void Set(string label, string value, Color? labelColor, Color? valueColor, Color? backgroundColor)
+	public void Set(string label, string value, Color? labelColor, Color? valueColor, Color? bgColor)
 	{
-		labelCell.Set(label, labelColor, backgroundColor);
-		valueCell.Set(value, valueColor, backgroundColor);
+		labelCell.Set(label, labelColor, bgColor);
+		valueCell.Set(value, valueColor, bgColor);
 		
 		Size = new Vector2(
 			labelCell.Size.x + valueCell.Size.x,

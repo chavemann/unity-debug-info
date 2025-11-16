@@ -17,11 +17,11 @@ public class HeadingCell : Cell
 		padding = DebugInfo.Config.headingTextPadding;
 	}
 	
-	public void Set(string text, Color? color, Color? backgroundColor, Color? borderColor)
+	public void Set(string text, Color? color, Color? bgColor, Color? borderColor)
 	{
 		border.color = borderColor ?? DebugInfo.Config.headingBorderColor;
 		
-		Set(text, color, backgroundColor);
+		Set(text, color, bgColor);
 	}
 	
 }

@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
-// TODO: Make bgColor and backgroundColor  names consistent
 // TODO: Frame history?
 // TODO: Smooth out width changes?
 // TODO: Editor window?
