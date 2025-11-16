@@ -44,6 +44,11 @@ public class DebugInfoTable : MonoBehaviour
 	
 	#region -- Logging Methods --------------------------------
 	
+	/// <summary>
+	/// Adds empty space between the previous and next row.
+	/// </summary>
+	/// <param name="space">If not provided the default spacing set in <see cref="DebugInfo.Config"/> will be used.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Spacer(float? space = null)
 	{
@@ -51,6 +56,14 @@ public class DebugInfoTable : MonoBehaviour
 		return this;
 	}
 	
+	/// <summary>
+	/// A header only has a single column, is slightly larger than normal rows, and has a subtle bottom border.
+	/// </summary>
+	/// <param name="label">The heading text.</param>
+	/// <param name="color">The text color.</param>
+	/// <param name="bgColor">The background color.</param>
+	/// <param name="borderColor">The bottom border color.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null)
 	{
@@ -58,6 +71,13 @@ public class DebugInfoTable : MonoBehaviour
 		return this;
 	}
 	
+	/// <summary>
+	/// Displays a row with a single column of text.
+	/// </summary>
+	/// <param name="label">The text to display1111.</param>
+	/// <param name="color">The text color.</param>
+	/// <param name="bgColor">The background color.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Log(string label, Color? color = null, Color? bgColor = null)
 	{
@@ -65,6 +85,19 @@ public class DebugInfoTable : MonoBehaviour
 		return this;
 	}
 	
+	/// <summary>
+	/// Wraps subsequent logs in a collapsable group.<br/>
+	/// Returns an <see cref="IDisposable"/> that must be used with the <c>using</c> statement.<br/>
+	/// Usage:
+	/// <code>using (DebugInfo.Group("My Group")) { /* ... */ }</code>
+	/// </summary>
+	/// <param name="label">The group heading text.</param>
+	/// <param name="color">The text color.</param>
+	/// <param name="bgColor">The background color.</param>
+	/// <param name="borderColor">The bottom border color.</param>
+	/// <param name="collapsed">If non-null, sets the default state when the group is first created.</param>
+	/// <param name="onCollapsed">A callback triggered when the group is toggled by the user.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public GroupScope Group(
 		string label, Color? color = null, Color? bgColor = null, Color? borderColor = null,
@@ -75,6 +108,14 @@ public class DebugInfoTable : MonoBehaviour
 		return new GroupScope(this, row);
 	}
 	
+	/// <summary>
+	/// Displays a row with a key and value column.
+	/// </summary>
+	/// <param name="label">The key/label column text.</param>
+	/// <param name="value">The value column text.</param>
+	/// <param name="color">The text color for the whole row.</param>
+	/// <param name="bgColor">The background color.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 	{
@@ -82,6 +123,15 @@ public class DebugInfoTable : MonoBehaviour
 		return this;
 	}
 	
+	/// <summary>
+	/// Displays a row with a key and value column each with a different color.
+	/// </summary>
+	/// <param name="label">The key/label column text.</param>
+	/// <param name="labelColor">The key/label column text color.</param>
+	/// <param name="value">The value column text.</param>
+	/// <param name="valueColor">The value column text color.</param>
+	/// <param name="bgColor">The background color.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public DebugInfoTable Log(string label, Color? labelColor, string value, Color? valueColor, Color? bgColor = null)
 	{

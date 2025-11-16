@@ -12,8 +12,6 @@ namespace C.Debugging
 
 // TODO: Frame history?
 // TODO: Editor window?
-// TODO: Stack trace, click to go to?
-// TODO: Doc comments for all public methods and fields
 [DefaultExecutionOrder(10000)]
 public class DebugInfo : MonoBehaviour
 {
@@ -21,11 +19,13 @@ public class DebugInfo : MonoBehaviour
 	// ReSharper disable MemberCanBePrivate.Global
 	// ReSharper disable FieldCanBeMadeReadOnly.Global
 	// ReSharper disable ConvertToConstant.Global
+	
 	public static DebugInfo Instance { get; private set; }
 	public static DebugInfoTable DefaultTable { get; private set; }
 	public static AssetReferences Assets { get; private set; }
 	public static Config Config => Instance.config;
 	public static Transform PoolContainer => Instance.poolContainer;
+	
 	// ReSharper restore MemberCanBePrivate.Global
 	// ReSharper restore FieldCanBeMadeReadOnly.Global
 	// ReSharper restore ConvertToConstant.Global
@@ -142,13 +142,16 @@ public class DebugInfo : MonoBehaviour
 	// ReSharper disable UnusedMethodReturnValue.Global
 	// ReSharper disable UnusedMember.Global
 	
+	/// <inheritdoc cref="DebugInfoTable.Spacer"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Spacer(float? space = null) => DefaultTable.Spacer(space);
 	
+	/// <inheritdoc cref="DebugInfoTable.Heading"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null)
 		=> DefaultTable.Heading(label, color, bgColor, borderColor);
 	
+	/// <inheritdoc cref="DebugInfoTable.Group"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static GroupScope Group(
 		string label, Color? color = null, Color? bgColor = null, Color? borderColor = null,
@@ -156,17 +159,28 @@ public class DebugInfo : MonoBehaviour
 	)
 		=> DefaultTable.Group(label, color, bgColor, borderColor, collapsed, onCollapsed);
 	
+	/// <summary>
+	/// A convenience method for conditionally wrapping logs in a group.<br/>
+	/// Usage:
+	/// <code>using (DebugInfo.TryGroup(condition) ?? DebugInfo.Group("My Group")) { /* ... */ }</code>
+	/// </summary>
+	/// <param name="condition">If true, the group will work as per normal.
+	/// If false, no group will be created and subsequent logs will be output normally.</param>
+	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static IDisposable TryGroup(bool condition) => condition ? null : new IgnoredGroup();
 	
+	/// <inheritdoc cref="DebugInfoTable.Log(string,Color?,Color?)"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Log(label, color, bgColor);
 	
+	/// <inheritdoc cref="DebugInfoTable.Log(string,string,Color?,Color?)"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, string value, Color? color = null, Color? bgColor = null)
 		=> DefaultTable.Log(label, value, color, bgColor);
 	
+	/// <inheritdoc cref="DebugInfoTable.Log(string,Color?,string,Color?,Color?)"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static DebugInfoTable Log(string label, Color? labelColor, string value, Color? valueColor, Color? bgColor = null)
 	{
