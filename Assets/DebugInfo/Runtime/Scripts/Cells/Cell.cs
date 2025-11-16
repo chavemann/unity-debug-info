@@ -66,6 +66,7 @@ public class Cell : MonoBehaviour
 		transform.localPosition = position;
 		
 		Vector2 textSize = GetTextSize(size);
+		textSize.x -= indentWidth;
 		textFieldTransform.sizeDelta = textSize - padding * 2;
 		transform.sizeDelta = size;
 	}
