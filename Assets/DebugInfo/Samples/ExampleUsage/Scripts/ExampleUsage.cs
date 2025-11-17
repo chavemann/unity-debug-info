@@ -152,7 +152,9 @@ public class ExampleUsage : MonoBehaviour
 		{
 			sphereGroup = DebugInfo.DefaultTable.CurrentGroup;
 			
+			#pragma warning disable CS0618 // Type or member is obsolete
 			Vector3 velocity = sphereRigidbody.velocity;
+			#pragma warning restore CS0618 // Type or member is obsolete
 			
 			// The label, value, or color of both can be changed as a whole by passing
 			// using the `Color` parameters.
