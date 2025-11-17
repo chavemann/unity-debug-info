@@ -1,4 +1,5 @@
 ﻿using System;
+using C.Debugging.Formatting;
 using UnityEngine;
 
 namespace C.Debugging
@@ -42,7 +43,7 @@ public class Config
 	/// The default text colour for all labels.
 	/// </summary>
 	[Tooltip("The default text colour for all labels.")]
-	public Color textColor = Color.white;
+	public Color textColor = Clr.white;
 	
 	/// <summary>
 	/// The default cell background colour for all labels.

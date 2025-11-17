@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
 
+using Clr2 = C.Debugging.Formatting.Clr;
+
 // ReSharper disable UnusedMember.Global
 // ReSharper disable FieldCanBeMadeReadOnly.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -99,37 +101,22 @@ public static class Str
 	
 	#region -- Utility Colors --------------------------------
 	
-	public static readonly Color TransformRgb = new(1f, 0.68f, 0.725f);
-	public static readonly string TransformHex = ToHex(TransformRgb);
-	
-	public static readonly Color CollisionRgb = new(1f, 0.83f, 0.7f);
-	public static readonly string CollisionHex = ToHex(CollisionRgb);
-	
-	public static readonly Color StateRgb = new(0.73f, 0.86f, 0.74f);
-	public static readonly string StateHex = ToHex(StateRgb);
-	
-	public static readonly Color OnRgb = new(0.584f, 1, 0.584f, 1);
-	public static readonly string OnHex = ToHex(OnRgb);
-	
-	public static readonly Color OffRgb = new(1, 0.584f, 0.584f, 1);
-	public static readonly string OffHex = ToHex(OffRgb);
-	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	public static string Clr(string v, string clr) => $"<color={clr}>{v}</color>";
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string OnClr(string v) => Clr(v, OnHex);
+	public static string OnClr(string v) => Clr(v, Clr2.OnHex);
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string OffClr(string v) => Clr(v, OffHex);
+	public static string OffClr(string v) => Clr(v, Clr2.OffHex);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string TransformClr(string v) => Clr(v, TransformHex);
+	public static string TransformClr(string v) => Clr(v, Clr2.TransformHex);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string CollisionClr(string v) => Clr(v, CollisionHex);
+	public static string CollisionClr(string v) => Clr(v, Clr2.CollisionHex);
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static string StateClr(string v) => Clr(v, StateHex);
+	public static string StateClr(string v) => Clr(v, Clr2.StateHex);
 	
 	#endregion -----------------------------------------
 	

@@ -117,14 +117,14 @@ public class ExampleUsage : MonoBehaviour
 		{
 			showMisc = !showMisc;
 			// Shows an "On"/"Off" message based on the passed in bool value. These are unique by default.
-			DebugInfo.NotifyOn("Show Misc", showMisc, Color.brown, new Color(0.41f, 0f, 0.09f, 0.5f));
+			DebugInfo.NotifyOn("Show Misc", showMisc, Clr.brown, new Color(0.41f, 0f, 0.09f, 0.5f));
 		}
 		
 		if (toggleGroupMisc)
 		{
 			groupMisc = !groupMisc;
 			// Shows an "Enabled"/"Disabled" message based on the passed in bool value. These are unique by default.
-			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Color.forestGreen, new Color(0f, 0.39f, 0f, 0.5f));
+			DebugInfo.NotifyEnabled("Group Misc", groupMisc, Clr.forestGreen, new Color(0f, 0.39f, 0f, 0.5f));
 		}
 	}
 	
@@ -148,18 +148,18 @@ public class ExampleUsage : MonoBehaviour
 		
 		GroupHeadingRow sphereGroup;
 		
-		using (DebugInfo.Group("Sphere", Color.aquamarine, borderColor: Color.aquamarine, onCollapsed: OnSphereGroupCollapsed))
+		using (DebugInfo.Group("Sphere", Clr.aquamarine, borderColor: Clr.aquamarine, onCollapsed: OnSphereGroupCollapsed))
 		{
 			sphereGroup = DebugInfo.DefaultTable.CurrentGroup;
 			
-			Vector3 velocity = sphereRigidbody.linearVelocity;
+			Vector3 velocity = sphereRigidbody.velocity;
 			
 			// The label, value, or color of both can be changed as a whole by passing
 			// using the `Color` parameters.
-			DebugInfo.Log("Position", Str.F(sphere.localPosition), Str.TransformRgb);
+			DebugInfo.Log("Position", Str.F(sphere.localPosition), Clr.TransformRgb);
 			// There are also various functions for wrapping individual sections of text
 			// in specific colors.
-			DebugInfo.Log("Velocity", Str.F(velocity), Str.TransformRgb);
+			DebugInfo.Log("Velocity", Str.F(velocity), Clr.TransformRgb);
 			DebugInfo.Log(Str.I(Str.Gold("Speed >>")), Str.Clr($"[{Str.F(velocity.magnitude)}]", "#ddbaef"));
 			
 			// Setting a per-heading border color is also possible.
@@ -171,21 +171,21 @@ public class ExampleUsage : MonoBehaviour
 				// If condition is false the inner logs are still shown but no group is created.
 				// If condition is true `DebugInfo.Group` is executed and the inner logs are
 				// added to the group like normal.
-				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc (Nested Group)", Color.magenta, borderColor: Color.magenta))
+				using (DebugInfo.TryGroup(groupMisc) ?? DebugInfo.Group("Misc (Nested Group)", Clr.magenta, borderColor: Clr.magenta))
 				{
-					DebugInfo.Log("Direction", velocity.x < 0 ? "Left" : "Right", Str.StateRgb);
-					DebugInfo.Log("Collisions", Str.F(collisionCount), Str.CollisionRgb);
+					DebugInfo.Log("Direction", velocity.x < 0 ? "Left" : "Right", Clr.StateRgb);
+					DebugInfo.Log("Collisions", Str.F(collisionCount), Clr.CollisionRgb);
 				}
 			}
 			
-			DebugInfo.Log("Show Misc", null, Str.F(showMisc), showMisc ? Str.OnRgb : Str.OffRgb);
-			DebugInfo.Log("Group Misc", null, Str.F(groupMisc), groupMisc ? Str.OnRgb : Str.OffRgb);
+			DebugInfo.Log("Show Misc", null, Str.F(showMisc), showMisc ? Clr.OnRgb : Clr.OffRgb);
+			DebugInfo.Log("Group Misc", null, Str.F(groupMisc), groupMisc ? Clr.OnRgb : Clr.OffRgb);
 		}
 		
-		DebugInfo.Log("Collapsed", null, Str.F(sphereGroup.Collapsed), !sphereGroup.Collapsed ? Str.OnRgb : Str.OffRgb);
+		DebugInfo.Log("Collapsed", null, Str.F(sphereGroup.Collapsed), !sphereGroup.Collapsed ? Clr.OnRgb : Clr.OffRgb);
 		
 		DebugInfo.Spacer();
-		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Color.gray7);
+		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Clr.gray7);
 	}
 	
 	private static void OnSphereGroupCollapsed(GroupHeadingRow group, bool collapsed)
@@ -199,7 +199,7 @@ public class ExampleUsage : MonoBehaviour
 			$"This is a {Str.I(Str.Aquamarine("Notification"))}.\n" +
 			$"Press {Str.B(Str.Cyan("[1]"))} to display this message again, and the\n" +
 			 "other number keys to test other notifications.",
-			 "HelloMsg", borderColor: Color.aquamarine, duration: duration);
+			 "HelloMsg", borderColor: Clr.aquamarine, duration: duration);
 	}
 	
 	private void MoveSphere()
