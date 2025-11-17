@@ -23,10 +23,13 @@
 	"build": {
 		"globalMetadata": {
 			"_appTitle": "DebugInfo Documentation",
+			"_appFaviconPath": "favicon.svg",
+			"_appLogoPath": "logo.svg",
 			"_appFooter": "DebugInfo Documentation",
 			"_enableSearch": true,
 			"_disableContribution": true,
 			"_disableTocCollapse": false,
+			
 			"pdfFileName": "DebugInfo.pdf",
 			"pdfTocPage": true
 		},
@@ -56,7 +59,9 @@
 		"resource": [
 			{
 				"files": [
-					"images/**"
+					"images/**",
+					"favicon.svg",
+					"logo.svg"
 				]
 			}
 		],
