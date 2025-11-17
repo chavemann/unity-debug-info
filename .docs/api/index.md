@@ -156,7 +156,7 @@ DebugInfo.NotifyEnabled("Disabled", false);
 [str-f-ref]: xref:C.Debugging.Formatting.Str.F(System.Int32)
 [single-log-ref]: xref:C.Debugging.DebugInfo.Log(System.String,System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color})
 [double-log-ref]: xref:C.Debugging.DebugInfo.Log(System.String,System.String,System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color})
-[heading-ref]: xref:C.Debugging.DebugInfo.Heading(System.String,System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color})
+[heading-ref]: xref:C.Debugging.DebugInfo.Heading(System.String,System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.TextAnchor})
 [spacer-ref]: xref:C.Debugging.DebugInfo.Spacer(System.Nullable{System.Single})
 [group-ref]: xref:C.Debugging.DebugInfo.Group(System.String,System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Nullable{System.Boolean},System.Action{C.Debugging.Rows.GroupHeadingRow,System.Boolean})
 [notify-ref]: xref:C.Debugging.DebugInfo.Notify(System.String,System.String,System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Nullable{UnityEngine.Color},System.Single)
