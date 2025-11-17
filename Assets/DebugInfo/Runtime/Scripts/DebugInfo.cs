@@ -176,8 +176,8 @@ public class DebugInfo : MonoBehaviour
 	
 	/// <inheritdoc cref="DebugInfoTable.Heading"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null)
-		=> DefaultTable.Heading(label, color, bgColor, borderColor);
+	public static DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null, TextAnchor? alignment = null)
+		=> DefaultTable.Heading(label, color, bgColor, borderColor, alignment);
 	
 	/// <inheritdoc cref="DebugInfoTable.Group"/>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]

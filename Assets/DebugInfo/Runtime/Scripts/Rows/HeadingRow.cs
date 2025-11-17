@@ -21,10 +21,17 @@ public class HeadingRow : BasicRow
 	
 	protected override void ReturnToPool() => RowPool<HeadingRow>.Release(this);
 	
-	public void Set(string label, Color? color, Color? bgColor, Color? borderColor)
+	public void Set(string label, Color? color, Color? bgColor, Color? borderColor, TextAnchor? alignment)
 	{
-		labelCell.Set(label, color, bgColor, borderColor);
+		labelCell.Set(label, color, bgColor, borderColor, alignment);
 		Size = labelCell.Size;
+	}
+	
+	internal override void OnRemoved()
+	{
+		labelCell.textField.alignment = TextAnchor.UpperLeft;
+		
+		base.OnRemoved();
 	}
 	
 }

@@ -7,8 +7,7 @@ namespace C.Debugging.Cells
 public class HeadingCell : Cell
 {
 	
-	[SerializeField]
-	private RawImage border;
+	public RawImage border;
 	
 	protected override void InitialiseProperties()
 	{
@@ -17,11 +16,16 @@ public class HeadingCell : Cell
 		padding = DebugInfo.Config.headingTextPadding;
 	}
 	
-	public void Set(string text, Color? color, Color? bgColor, Color? borderColor)
+	public void Set(string text, Color? color, Color? bgColor, Color? borderColor, TextAnchor? alignment)
 	{
 		border.color = borderColor ?? DebugInfo.Config.headingBorderColor;
 		
 		Set(text, color, bgColor);
+		
+		if (alignment.HasValue)
+		{
+			textField.alignment = alignment.Value;
+		}
 	}
 	
 }

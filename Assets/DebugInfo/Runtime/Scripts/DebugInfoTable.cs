@@ -72,11 +72,12 @@ public class DebugInfoTable : MonoBehaviour
 	/// <param name="color">The text color.</param>
 	/// <param name="bgColor">The background color.</param>
 	/// <param name="borderColor">The bottom border color.</param>
+	/// <param name="alignment">How to align the text.</param>
 	/// <returns></returns>
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	public DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null)
+	public DebugInfoTable Heading(string label, Color? color = null, Color? bgColor = null, Color? borderColor = null, TextAnchor? alignment = null)
 	{
-		NextRow<HeadingRow>().Set(label, color, bgColor, borderColor);
+		NextRow<HeadingRow>().Set(label, color, bgColor, borderColor, alignment);
 		return this;
 	}
 	
