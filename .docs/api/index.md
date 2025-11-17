@@ -39,8 +39,8 @@ It's possible to specify the color of the background; key text, value text, or b
 <img src="/images/logging-colors.png" alt="Color logging example."/>
 
 ```csharp
-DebugInfo.Log("RedKey", "RedValue", Color.lightCoral);
-DebugInfo.Log("GreenKey", Color.lawnGreen, "BlueValue", Color.lightSkyBlue);
+DebugInfo.Log("RedKey", "RedValue", Clr.lightCoral);
+DebugInfo.Log("GreenKey", Clr.lawnGreen, "BlueValue", Clr.lightSkyBlue);
 ```
 </div>
 
@@ -56,7 +56,7 @@ point [precision][str-precision-ref] field.
 
 ```csharp
 DebugInfo.Log("Time", $"{Str.F(Time.fixedTime)} ({Str.Cyan(Str.F(Time.frameCount))})");
-DebugInfo.Log("Velocity", Str.F(sphereRigidbody.linearVelocity), Str.TransformRgb);
+DebugInfo.Log("Velocity", Str.F(sphereRigidbody.linearVelocity), Clr.TransformRgb);
 ```
 </div>
 
@@ -76,8 +76,8 @@ DebugInfo.Log("Key1", "Value1");
 DebugInfo.Spacer(8);
 
 // Changing the background and border color is also possible.
-DebugInfo.Heading("Heading2", color: Color.lightCoral,
-	bgColor: new Color(0.31f, 0.11f, 0.15f, 0.5f), borderColor: Color.lightCoral);
+DebugInfo.Heading("Heading2", color: Clr.lightCoral,
+	bgColor: new Color(0.31f, 0.11f, 0.15f, 0.5f), borderColor: Clr.lightCoral);
 DebugInfo.Log("Key2", "Value2");
 ```
 </div>
@@ -95,11 +95,11 @@ and a callback for when the group is opened or closed.
 <img src="/images/logging-groups.png" alt="Grouping example."/>
 
 ```csharp
-using (DebugInfo.Group("My Group", Color.lightSkyBlue)) {
+using (DebugInfo.Group("My Group", Clr.lightSkyBlue)) {
 	DebugInfo.Log("A single line of text.");
-	using (DebugInfo.Group("Nested Group", Color.lightCoral)) {
+	using (DebugInfo.Group("Nested Group", Clr.lightCoral)) {
 		DebugInfo.Log("Nested content");
-		using (DebugInfo.Group("Collapsed Group", Color.khaki, collapsed: true)) {
+		using (DebugInfo.Group("Collapsed Group", Clr.khaki, collapsed: true)) {
 			DebugInfo.Log("Collapsed content");
 		}
 	}
@@ -126,12 +126,12 @@ DebugInfo.Notify("Lorem ipsum dolor sit amet",
 
 // Set the duration to 10 seconds before the notification fades out.
 DebugInfo.Notify($"[!Important] Lorem ipsum dolor sit amet",
-	color: Color.lightCoral, duration: 10);
+	color: Clr.lightCoral, duration: 10);
 
 // Giving the notification a unique id will cause subsequent calls to
 // update the existing notification instead of creating new ones.
 DebugInfo.Notify($"CurrentTime: {Str.F(Time.deltaTime)}", "UniqueId",
-	color: Color.khaki);
+	color: Clr.khaki);
 ```
 </div>
 
