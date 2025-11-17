@@ -45,7 +45,6 @@ public class ExampleUsage : MonoBehaviour
 	private void Start()
 	{
 		ShowWelcomeNotification(6);
-		// DocumentationNotifications();
 		
 		previousPosition = sphere.position;
 	}
@@ -55,7 +54,6 @@ public class ExampleUsage : MonoBehaviour
 		MoveSphere();
 		
 		TestLogs();
-		// DocumentationLogs();
 		
 		// For demonstration purposes manually update DebugInfo, but `UpdateMode.FixedUpdate` could have
 		// been used instead to allow DebugInfo to handle it automatically.
@@ -188,83 +186,6 @@ public class ExampleUsage : MonoBehaviour
 		
 		DebugInfo.Spacer();
 		DebugInfo.Log("Multiline", null, "Line 1\nLine 2", Color.gray7);
-	}
-	
-	private static void DocumentationLogs()
-	{
-		// Settings for screenshots:
-		// Cell.Text.FontSize: 18
-		// DebugInfo.Config:
-		//     CellSpacing: 2, 2
-		//     TextPadding: 8, 4
-		
-		/* Basic */
-		// DebugInfo.Log("A single line of text.");
-		// DebugInfo.Log("Key", "Value");
-		
-		/* Color */
-		// DebugInfo.Log("RedKey", "RedValue", Color.lightCoral);
-		// DebugInfo.Log("GreenKey", Color.lawnGreen, "BlueValue", Color.lightSkyBlue);
-		// DebugInfo.Log("RedBackground", bgColor: new Color(0.31f, 0.11f, 0.15f, 0.5f));
-		
-		/* Formatting */
-		// DebugInfo.Log("Time", $"{Str.F(Time.fixedTime)} ({Str.Cyan(Str.F(Time.frameCount))})");
-		// DebugInfo.Log("Velocity", Str.F(sphereRigidbody.linearVelocity), Str.TransformRgb);
-		
-		/* Headings */
-		// DebugInfo.Heading("Heading");
-		// DebugInfo.Log("Key1", "Value1");
-		//
-		// // It's possible to set a height per spacer. If omitted the default as set in the configuration is used.
-		// DebugInfo.Spacer(8);
-		//
-		// // Changing the background and border color is also possible.
-		// DebugInfo.Heading("Heading2", color: Color.lightCoral,
-		// 	bgColor: new Color(0.31f, 0.11f, 0.15f, 0.5f), borderColor: Color.lightCoral);
-		// DebugInfo.Log("Key2", "Value2");
-		
-		/* Groups */
-		// using (DebugInfo.Group("My Group", Color.lightSkyBlue)) {
-		// 	DebugInfo.Log("A single line of text.");
-		// 	using (DebugInfo.Group("Nested Group", Color.lightCoral)) {
-		// 		DebugInfo.Log("Nested content");
-		// 		using (DebugInfo.Group("Collapsed Group", Color.khaki, collapsed: true)) {
-		// 			DebugInfo.Log("Collapsed content");
-		// 		}
-		// 	}
-		// 	DebugInfo.Log("Key", "Value");
-		// }
-	}
-	
-	private static void DocumentationNotifications()
-	{
-		// Settings for screenshots:
-		// Notification.Text.FontSize: 18
-		// DebugInfo.NotificationListContainer.VerticalLayoutGroup.Spacing: 4
-		// Notification.TextWrapper.HorizontalLayoutGroup:
-		//     Padding: 8, 4
-		
-		/* Basic */
-		// DebugInfo.Notify($"Lorem {Str.Cyan("ipsum dolor")} sit amet," +
-		// 	"\nconsectetur adipiscing elit.");
-		// DebugInfo.Notify("Lorem ipsum dolor sit amet",
-		// 	bgColor: new Color(0.7f, 0.7f, 0.24f, 0.25f),
-		// 	borderColor: new Color(0.86f, 0.78f, 0.43f));
-		//
-		// // Set the duration to 10 seconds before the notification fades out.
-		// DebugInfo.Notify($"[!Important] Lorem ipsum dolor sit amet",
-		// 	color: Color.lightCoral, duration: 10);
-		//
-		// // Giving the notification a unique id will cause subsequent calls to
-		// // update the existing notification instead of creating new ones.
-		// DebugInfo.Notify($"CurrentTime: {Str.F(Time.deltaTime)}", "UniqueId",
-		// 	color: Color.khaki);
-		
-		/* Toggle Messages */
-		// DebugInfo.NotifyOn("ToggledOn", true);
-		// DebugInfo.NotifyOn("ToggledOff", false);
-		// DebugInfo.NotifyEnabled("Enabled", true);
-		// DebugInfo.NotifyEnabled("Disabled", false);
 	}
 	
 	private static void OnSphereGroupCollapsed(GroupHeadingRow group, bool collapsed)
