@@ -45,7 +45,7 @@ public class GroupHeadingRow : HeadingRow
 		
 		this.onCollapsed = onCollapsed;
 		
-		base.Set(label, color, bgColor, borderColor);
+		base.Set(label, color, bgColor, borderColor, null);
 	}
 	
 	protected override void ReturnToPool() => RowPool<GroupHeadingRow>.Release(this);
