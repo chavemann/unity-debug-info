@@ -1,6 +1,7 @@
 ﻿using C.Debugging;
 using C.Debugging.Formatting;
 using UnityEngine;
+using UnityEngine.UI;
 
 #pragma warning disable CS0162 // Unreachable code detected
 // ReSharper disable HeuristicUnreachableCode
@@ -17,6 +18,8 @@ public class DocumentationExamples : MonoBehaviour
 	
 	private void Start()
 	{
+		SetupComfortableLayout();
+		
 		DocumentationNotifications();
 	}
 	
@@ -27,12 +30,6 @@ public class DocumentationExamples : MonoBehaviour
 	
 	private void DocumentationLogs()
 	{
-		// Settings for screenshots:
-		// Cell.Text.FontSize: 18
-		// DebugInfo.Config:
-		//     CellSpacing: 2, 2
-		//     TextPadding: 8, 4
-		
 		/* Basic */
 		if (false)
 		{
@@ -88,12 +85,6 @@ public class DocumentationExamples : MonoBehaviour
 	
 	private static void DocumentationNotifications()
 	{
-		// Settings for screenshots:
-		// Notification.Text.FontSize: 18
-		// DebugInfo.NotificationListContainer.VerticalLayoutGroup.Spacing: 4
-		// Notification.TextWrapper.HorizontalLayoutGroup:
-		//     Padding: 8, 4
-		
 		/* Basic */
 		if (false)
 		{
@@ -122,6 +113,29 @@ public class DocumentationExamples : MonoBehaviour
 			DebugInfo.NotifyEnabled("Disabled", false);
 		}
 		
+	}
+	
+	private static void SetupComfortableLayout()
+	{
+		Config cfg = DebugInfo.Config;
+		AssetReferences assets = DebugInfo.Assets;
+		
+		const int FontSize = 18;
+		
+		cfg.cellSpacing = new Vector2(2, 2);
+		cfg.textPadding = new Vector2(8, 4);
+		cfg.headingTextPadding = new Vector2(8, 8);
+		
+		assets.cellPrefab.GetComponentInChildren<Text>().fontSize = FontSize;
+		assets.headingPrefab.GetComponentInChildren<Text>().fontSize = FontSize;
+		assets.groupHeadingPrefab.GetComponentInChildren<Text>().fontSize = FontSize;
+		
+		assets.headingPrefab.border.rectTransform.sizeDelta = new Vector2(0, 4);
+		
+		// Notifications
+		assets.notificationPrefab.textfield.fontSize = FontSize;
+		assets.notificationPrefab.textWrapper.padding = new RectOffset(8, 8, 4, 4);
+		DebugInfo.NotificationList.GetComponent<VerticalLayoutGroup>().spacing = 4;
 	}
 	
 }
