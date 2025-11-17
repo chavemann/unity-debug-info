@@ -395,6 +395,7 @@ MonoBehaviour:
   transform: {fileID: 7573251445805423276}
   canvasGroup: {fileID: 7973485044621272721}
   layout: {fileID: 2170172242298164731}
+  textWrapper: {fileID: 323190632495852348}
   textfield: {fileID: 5391171433630100770}
   background: {fileID: 8121496548027474943}
   border: {fileID: 741659980258301583}

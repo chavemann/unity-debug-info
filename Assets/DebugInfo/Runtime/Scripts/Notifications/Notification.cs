@@ -17,7 +17,9 @@ public class Notification : MonoBehaviour, IPointerClickHandler
 	[SerializeField]
 	private HorizontalLayoutGroup layout;
 	[SerializeField]
-	private Text textfield;
+	public HorizontalLayoutGroup textWrapper;
+	[SerializeField]
+	public Text textfield;
 	[SerializeField]
 	public RawImage background;
 	[SerializeField]

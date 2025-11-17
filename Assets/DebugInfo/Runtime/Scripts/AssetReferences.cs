@@ -1,4 +1,5 @@
 ﻿using C.Debugging.Cells;
+using C.Debugging.Notifications;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -17,7 +18,7 @@ public class AssetReferences : ScriptableObject
 	public IndentMargin indentMarginPrefab;
 	public HeadingCell headingPrefab;
 	public GroupHeadingCell groupHeadingPrefab;
-	public GameObject notificationPrefab;
+	public Notification notificationPrefab;
 	
 	public static T Create<T>(GameObject prefab, string name = null, Transform parent = null)
 	{

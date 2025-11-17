@@ -19,5 +19,4 @@ MonoBehaviour:
   indentMarginPrefab: {fileID: 2948341667970302648, guid: ff02a2135f780504aab4781814da793e, type: 3}
   headingPrefab: {fileID: 175470258049542194, guid: 0ac90072d8c3ab74d971e3d64729212a, type: 3}
   groupHeadingPrefab: {fileID: 1135958791030439259, guid: 226a421719582254287302a5389f84f8, type: 3}
-  notificationListPrefab: {fileID: 1913991297744551372, guid: bf405044f0a704f408e10435d045a5f6, type: 3}
-  notificationPrefab: {fileID: 7368046489859358456, guid: c15a30f25eb12394e883c190c1ad574d, type: 3}
+  notificationPrefab: {fileID: 7051569846733717930, guid: c15a30f25eb12394e883c190c1ad574d, type: 3}

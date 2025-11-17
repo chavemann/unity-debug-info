@@ -48,6 +48,9 @@ public class DebugInfo : MonoBehaviour
 	/// <exclude/>
 	public static AssetReferences Assets { get; private set; }
 	
+	/// <exclude/>
+	public static NotificationList NotificationList => Instance.notificationList;
+	
 	// ReSharper restore MemberCanBePrivate.Global
 	// ReSharper restore FieldCanBeMadeReadOnly.Global
 	// ReSharper restore ConvertToConstant.Global
