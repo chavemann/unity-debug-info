@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 namespace C.Debugging
 {
 
+// <exclude/>
 [CreateAssetMenu(fileName = "AssetReferences", menuName = "DebugInfo.AssetReferences")]
-internal class AssetReferences : ScriptableObject
+public class AssetReferences : ScriptableObject
 {
 	
 	public DebugInfo rootPrefab;
@@ -14,8 +15,8 @@ internal class AssetReferences : ScriptableObject
 	public DebugInfoTable tablePrefab;
 	public Cell cellPrefab;
 	public IndentMargin indentMarginPrefab;
-	public Cell headingPrefab;
-	public Cell groupHeadingPrefab;
+	public HeadingCell headingPrefab;
+	public GroupHeadingCell groupHeadingPrefab;
 	public GameObject notificationPrefab;
 	
 	public static T Create<T>(GameObject prefab, string name = null, Transform parent = null)

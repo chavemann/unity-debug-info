@@ -45,12 +45,14 @@ public class DebugInfo : MonoBehaviour
 	/// </summary>
 	public static Config Config => Instance.config;
 	
+	/// <exclude/>
+	public static AssetReferences Assets { get; private set; }
+	
 	// ReSharper restore MemberCanBePrivate.Global
 	// ReSharper restore FieldCanBeMadeReadOnly.Global
 	// ReSharper restore ConvertToConstant.Global
 	
 	internal static Transform PoolContainer => Instance.poolContainer;
-	internal static AssetReferences Assets { get; private set; }
 	
 	[SerializeField]
 	private new Transform transform;
