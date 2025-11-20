@@ -49,7 +49,9 @@ public class DocumentationExamples : MonoBehaviour
 		if (false)
 		{
 			DebugInfo.Log("Time", $"{Str.F(Time.fixedTime)} ({Str.Cyan(Str.F(Time.frameCount))})");
+			#pragma warning disable CS0618 // Type or member is obsolete
 			DebugInfo.Log("Velocity", Str.F(sphereRigidbody.velocity), Clr.TransformRgb);
+			#pragma warning restore CS0618 // Type or member is obsolete
 		}
 		
 		/* Headings */
