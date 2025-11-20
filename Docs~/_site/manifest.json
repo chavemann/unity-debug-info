@@ -1,0 +1,267 @@
+{
+  "source_base_path": "D:/UnityProjects/_Packages/Libraries/Assets/DebugInfo/Docs~",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.AssetReferences.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.AssetReferences.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.AssetReferences",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.Config.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.Config",
+      "Summary": "<p sourcefile=\"api/C.Debugging.Config.yml\" sourcestartlinenumber=\"1\">Global configuration for DebugInfo.<br>\nNote that these settings should be changed before logging anything to properly take effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.DebugInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.DebugInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.DebugInfo",
+      "Summary": "<p sourcefile=\"api/C.Debugging.DebugInfo.yml\" sourcestartlinenumber=\"1\">The core DebugInfo class with various static methods for logging information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.Formatting.Clr.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.Formatting.Clr.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.Formatting.Clr",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.Formatting.Str.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.Formatting.Str.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.Formatting.Str",
+      "Summary": "<p sourcefile=\"api/C.Debugging.Formatting.Str.yml\" sourcestartlinenumber=\"1\">Contains helper methods for consistently formatting debug text.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.Formatting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.Formatting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.Formatting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.UpdateMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.UpdateMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging.UpdateMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.Debugging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.Debugging.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.Debugging",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.svg",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logging-basic.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logging-basic.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logging-colors.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logging-colors.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logging-formatting.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logging-formatting.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logging-groups.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logging-groups.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logging-headings.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logging-headings.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/notifications-toggles.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/notifications-toggles.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/notifications.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/notifications.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Redirection",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

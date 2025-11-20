@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>DebugInfo Overview | DebugInfo Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="DebugInfo Overview | DebugInfo Documentation ">
+      
+      
+      <link rel="icon" href="../favicon.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/cmann1/debug-info/blob/master/Docs~/api/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="debuginfo-overview">DebugInfo Overview</h1>
+
+<hr>
+<h2 id="setup-and-configuration">Setup and Configuration</h2>
+<p>After installation, no setup is required to start using <code>DebugInfo</code> - it will initialise
+itself on game start.</p>
+<p>However various global defaults can be accessed via the static
+<a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Config">DebugInfo.Config</a> property.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>It's important any changes to the config happen before using <code>DebugInfo</code>
+to ensure that the changes are correctly applied.</p>
+</div>
+<hr>
+<h2 id="logging">Logging</h2>
+<p>The main logging function is <code>DebugInfo.Log</code>.<br>
+There are two basic versions, <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Log_System_String_System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__">one</a> that logs a single text message,
+and <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Log_System_String_System_String_System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__">another</a> that logs a key, value pair in two columns.</p>
+<div class="example-box">
+<img src="../images/logging-basic.png" alt="Basic logging example.">
+<pre><code class="lang-csharp">DebugInfo.Log(&quot;A single line of text.&quot;);
+DebugInfo.Log(&quot;Key&quot;, &quot;Value&quot;);
+</code></pre>
+</div>
+<h3 id="color">Color</h3>
+<p>It's possible to specify the color of the background; key text, value text, or both.</p>
+<div class="example-box">
+<img src="../images/logging-colors.png" alt="Color logging example.">
+<pre><code class="lang-csharp">DebugInfo.Log(&quot;RedKey&quot;, &quot;RedValue&quot;, Clr.lightCoral);
+DebugInfo.Log(&quot;GreenKey&quot;, Clr.lawnGreen, &quot;BlueValue&quot;, Clr.lightSkyBlue);
+</code></pre>
+</div>
+<h3 id="formatting">Formatting</h3>
+<p>Formatting and coloring individual parts of text can be done with the static methods provided
+by the <a class="xref" href="C.Debugging.Formatting.Str.html">Str</a> class.<br>
+There are some global options for changing the formatting behaviour, such as the floating
+point <a class="xref" href="C.Debugging.Formatting.Str.html#C_Debugging_Formatting_Str_defaultPrecision">precision</a> field.</p>
+<div class="example-box">
+<img src="../images/logging-formatting.png" alt="Str Formatting example.">
+<pre><code class="lang-csharp">DebugInfo.Log(&quot;Time&quot;, $&quot;{Str.F(Time.fixedTime)} ({Str.Cyan(Str.F(Time.frameCount))})&quot;);
+DebugInfo.Log(&quot;Velocity&quot;, Str.F(sphereRigidbody.linearVelocity), Clr.TransformRgb);
+</code></pre>
+</div>
+<h3 id="headings">Headings</h3>
+<p>The <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Heading_System_String_System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_TextAnchor__">Header</a> and <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Spacer_System_Nullable_System_Single__">Spacer</a> methods can be used to create headings
+and gaps between rows.</p>
+<div class="example-box">
+<img src="../images/logging-headings.png" alt="Headings and Spacers example.">
+<pre><code class="lang-csharp">DebugInfo.Heading(&quot;Heading&quot;);
+DebugInfo.Log(&quot;Key1&quot;, &quot;Value1&quot;);
+
+// It's possible to set a height per spacer. If omitted the default as set in the configuration is used.
+DebugInfo.Spacer(8);
+
+// Changing the background and border color is also possible.
+DebugInfo.Heading(&quot;Heading2&quot;, color: Clr.lightCoral,
+	bgColor: new Color(0.31f, 0.11f, 0.15f, 0.5f), borderColor: Clr.lightCoral);
+DebugInfo.Log(&quot;Key2&quot;, &quot;Value2&quot;);
+</code></pre>
+</div>
+<h3 id="groups">Groups</h3>
+<p>Rows can be grouped together into collapsable sections using the <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Group_System_String_System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_System_Boolean__System_Action_C_Debugging_Rows_GroupHeadingRow_System_Boolean__">Group</a> method.<br>
+The <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Group_System_String_System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_System_Boolean__System_Action_C_Debugging_Rows_GroupHeadingRow_System_Boolean__">Group</a> method returns an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a> that must be used
+with a <code>using</code> block to correctly open and close the group.<br>
+Groups can be clicked to open and close them, and there are various options such as color, initial state,
+and a callback for when the group is opened or closed.</p>
+<div class="example-box">
+<img src="../images/logging-groups.png" alt="Grouping example.">
+<pre><code class="lang-csharp">using (DebugInfo.Group(&quot;My Group&quot;, Clr.lightSkyBlue)) {
+	DebugInfo.Log(&quot;A single line of text.&quot;);
+	using (DebugInfo.Group(&quot;Nested Group&quot;, Clr.lightCoral)) {
+		DebugInfo.Log(&quot;Nested content&quot;);
+		using (DebugInfo.Group(&quot;Collapsed Group&quot;, Clr.khaki, collapsed: true)) {
+			DebugInfo.Log(&quot;Collapsed content&quot;);
+		}
+	}
+	DebugInfo.Log(&quot;Key&quot;, &quot;Value&quot;);
+}
+</code></pre>
+</div>
+<hr>
+<h2 id="notifications">Notifications</h2>
+<p><code>DebugInfo</code> also provides methods for showing once-off <a class="xref" href="C.Debugging.DebugInfo.html#C_Debugging_DebugInfo_Notify_System_String_System_String_System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Nullable_UnityEngine_Color__System_Single_">notification messages</a>.</p>
+<div class="example-box">
+<img src="../images/notifications.png" alt="Notifications example.">
+<pre><code class="lang-csharp">DebugInfo.Notify($&quot;Lorem {Str.Cyan(&quot;ipsum dolor&quot;)} sit amet,&quot; +
+	&quot;\nconsectetur adipiscing elit.&quot;);
+DebugInfo.Notify(&quot;Lorem ipsum dolor sit amet&quot;,
+	bgColor: new Color(0.7f, 0.7f, 0.24f, 0.25f),
+	borderColor: new Color(0.86f, 0.78f, 0.43f));
+
+// Set the duration to 10 seconds before the notification fades out.
+DebugInfo.Notify($&quot;[!Important] Lorem ipsum dolor sit amet&quot;,
+	color: Clr.lightCoral, duration: 10);
+
+// Giving the notification a unique id will cause subsequent calls to
+// update the existing notification instead of creating new ones.
+DebugInfo.Notify($&quot;CurrentTime: {Str.F(Time.deltaTime)}&quot;, &quot;UniqueId&quot;,
+	color: Clr.khaki);
+</code></pre>
+</div>
+<h3 id="toggle-messages">Toggle Messages</h3>
+<p>There are also convenience methods for creating on/off messages.</p>
+<div class="example-box">
+<img src="../images/notifications-toggles.png" alt="Notification toggles example.">
+<pre><code class="lang-csharp">DebugInfo.NotifyOn(&quot;ToggledOn&quot;, true);
+DebugInfo.NotifyOn(&quot;ToggledOff&quot;, false);
+DebugInfo.NotifyEnabled(&quot;Enabled&quot;, true);
+DebugInfo.NotifyEnabled(&quot;Disabled&quot;, false);
+</code></pre>
+</div>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          DebugInfo Documentation
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

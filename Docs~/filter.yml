@@ -1,0 +1,27 @@
+apiRules:
+- exclude:
+    type: Member
+    uidRegex: ^UnityEngine\.
+- exclude:
+    type: Member
+    uidRegex: ^System\.
+
+- include:
+    uidRegex: ^C\.Debugging\.Formatting
+- exclude:
+    type: Namespace
+    uidRegex: ^C\.Debugging\.
+
+attributeRules:
+- exclude:
+    type: Type
+    uidRegex: ^System\.SerializableAttribute
+- exclude:
+    type: Type
+    uidRegex: ^JetBrains\.Annotations\.
+- exclude:
+    type: Type
+    uidRegex: ^UnityEngine\.(SerializeField|DefaultExecutionOrder)
+- exclude:
+    type: Type
+    uidRegex: ^UnityEngine\.(Tooltip|Header)Attribute
