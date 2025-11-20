@@ -1,0 +1,16 @@
+{
+    "name": "C.DebuginInfo.AssetStore",
+    "rootNamespace": "C.DebuginInfo.AssetStore",
+    "references": [
+        "GUID:0bc864996ff88304a8b473578ecaccfa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
