@@ -10,4 +10,4 @@ DebugInfo.Notify("Hello World");
 DebugInfo.NotifyEnabled("Debugging", IsDebuggingEnabled);
 ```
 
-See the [Documentation](https://chavemann.github.io/unity-debug-info-docs) for a more complete overview.
+See the [Documentation](https://chavemann.github.io/unity-debug-info) for a more complete overview.
