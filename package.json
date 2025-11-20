@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"displayName": "DebugInfo",
 	"description": "A tool for displaying per-frame in the editor and in-game.",
+	"documentationUrl": "https://chavemann.github.io/unity-debug-info/",
 	"unity": "6000.2",
 	"author": {
 		"name": "C",
@@ -13,7 +14,7 @@
 		{
 			"displayName": "Example Usage",
 			"description": "Showcases some of the different functionality of the DebugInfo package.",
-			"path": "Samples~/ExampleUsage",
+			"path": "Samples/ExampleUsage",
 			"interactiveImport": true
 		}
 	]
