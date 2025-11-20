@@ -3,7 +3,7 @@
 		{
 			"src": [
 				{
-					"src": "../../../",
+					"src": "../../../_Packages2021/",
 					"files": [
 						"C.DebugInfo.Runtime.csproj"
 					]
@@ -74,7 +74,7 @@
 		"template": [
 			"default",
 			"modern",
-			"../../../.docs/templates/modern-overrides"
+			"../../../_Packages2021/.docs/templates/modern-overrides"
 		],
 		"postProcessors": [],
 		"keepFileLink": false,
