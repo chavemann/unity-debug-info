@@ -1,6 +1,0 @@
-order: 2000
-items:
-- name: Overview
-  href: /api/
-- name: DebugInfo API
-  href: ../api/toc.yml
