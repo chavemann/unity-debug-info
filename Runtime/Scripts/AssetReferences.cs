@@ -1,7 +1,6 @@
 ﻿using C.Debugging.Cells;
 using C.Debugging.Notifications;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace C.Debugging
 {
@@ -12,7 +11,6 @@ public class AssetReferences : ScriptableObject
 {
 	
 	public DebugInfo rootPrefab;
-	public EventSystem eventSystemPrefab;
 	public DebugInfoTable tablePrefab;
 	public Cell cellPrefab;
 	public IndentMargin indentMarginPrefab;

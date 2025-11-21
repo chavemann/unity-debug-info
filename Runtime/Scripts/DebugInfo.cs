@@ -6,6 +6,9 @@ using C.Debugging.Rows;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem.UI;
+#endif
 
 namespace C.Debugging
 {
@@ -87,9 +90,18 @@ public class DebugInfo : MonoBehaviour
 		poolContainer.gameObject.SetActive(false);
 		
 		eventSystem = FindFirstObjectByType<EventSystem>(FindObjectsInactive.Include);
+		
 		if (!eventSystem)
 		{
-			AssetReferences.Create(Assets.eventSystemPrefab, out eventSystem, parent: transform);
+			GameObject eventSystemObj = new("EventSystem");
+			eventSystemObj.transform.SetParent(transform);
+			eventSystem = eventSystemObj.AddComponent<EventSystem>();
+			
+			#if ENABLE_INPUT_SYSTEM
+			eventSystemObj.AddComponent<InputSystemUIInputModule>();
+			#else
+			eventSystemObj.AddComponent<StandaloneInputModule>();
+			#endif
 		}
 		
 		DefaultTable = AssetReferences.Create<DebugInfoTable>(Assets.tablePrefab, "Default", transform);
