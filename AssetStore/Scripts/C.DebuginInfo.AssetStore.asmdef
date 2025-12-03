@@ -1,6 +1,6 @@
 {
     "name": "C.DebuginInfo.AssetStore",
-    "rootNamespace": "C.DebuginInfo.AssetStore",
+    "rootNamespace": "C.DebuggingInfo.AssetStore",
     "references": [
         "GUID:0bc864996ff88304a8b473578ecaccfa"
     ],

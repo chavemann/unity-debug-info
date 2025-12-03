@@ -1,8 +1,8 @@
-﻿using C.Debugging.Cells;
-using C.Debugging.Notifications;
+﻿using C.DebuggingInfo.Cells;
+using C.DebuggingInfo.Notifications;
 using UnityEngine;
 
-namespace C.Debugging
+namespace C.DebuggingInfo
 {
 
 // <exclude/>

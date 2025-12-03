@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using C.Debugging.Rows;
+using C.DebuggingInfo.Rows;
 using UnityEngine;
 
 // ReSharper disable UnusedMember.Global
 
-namespace C.Debugging
+namespace C.DebuggingInfo
 {
 
 /// <summary>

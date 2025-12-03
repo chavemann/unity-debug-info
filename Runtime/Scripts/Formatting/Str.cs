@@ -3,14 +3,14 @@ using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
 
-using Clr2 = C.Debugging.Formatting.Clr;
+using Clr2 = C.DebuggingInfo.Formatting.Clr;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable FieldCanBeMadeReadOnly.Global
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ConvertToConstant.Global
 
-namespace C.Debugging.Formatting
+namespace C.DebuggingInfo.Formatting
 {
 
 /// <summary>

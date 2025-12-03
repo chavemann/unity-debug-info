@@ -1,8 +1,8 @@
-﻿using C.Debugging.Rows;
+﻿using C.DebuggingInfo.Rows;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace C.Debugging.Cells
+namespace C.DebuggingInfo.Cells
 {
 
 public class Cell : MonoBehaviour

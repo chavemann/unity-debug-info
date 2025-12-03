@@ -1,8 +1,8 @@
 ﻿using System;
-using C.Debugging.Formatting;
+using C.DebuggingInfo.Formatting;
 using UnityEngine;
 
-namespace C.Debugging
+namespace C.DebuggingInfo
 {
 
 /// <summary>

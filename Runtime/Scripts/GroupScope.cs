@@ -1,7 +1,7 @@
 ﻿using System;
-using C.Debugging.Rows;
+using C.DebuggingInfo.Rows;
 
-namespace C.Debugging
+namespace C.DebuggingInfo
 {
 
 /// <summary>

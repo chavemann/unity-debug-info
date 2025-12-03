@@ -1,7 +1,7 @@
-﻿using C.Debugging.Cells;
+﻿using C.DebuggingInfo.Cells;
 using UnityEngine;
 
-namespace C.Debugging.Rows
+namespace C.DebuggingInfo.Rows
 {
 
 internal class NameValueRow : Row

@@ -1,4 +1,4 @@
-﻿namespace C.Debugging.Rows
+﻿namespace C.DebuggingInfo.Rows
 {
 
 internal class TextRow : BasicRow

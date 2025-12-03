@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using C.Debugging.Notifications;
-using C.Debugging.Rows;
+using C.DebuggingInfo.Notifications;
+using C.DebuggingInfo.Rows;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 #endif
 
-namespace C.Debugging
+namespace C.DebuggingInfo
 {
 
 // TODO: Frame history?

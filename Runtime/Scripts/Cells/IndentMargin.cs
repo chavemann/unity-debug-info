@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace C.Debugging.Cells
+namespace C.DebuggingInfo.Cells
 {
 
 public class IndentMargin : MonoBehaviour

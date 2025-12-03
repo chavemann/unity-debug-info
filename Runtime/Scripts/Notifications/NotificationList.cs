@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using C.Debugging.Formatting;
+using C.DebuggingInfo.Formatting;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
 // ReSharper disable UnusedMember.Global
 
-namespace C.Debugging.Notifications
+namespace C.DebuggingInfo.Notifications
 {
 
 public class NotificationList : MonoBehaviour

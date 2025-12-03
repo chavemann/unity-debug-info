@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace C.Debugging.Rows
+namespace C.DebuggingInfo.Rows
 {
 
 internal class SpacerRow : Row

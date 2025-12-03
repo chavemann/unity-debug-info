@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace C.Debugging
+namespace C.DebuggingInfo
 {
 
 [Serializable]

@@ -2,7 +2,7 @@
 
 // ReSharper disable InconsistentNaming
 
-namespace C.Debugging.Formatting
+namespace C.DebuggingInfo.Formatting
 {
 
 public static class Clr

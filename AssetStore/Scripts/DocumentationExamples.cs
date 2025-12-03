@@ -1,5 +1,4 @@
-﻿using C.Debugging;
-using C.Debugging.Formatting;
+﻿using C.DebuggingInfo.Formatting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,7 @@ using UnityEngine.UI;
 // ReSharper disable HeuristicUnreachableCode
 // ReSharper disable InvertIf
 
-namespace AssetStore.Scripts
+namespace C.DebuggingInfo.AssetStore
 {
 
 public class DocumentationExamples : MonoBehaviour

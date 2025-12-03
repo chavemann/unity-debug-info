@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-namespace C.Debugging.Rows
+namespace C.DebuggingInfo.Rows
 {
 
 internal static class RowPool<T> where T : Row, new()

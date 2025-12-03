@@ -1,11 +1,11 @@
-﻿using C.Debugging.Formatting;
-using C.Debugging.Rows;
+﻿using C.DebuggingInfo.Formatting;
+using C.DebuggingInfo.Rows;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
-namespace C.Debugging.Samples.ExampleUsage
+namespace C.DebuggingInfo.Samples.ExampleUsage
 {
 
 public class ExampleUsage : MonoBehaviour

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace C.Debugging.Notifications
+namespace C.DebuggingInfo.Notifications
 {
 
 public class Notification : MonoBehaviour, IPointerClickHandler
