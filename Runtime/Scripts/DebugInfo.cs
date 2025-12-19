@@ -109,7 +109,7 @@ public class DebugInfo : MonoBehaviour
 	}
 	
 	/// <summary>
-	/// Make sure to call this if <see cref="Debugging.Config.updateMode"/> is set to <see cref="UpdateMode.Manual"/>.<br/>
+	/// Make sure to call this if <see cref="DebuggingInfo.Config.updateMode"/> is set to <see cref="UpdateMode.Manual"/>.<br/>
 	/// If the update mode is not set to <see cref="UpdateMode.Manual"/>, this will do nothing and issue a warning.<br/>
 	/// Failing to call this when the update mode is manual will prevent previous frame logs from being reset,
 	/// causing memory leaks and performance issues.

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AssetStore.Scripts
+namespace C.DebuggingInfo.AssetStore
 {
 
 public static class Extensions
