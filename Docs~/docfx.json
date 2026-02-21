@@ -40,7 +40,7 @@
 		},
 		"content": [
 			{
-				// See ../README.md for why this property name has a space.
+				// See _Packages2021/.docs/README.md for why this property name has a space.
 				"fi les": ["pdf/toc.yml"]
 			},
 			{
