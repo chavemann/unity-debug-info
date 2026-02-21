@@ -123,6 +123,300 @@
       "Summary": null
     },
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.AssetReferences.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.AssetReferences.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.AssetReferences",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Cells.Cell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Cells.Cell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Cells.Cell",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Cells.GroupHeadingCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Cells.GroupHeadingCell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Cells.GroupHeadingCell",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Cells.HeadingCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Cells.HeadingCell.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Cells.HeadingCell",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Cells.IndentMargin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Cells.IndentMargin.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Cells.IndentMargin",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Cells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Cells.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Cells",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Config.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Config",
+      "Summary": "<p sourcefile=\"api/C.DebuggingInfo.Config.yml\" sourcestartlinenumber=\"1\">Global configuration for DebugInfo.<br>\nNote that these settings should be changed before logging anything to properly take effect.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.DebugInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.DebugInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.DebugInfo",
+      "Summary": "<p sourcefile=\"api/C.DebuggingInfo.DebugInfo.yml\" sourcestartlinenumber=\"1\">The core DebugInfo class with various static methods for logging information.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Formatting.Clr.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Formatting.Clr.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Formatting.Clr",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Formatting.Str.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Formatting.Str.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Formatting.Str",
+      "Summary": "<p sourcefile=\"api/C.DebuggingInfo.Formatting.Str.yml\" sourcestartlinenumber=\"1\">Contains helper methods for consistently formatting debug text.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Formatting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Formatting.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Formatting",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Notifications.Notification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Notifications.Notification.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Notifications.Notification",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Notifications.NotificationList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Notifications.NotificationList.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Notifications.NotificationList",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Notifications.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Notifications.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Notifications",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Rows.BasicRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Rows.BasicRow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Rows.BasicRow",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Rows.GroupHeadingRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Rows.GroupHeadingRow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Rows.GroupHeadingRow",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Rows.HeadingRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Rows.HeadingRow.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Rows.HeadingRow",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Rows.Row.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Rows.Row.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Rows.Row",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.Rows.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.Rows.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.Rows",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.UpdateMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.UpdateMode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo.UpdateMode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/C.DebuggingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/C.DebuggingInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "C.DebuggingInfo",
+      "Summary": null
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "api/index.md",
       "output": {

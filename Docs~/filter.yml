@@ -7,10 +7,12 @@ apiRules:
     uidRegex: ^System\.
 
 - include:
-    uidRegex: ^C\.Debugging\.Formatting
+    uidRegex: ^C\.DebuggingInfo\.Formatting
 - exclude:
     type: Namespace
-    uidRegex: ^C\.Debugging\.
+    uidRegex: ^C\.DebuggingInfo\.
+- exclude:
+    uidRegex: ^C\.DebuggingInfo\.AssetReferences
 
 attributeRules:
 - exclude:
