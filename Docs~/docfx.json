@@ -30,7 +30,7 @@
 			"_disableContribution": true,
 			"_disableTocCollapse": false,
 			
-			"pdfFileName": "DebugInfo.pdf",
+			"pdfFileName": "../Documentation/DebugInfo.pdf",
 			"pdfTocPage": true
 		},
 		"fileMetadata": {
