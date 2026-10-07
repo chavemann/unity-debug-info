@@ -95,7 +95,7 @@ public class DebugInfo : MonoBehaviour
 		
 		poolContainer.gameObject.SetActive(false);
 		
-		eventSystem = FindFirstObjectByType<EventSystem>(FindObjectsInactive.Include);
+		eventSystem = FindAnyObjectByType<EventSystem>(FindObjectsInactive.Include);
 		
 		if (!eventSystem)
 		{
