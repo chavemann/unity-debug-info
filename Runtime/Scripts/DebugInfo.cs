@@ -9,6 +9,9 @@ using UnityEngine.EventSystems;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem.UI;
 #endif
+#if UNITY_6000_6_OR_NEWER
+using Unity.Scripting.LifecycleManagement;
+#endif
 
 namespace C.DebuggingInfo
 {
@@ -20,6 +23,9 @@ namespace C.DebuggingInfo
 /// The core DebugInfo class with various static methods for logging information.
 /// </summary>
 [DefaultExecutionOrder(10000)]
+#if UNITY_6000_6_OR_NEWER
+[NoAutoStaticsCleanup]
+#endif
 public class DebugInfo : MonoBehaviour
 {
 	

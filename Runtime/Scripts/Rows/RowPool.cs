@@ -1,10 +1,16 @@
 ﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Pool;
+#if UNITY_6000_6_OR_NEWER
+using Unity.Scripting.LifecycleManagement;
+#endif
 
 namespace C.DebuggingInfo.Rows
 {
 
+#if UNITY_6000_6_OR_NEWER
+[NoAutoStaticsCleanup]
+#endif
 internal static class RowPool<T> where T : Row, new()
 {
 	

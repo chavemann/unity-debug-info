@@ -2,6 +2,9 @@
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using UnityEngine;
+#if UNITY_6000_6_OR_NEWER
+using Unity.Scripting.LifecycleManagement;
+#endif
 
 using Clr2 = C.DebuggingInfo.Formatting.Clr;
 
@@ -16,6 +19,9 @@ namespace C.DebuggingInfo.Formatting
 /// <summary>
 /// Contains helper methods for consistently formatting debug text.
 /// </summary>
+#if UNITY_6000_6_OR_NEWER
+[NoAutoStaticsCleanup]
+#endif
 [UsedImplicitly]
 public static class Str
 {
