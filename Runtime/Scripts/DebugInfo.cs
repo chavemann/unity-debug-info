@@ -95,6 +95,12 @@ public class DebugInfo : MonoBehaviour
 		
 		poolContainer.gameObject.SetActive(false);
 		
+		DefaultTable = AssetReferences.Create<DebugInfoTable>(Assets.tablePrefab, "Default", transform);
+		tables.Add(DefaultTable);
+	}
+	
+	private void Start()
+	{
 		eventSystem = FindAnyObjectByType<EventSystem>(FindObjectsInactive.Include);
 		
 		if (!eventSystem)
@@ -109,9 +115,6 @@ public class DebugInfo : MonoBehaviour
 			eventSystemObj.AddComponent<StandaloneInputModule>();
 			#endif
 		}
-		
-		DefaultTable = AssetReferences.Create<DebugInfoTable>(Assets.tablePrefab, "Default", transform);
-		tables.Add(DefaultTable);
 	}
 	
 	/// <summary>
