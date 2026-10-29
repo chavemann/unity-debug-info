@@ -68,6 +68,11 @@ public class NotificationList : MonoBehaviour
 		Notification notification = null;
 		bool hasNotification = false;
 		
+		if (id == "<")
+		{
+			id = message;
+		}
+		
 		if (id != null)
 		{
 			hasNotification = notificationIds.TryGetValue(id, out notification);
