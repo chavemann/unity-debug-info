@@ -69,7 +69,6 @@ public class GroupHeadingRow : HeadingRow
 	
 	internal override void OnRemoved()
 	{
-		Debug.Log("OnRemoved");
 		collapsed = false;
 		labelCell.Collapsed = Collapsed;
 		
