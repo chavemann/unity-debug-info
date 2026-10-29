@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using C.DebuggingInfo.Cells;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class GroupHeadingRow : HeadingRow
 	
 	private new readonly GroupHeadingCell labelCell;
 	
-	private int childCount;
+	private readonly List<Row> children = new();
 	
 	private bool? collapsed;
 	private Action<GroupHeadingRow, bool> onCollapsed;
@@ -25,6 +26,13 @@ public class GroupHeadingRow : HeadingRow
 			
 			collapsed = value;
 			labelCell.Collapsed = collapsed.Value;
+			
+			bool childrenVisible = Visible && !Collapsed;
+			foreach (Row child in children)
+			{
+				child.Visible = childrenVisible;
+				child.PrepareLayout();
+			}
 			
 			onCollapsed?.Invoke(this, Collapsed);
 		}
@@ -56,16 +64,21 @@ public class GroupHeadingRow : HeadingRow
 		row.indentLevel = indentLevel + 1;
 		row.Visible = Visible && !Collapsed;
 		
-		childCount++;
+		children.Add(row);
 	}
 	
 	internal override void OnRemoved()
 	{
+		Debug.Log("OnRemoved");
 		collapsed = false;
 		labelCell.Collapsed = Collapsed;
-		childCount = 0;
 		
 		base.OnRemoved();
+	}
+	
+	public void Reset()
+	{
+		children.Clear();
 	}
 	
 }

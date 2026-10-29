@@ -153,6 +153,28 @@ public class DebugInfoTable : MonoBehaviour
 	
 	internal void UpdateImpl()
 	{
+		DoLayout();
+		
+		// Disable unused rows at the end of the array.
+		if (rowCount < previousRowCount)
+		{
+			for (int i = rowCount; i < previousRowCount; i++)
+			{
+				if (rows[i] == null)
+					continue;
+				
+				rows[i].OnRemoved();
+				rows[i] = null;
+			}
+		}
+		
+		previousRowCount = rowCount;
+		rowCount = 0;
+		CurrentGroup = null;
+	}
+	
+	internal void DoLayout()
+	{
 		// Calculate the column widths.
 		
 		columnWidths[0] = 0;
@@ -218,23 +240,6 @@ public class DebugInfoTable : MonoBehaviour
 			row.UpdateLayout(y, totaWidth, columnWidths);
 			y -= row.Size.y + config.cellSpacing.y;
 		}
-		
-		// Disable unused rows at the end of the array.
-		if (rowCount < previousRowCount)
-		{
-			for (int i = rowCount; i < previousRowCount; i++)
-			{
-				if (rows[i] == null)
-					continue;
-				
-				rows[i].OnRemoved();
-				rows[i] = null;
-			}
-		}
-		
-		previousRowCount = rowCount;
-		rowCount = 0;
-		CurrentGroup = null;
 	}
 	
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -20,6 +20,7 @@ public readonly struct GroupScope : IDisposable
 		this.table = table;
 		previousGroup = table.CurrentGroup;
 		table.CurrentGroup = group;
+		group.Reset();
 	}
 	
 	/// <exclude/>

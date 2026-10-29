@@ -77,6 +77,7 @@ public class GroupHeadingCell : HeadingCell, IPointerClickHandler
 	
 	public void OnPointerClick(PointerEventData eventData)
 	{
+		DebugInfo.forceLayout = true;
 		groupHeadingRow.Collapsed = !groupHeadingRow.Collapsed;
 	}
 	

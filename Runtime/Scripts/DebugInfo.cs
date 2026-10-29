@@ -66,6 +66,8 @@ public class DebugInfo : MonoBehaviour
 	
 	internal static Transform PoolContainer => Instance.poolContainer;
 	
+	internal static bool forceLayout;
+	
 	[SerializeField]
 	private new Transform transform;
 	[SerializeField]
@@ -86,6 +88,8 @@ public class DebugInfo : MonoBehaviour
 		Assets = Resources.Load<AssetReferences>("AssetReferences");
 		
 		Instance = AssetReferences.Create<DebugInfo>(Assets.rootPrefab);
+		
+		forceLayout = false;
 	}
 	
 	private void Awake()
@@ -140,7 +144,15 @@ public class DebugInfo : MonoBehaviour
 	private void Update()
 	{
 		if (config.updateMode != UpdateMode.Update)
+		{
+			if (forceLayout)
+			{
+				DoLayout();
+				forceLayout = false;
+			}
+			
 			return;
+		}
 		
 		UpdateImpl();
 	}
@@ -159,6 +171,15 @@ public class DebugInfo : MonoBehaviour
 		foreach (DebugInfoTable table in tables)
 		{
 			table.UpdateImpl();
+		}
+	}
+	
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	private void DoLayout()
+	{
+		foreach (DebugInfoTable table in tables)
+		{
+			table.DoLayout();
 		}
 	}
 	
