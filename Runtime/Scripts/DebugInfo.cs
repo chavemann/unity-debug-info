@@ -82,7 +82,7 @@ public class DebugInfo : MonoBehaviour
 	
 	private readonly List<DebugInfoTable> tables = new();
 	
-	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 	private static void RuntimeInit()
 	{
 		Assets = Resources.Load<AssetReferences>("AssetReferences");
